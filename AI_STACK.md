@@ -1,7 +1,7 @@
 # AI Stack Report
 
-_Generated: 2026-07-24T11:22:20.499150Z_  
-_Scanner mode: static_  
+_Generated: 2026-07-24T11:28:58.739291Z_  
+_Scanner mode: hybrid_  
 _Scanned 1264 Python file(s), found 180 distinct component(s)._
 
 ## LLM Providers
@@ -191,7 +191,7 @@ _Scanned 1264 Python file(s), found 180 distinct component(s)._
 
 | Component | Confidence | Occurrences | Example location |
 |---|---|---|---|
-| CrewAI | high | 3360 | `conftest.py:196` |
+| CrewAI | high | 3361 | `conftest.py:196` |
 | Agent (verify framework) | medium | 628 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:18` |
 | CrewAI Crew | high | 397 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:55` |
 | LangChain | high | 4 | `lib/crewai-tools/pyproject.toml:93` |
@@ -211,9 +211,9 @@ _Scanned 1264 Python file(s), found 180 distinct component(s)._
 
 <details><summary>Skipped files (parse errors)</summary>
 
-- `lib/cli/src/crewai_cli/templates/flow/main.py`
-- `lib/cli/src/crewai_cli/templates/crew/main.py`
 - `lib/cli/src/crewai_cli/templates/crew/crew.py`
+- `lib/cli/src/crewai_cli/templates/crew/main.py`
+- `lib/cli/src/crewai_cli/templates/flow/main.py`
 - `lib/cli/src/crewai_cli/templates/tool/src/{{folder_name}}/__init__.py`
 - `lib/cli/src/crewai_cli/templates/tool/src/{{folder_name}}/tool.py`
 

@@ -1,12 +1,12 @@
 {
   "root": "/home/runner/work/crewAI-scanner-test/crewAI-scanner-test",
-  "generated_at": "2026-07-24T11:22:20.499150Z",
-  "scanner_mode": "static",
+  "generated_at": "2026-07-24T11:28:58.739291Z",
+  "scanner_mode": "hybrid",
   "scanned_files": 1264,
   "skipped_files": [
-    "lib/cli/src/crewai_cli/templates/flow/main.py",
-    "lib/cli/src/crewai_cli/templates/crew/main.py",
     "lib/cli/src/crewai_cli/templates/crew/crew.py",
+    "lib/cli/src/crewai_cli/templates/crew/main.py",
+    "lib/cli/src/crewai_cli/templates/flow/main.py",
     "lib/cli/src/crewai_cli/templates/tool/src/{{folder_name}}/__init__.py",
     "lib/cli/src/crewai_cli/templates/tool/src/{{folder_name}}/tool.py"
   ],
@@ -11160,7 +11160,7 @@
           "crewai"
         ],
         "confidence": "high",
-        "count": 3360,
+        "count": 3361,
         "deployment_targets": [
           "cloud"
         ],
@@ -44671,6 +44671,16 @@
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.events.event_bus",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "pyproject.toml",
+            "line": 1,
+            "match_type": "llm_discovery",
+            "confidence": "high",
+            "detail": "The repository description explicitly identifies CrewAI as a framework for orchestrating autonomous AI agents.",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""

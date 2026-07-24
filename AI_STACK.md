@@ -1,6 +1,7 @@
 # AI Stack Report
 
-_Generated: 2026-07-24T06:06:27.111991Z_  
+_Generated: 2026-07-24T11:22:20.499150Z_  
+_Scanner mode: static_  
 _Scanned 1264 Python file(s), found 180 distinct component(s)._
 
 ## LLM Providers

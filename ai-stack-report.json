@@ -1,6 +1,7 @@
 {
   "root": "/home/runner/work/crewAI-scanner-test/crewAI-scanner-test",
-  "generated_at": "2026-07-24T06:06:30.800842Z",
+  "generated_at": "2026-07-24T11:22:20.499150Z",
+  "scanner_mode": "static",
   "scanned_files": 1264,
   "skipped_files": [
     "lib/cli/src/crewai_cli/templates/flow/main.py",

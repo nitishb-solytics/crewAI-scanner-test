@@ -1,0 +1,121 @@
+name: AI Stack Scan and Quality Gate
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "AI_STACK.md"
+      - "ai-stack-report.json"
+      - "ai-quality-report.md"
+      - "ai-quality-report.json"
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  update-stack-report:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout CrewAI
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run AI Stack Mapper scan
+        uses: nitishb-solytics/AI-STACK-MAPPER@main
+        with:
+          path: "."
+          mode: "scan"
+          markdown-output: "AI_STACK.md"
+          json-output: "ai-stack-report.json"
+          enrich: "false"
+
+      - name: Validate stack reports
+        shell: bash
+        run: |
+          test -s AI_STACK.md
+          test -s ai-stack-report.json
+          python -m json.tool ai-stack-report.json > /dev/null
+
+      - name: Commit updated stack reports
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add AI_STACK.md ai-stack-report.json
+
+          if git diff --cached --quiet; then
+            echo "No AI stack changes detected."
+            exit 0
+          fi
+
+          git commit -m "chore: update AI stack report"
+          git push
+
+  ai-quality-gate:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: read
+
+    steps:
+      - name: Checkout CrewAI
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run AI quality gate
+        uses: nitishb-solytics/AI-STACK-MAPPER@main
+        with:
+          path: "."
+          mode: "review"
+          changed-only: "true"
+          base-ref: ${{ github.base_ref }}
+          fail-on: "high"
+          llm-review: "true"
+          llm-api-key: ${{ secrets.AI_STACK_LLM_API_KEY }}
+          llm-base-url: "https://openrouter.ai/api/v1"
+          llm-model: "google/gemma-4-26b-a4b-it:free"
+          quality-output: "ai-quality-report.md"
+          quality-json-output: "ai-quality-report.json"
+
+      - name: Validate quality report
+        if: always()
+        shell: bash
+        run: |
+          test -s ai-quality-report.md
+          test -s ai-quality-report.json
+          python -m json.tool ai-quality-report.json > /dev/null
+
+      - name: Upload quality report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-quality-report
+          path: |
+            ai-quality-report.md
+            ai-quality-report.json
+          if-no-files-found: error

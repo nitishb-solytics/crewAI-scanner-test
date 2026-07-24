@@ -1,12 +1,12 @@
 {
   "root": "/home/runner/work/crewAI-scanner-test/crewAI-scanner-test",
-  "generated_at": "2026-07-24T12:30:24.985745Z",
-  "scanner_mode": "hybrid",
+  "generated_at": "2026-07-24T12:44:33.240269Z",
+  "scanner_mode": "static",
   "scanned_files": 1264,
   "skipped_files": [
-    "lib/cli/src/crewai_cli/templates/crew/crew.py",
-    "lib/cli/src/crewai_cli/templates/crew/main.py",
     "lib/cli/src/crewai_cli/templates/flow/main.py",
+    "lib/cli/src/crewai_cli/templates/crew/main.py",
+    "lib/cli/src/crewai_cli/templates/crew/crew.py",
     "lib/cli/src/crewai_cli/templates/tool/src/{{folder_name}}/__init__.py",
     "lib/cli/src/crewai_cli/templates/tool/src/{{folder_name}}/tool.py"
   ],

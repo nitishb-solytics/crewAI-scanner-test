@@ -1,7 +1,7 @@
 # AI Stack Report
 
-_Generated: 2026-07-24T12:30:24.985745Z_  
-_Scanner mode: hybrid_  
+_Generated: 2026-07-24T12:44:33.240269Z_  
+_Scanner mode: static_  
 _Scanned 1264 Python file(s), found 180 distinct component(s)._
 
 ## LLM Providers
@@ -211,9 +211,9 @@ _Scanned 1264 Python file(s), found 180 distinct component(s)._
 
 <details><summary>Skipped files (parse errors)</summary>
 
-- `lib/cli/src/crewai_cli/templates/crew/crew.py`
-- `lib/cli/src/crewai_cli/templates/crew/main.py`
 - `lib/cli/src/crewai_cli/templates/flow/main.py`
+- `lib/cli/src/crewai_cli/templates/crew/main.py`
+- `lib/cli/src/crewai_cli/templates/crew/crew.py`
 - `lib/cli/src/crewai_cli/templates/tool/src/{{folder_name}}/__init__.py`
 - `lib/cli/src/crewai_cli/templates/tool/src/{{folder_name}}/tool.py`
 

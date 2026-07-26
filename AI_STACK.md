@@ -1,16 +1,16 @@
 # AI Stack Report
 
-_Generated: 2026-07-24T12:44:33.240269Z_  
+_Generated: 2026-07-26T13:17:08.750456Z_  
 _Scanner mode: static_  
-_Scanned 1264 Python file(s), found 180 distinct component(s)._
+_Scanned 1267 Python file(s), found 180 distinct component(s)._
 
 ## LLM Providers
 
 | Component | Confidence | Deployment | Occurrences | Example location |
 |---|---|---|---|---|
-| OpenAI GPT-4 family (string literal) | low | Cloud | 438 | `lib/cli/src/crewai_cli/constants.py:354` |
-| Anthropic Claude family (string literal) | low | Cloud | 32 | `lib/cli/tests/test_model_catalog.py:43` |
-| OpenAI | high | Cloud | 21 | `lib/crewai-files/src/crewai_files/uploaders/openai.py:168` |
+| OpenAI GPT-4 family (string literal) | low | Cloud | 440 | `lib/cli/src/crewai_cli/constants.py:354` |
+| Anthropic Claude family (string literal) | low | Cloud | 40 | `lib/cli/tests/test_model_catalog.py:43` |
+| OpenAI | high | Cloud | 22 | `lib/crewai-files/src/crewai_files/uploaders/openai.py:168` |
 | Google Gemini family (string literal) | low | Cloud | 20 | `lib/crewai-files/tests/processing/test_constraints.py:232` |
 | LiteLLM (multi-provider proxy) | high | Cloud | 17 | `lib/crewai/pyproject.toml:90` |
 | OpenAI GPT-3.5 family (string literal) | low | Cloud | 16 | `lib/crewai/tests/agents/test_agent.py:1354` |
@@ -27,7 +27,7 @@ _Scanned 1264 Python file(s), found 180 distinct component(s)._
 | OpenAI client (async) | high | Cloud | 2 | `lib/crewai-files/src/crewai_files/uploaders/openai.py:184` |
 | Anthropic (env var configured) | low | Cloud | 1 | `lib/crewai-tools/src/crewai_tools/tools/stagehand_tool/.env.example:1` |
 | Azure OpenAI client | high | Cloud | 1 | `lib/crewai-tools/src/crewai_tools/tools/mongodb_vector_search_tool/vector_search.py:125` |
-| Hugging Face Transformers | medium | Cloud | 1 | `pyproject.toml:214` |
+| Hugging Face Transformers | medium | Cloud | 1 | `pyproject.toml:216` |
 | OpenAI (env var configured) | low | Cloud | 1 | `lib/crewai-tools/src/crewai_tools/tools/stagehand_tool/.env.example:2` |
 
 ## MCP (Model Context Protocol)
@@ -191,13 +191,13 @@ _Scanned 1264 Python file(s), found 180 distinct component(s)._
 
 | Component | Confidence | Occurrences | Example location |
 |---|---|---|---|
-| CrewAI | high | 3360 | `conftest.py:196` |
-| Agent (verify framework) | medium | 628 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:18` |
+| CrewAI | high | 3379 | `conftest.py:196` |
+| Agent (verify framework) | medium | 630 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:18` |
 | CrewAI Crew | high | 397 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:55` |
 | LangChain | high | 4 | `lib/crewai-tools/pyproject.toml:93` |
 | Instructor (structured outputs) | high | 3 | `lib/crewai/pyproject.toml:16` |
 | LlamaIndex | high | 3 | `lib/crewai-tools/src/crewai_tools/tools/llamaindex_tool/llamaindex_tool.py:29` |
-| LangChain AgentExecutor | high | 1 | `lib/crewai/src/crewai/agent/core.py:1457` |
+| LangChain AgentExecutor | high | 1 | `lib/crewai/src/crewai/agent/core.py:1486` |
 
 ## Vector Stores / Memory
 

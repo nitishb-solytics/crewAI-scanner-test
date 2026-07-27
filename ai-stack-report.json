@@ -1,8 +1,8 @@
 {
   "root": "/home/runner/work/crewAI-scanner-test/crewAI-scanner-test",
-  "generated_at": "2026-07-27T02:06:32.258467Z",
+  "generated_at": "2026-07-27T04:21:39.482017Z",
   "scanner_mode": "hybrid",
-  "scanned_files": 1267,
+  "scanned_files": 1268,
   "skipped_files": [
     "lib/cli/src/crewai_cli/templates/crew/crew.py",
     "lib/cli/src/crewai_cli/templates/crew/main.py",
@@ -226,7 +226,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 275,
+            "line": 282,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4o",
@@ -396,7 +396,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2712,
+            "line": 2748,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4",
@@ -406,7 +406,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2726,
+            "line": 2762,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4",
@@ -416,7 +416,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2740,
+            "line": 2776,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4",
@@ -426,7 +426,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2765,
+            "line": 2801,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4",
@@ -436,7 +436,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2780,
+            "line": 2816,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4",
@@ -446,7 +446,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2810,
+            "line": 2846,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4",
@@ -456,7 +456,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2811,
+            "line": 2847,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4",
@@ -466,7 +466,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2831,
+            "line": 2867,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4",
@@ -4424,13 +4424,7 @@
             "context_hint": "function `parse_args`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Specifying model identifiers for LLM configuration and testing.",
-          "usage_description": "Used as string literals to define specific model versions (e.g., gpt-4o, gpt-4.1-mini) within constants and test cases to control which model the CLI or crew logic interacts with during execution or unit testing.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "LLM",
@@ -4853,7 +4847,7 @@
           "openai"
         ],
         "confidence": "high",
-        "count": 22,
+        "count": 23,
         "deployment_targets": [
           "cloud"
         ],
@@ -4950,7 +4944,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 12,
+            "line": 19,
             "match_type": "import",
             "confidence": "high",
             "detail": "openai.lib.streaming.chat",
@@ -4960,7 +4954,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 13,
+            "line": 20,
             "match_type": "import",
             "confidence": "high",
             "detail": "openai.types.chat",
@@ -4970,7 +4964,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 18,
+            "line": 25,
             "match_type": "import",
             "confidence": "high",
             "detail": "openai.types.chat.chat_completion",
@@ -4980,7 +4974,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 19,
+            "line": 26,
             "match_type": "import",
             "confidence": "high",
             "detail": "openai.types.chat.chat_completion_chunk",
@@ -4990,7 +4984,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 20,
+            "line": 27,
             "match_type": "import",
             "confidence": "high",
             "detail": "openai.types.responses",
@@ -5000,7 +4994,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 2305,
+            "line": 2377,
             "match_type": "import",
             "confidence": "high",
             "detail": "openai.types.chat.chat_completion_message_function_tool_call",
@@ -5021,6 +5015,16 @@
           {
             "file": "lib/crewai/tests/llms/openai/test_responses_only_models.py",
             "line": 19,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "openai",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 21,
             "match_type": "import",
             "confidence": "high",
             "detail": "openai",
@@ -5078,13 +5082,7 @@
             "context_hint": "",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Integration of OpenAI services within the CrewAI framework.",
-          "usage_description": "Used as an uploader for file operations, an adapter for LanceDB, and as a core dependency for AI-driven tools (e.g., ai_mind_tool) to facilitate LLM interactions.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "LLM",
@@ -5902,7 +5900,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 297,
+            "line": 304,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -5920,13 +5918,7 @@
             "context_hint": "class `VoyageAIEmbeddingFunction` -- \"Embedding function for VoyageAI models.\" > function `__init__` -- \"Initialize VoyageAI embedding function. Args: **kwargs: Configuration parameters for VoyageAI.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Client for interacting with the CrewAI+ API.",
-          "usage_description": "Used to perform authenticated requests, including multipart requests for uploading project ZIP files, via the PlusAPI class.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "LLM",
@@ -6047,7 +6039,7 @@
         "package": "",
         "packages": [],
         "confidence": "low",
-        "count": 9,
+        "count": 10,
         "deployment_targets": [
           "cloud"
         ],
@@ -6080,6 +6072,16 @@
             "detail": "o3-mini",
             "deployment_target": "cloud",
             "context_hint": "function `test_agent_powered_by_new_o_model_family_that_uses_tool`",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 174,
+            "match_type": "literal",
+            "confidence": "low",
+            "detail": "o3-mini",
+            "deployment_target": "cloud",
+            "context_hint": "class `TestRetryBehaviour` > function `test_does_not_retry_an_unrelated_400`",
             "prompt_hint": ""
           },
           {
@@ -6295,7 +6297,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 298,
+            "line": 305,
             "match_type": "instantiation",
             "confidence": "high",
             "detail": "",
@@ -6333,13 +6335,7 @@
             "context_hint": "function `_get_openai_client` -- \"Create an OpenAI client.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To serve as the underlying interface for interacting with OpenAI services, including file management, image generation, and general model execution.",
-          "usage_description": "Used for uploading files to OpenAI's Files and Uploads APIs (handling different size thresholds), configuring base URLs for custom endpoints in specialized tools, and powering image generation via DALL-E.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "LLM",
@@ -6536,7 +6532,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 305,
+            "line": 312,
             "match_type": "instantiation",
             "confidence": "high",
             "detail": "",
@@ -6592,13 +6588,7 @@
             "context_hint": "class `MongoDBVectorSearchTool` -- \"Tool to perfrom a vector search the MongoDB database.\" > function `__init__`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To perform vector searches within a MongoDB database.",
-          "usage_description": "Used within the MongoDBVectorSearchTool class to facilitate vector search operations on MongoDB data.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "LLM",
@@ -6623,13 +6613,7 @@
             "context_hint": "",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Provides access to pre-trained models and architectures for natural language processing and other machine learning tasks.",
-          "usage_description": "Used as a core dependency to load, train, and run inference on transformer-based models.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "LLM",
@@ -6859,13 +6843,7 @@
             "context_hint": "",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "An adapter for integrating the Model Context Protocol (MCP) into the crewai-tools framework.",
-          "usage_description": "Used as a dependency and imported within an adapter module to facilitate communication or data translation between crewai-tools and the Model Context Protocol.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "MCP",
@@ -6933,7 +6911,7 @@
           "crewai"
         ],
         "confidence": "high",
-        "count": 70,
+        "count": 71,
         "deployment_targets": [
           "cloud"
         ],
@@ -7080,7 +7058,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2536,
+            "line": 2572,
             "match_type": "decorator",
             "confidence": "high",
             "detail": "",
@@ -7090,7 +7068,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2569,
+            "line": 2605,
             "match_type": "decorator",
             "confidence": "high",
             "detail": "",
@@ -7246,6 +7224,16 @@
             "detail": "",
             "deployment_target": "cloud",
             "context_hint": "function `add_numbers` -- \"Add two numbers together and return the sum.\"",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 262,
+            "match_type": "decorator",
+            "confidence": "high",
+            "detail": "",
+            "deployment_target": "cloud",
+            "context_hint": "function `multiply` -- \"Multiply two integers.\"",
             "prompt_hint": ""
           },
           {
@@ -7638,13 +7626,7 @@
             "context_hint": "function `generate_report` -- \"Generate a structured report based on research findings. Args: title: The title of the report. findings: The research findings to include. R\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To define a tool that can be used by an agent, providing a description that informs the agent of the tool's utility.",
-          "usage_description": "Applied as a decorator (@tool) to functions to transform them into tools that agents can interact with, using docstrings to provide context for the agent's decision-making process.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -7747,13 +7729,7 @@
             "context_hint": "class `MyCustomTool`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "A template or placeholder implementation of a custom tool used for demonstration or testing purposes within the crewai framework.",
-          "usage_description": "Used as a template in CLI generation for both 'crew' and 'flow' structures, and as a mock/test implementation in unit tests to verify BaseTool functionality.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -8223,13 +8199,7 @@
             "context_hint": "class `MockTool`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "A testing utility class used to simulate the behavior of a CrewAI tool.",
-          "usage_description": "Used within test suites (test_generate_tool_specs.py and test_planning_handler.py) to provide a controlled implementation of the BaseTool interface for verifying tool specification generation and planning handler logic.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -8351,13 +8321,7 @@
             "context_hint": "class `AIMindTool`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "A custom tool implementation within the crewai-tools package.",
-          "usage_description": "Subclasses the BaseTool class to provide specialized functionality as part of the crewai-tools library.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -8426,13 +8390,7 @@
             "context_hint": "class `ArxivPaperTool`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To retrieve or search for academic papers from Arxiv.",
-          "usage_description": "A custom tool that subclasses BaseTool, likely used within a CrewAI agent framework to access Arxiv paper data.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -8524,13 +8482,7 @@
             "context_hint": "class `BedrockInvokeAgentTool`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To provide an interface for interacting with AWS Bedrock agents.",
-          "usage_description": "A tool subclassing BaseTool that likely wraps the AWS Bedrock agent invocation API to allow an agent to call upon other Bedrock agents.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -8553,13 +8505,7 @@
             "context_hint": "class `BedrockKBRetrieverTool`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "A tool designed to retrieve information from an AWS Bedrock Knowledge Base.",
-          "usage_description": "Subclasses BaseTool to provide a specialized interface for querying AWS Bedrock Knowledge Bases within a crewai framework.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -8605,13 +8551,7 @@
             "context_hint": "class `BraveSearchTool` -- \"A tool that performs web searches using the Brave Search API.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "A tool that performs web searches using the Brave Search API.",
-          "usage_description": "Subclasses BaseTool to provide web search capabilities via the Brave Search API.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -8634,13 +8574,7 @@
             "context_hint": "class `BraveSearchToolBase` -- \"Base class for Brave Search API interactions. Individual tool subclasses must provide the following: - search_url - header_schema (pydantic \"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Base class for Brave Search API interactions.",
-          "usage_description": "Serves as a foundation for individual tool subclasses that must implement a search_url and a header_schema (pydantic) to interact with the Brave Search API.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -8732,13 +8666,7 @@
             "context_hint": "class `BrowserBaseTool` -- \"Base class for browser tools.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Base class for browser-related tools within the AWS Bedrock integration.",
-          "usage_description": "Serves as a parent class for specific browser tool implementations, inheriting from BaseTool.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -8830,13 +8758,7 @@
             "context_hint": "class `ContextualAICreateAgentTool` -- \"Tool to create Contextual AI RAG agents with documents.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Tool to create Contextual AI RAG agents with documents.",
-          "usage_description": "Subclasses BaseTool to provide functionality for creating agents that utilize Retrieval-Augmented Generation (RAG) with specific documents.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -8882,13 +8804,7 @@
             "context_hint": "class `ContextualAIQueryTool` -- \"Tool to query Contextual AI RAG agents.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Tool to query Contextual AI RAG agents.",
-          "usage_description": "A subclass of BaseTool designed to interface with Contextual AI Retrieval-Augmented Generation (RAG) agents.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -9118,13 +9034,7 @@
             "context_hint": "class `DeleteFilesTool` -- \"Tool for removing files from the environment.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Tool for removing files from the environment.",
-          "usage_description": "A subclass of BaseTool used within a code interpreter toolkit to delete files from the local environment.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -9170,13 +9080,7 @@
             "context_hint": "class `DirectoryReadTool`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To read the contents of a specified directory.",
-          "usage_description": "A tool that extends BaseTool, likely used within a crewai framework to allow an agent to list or inspect files within a directory.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -9268,13 +9172,7 @@
             "context_hint": "class `ExaSearchTool`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Perform web searches using the Exa search engine.",
-          "usage_description": "A custom tool that subclasses BaseTool, likely used within a CrewAI agent framework to retrieve information from the internet via the Exa API.",
-          "expected_output": "Search results from the Exa search engine.",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -9297,13 +9195,7 @@
             "context_hint": "class `ExecuteCodeTool` -- \"Tool for executing code in various languages.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Tool for executing code in various languages.",
-          "usage_description": "A subclass of BaseTool designed to execute code, likely within an AWS Bedrock context given the file path.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -9326,13 +9218,7 @@
             "context_hint": "class `ExecuteCommandTool` -- \"Tool for running shell commands in the code interpreter environment.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Tool for running shell commands in the code interpreter environment.",
-          "usage_description": "Executes shell commands within a code interpreter environment, likely as part of an AWS Bedrock integration.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -9424,13 +9310,7 @@
             "context_hint": "class `FileWriterTool`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To write data to a file.",
-          "usage_description": "A tool subclassing BaseTool designed to perform file writing operations within a crewai framework.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -9522,13 +9402,7 @@
             "context_hint": "class `GenerateCrewaiAutomationTool`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To provide a specialized tool within the crewai-tools library that automates the generation of new CrewAI tools.",
-          "usage_description": "A subclass of BaseTool that likely encapsulates logic to programmatically create or configure new automation tools for use within a CrewAI agent framework.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -9551,13 +9425,7 @@
             "context_hint": "class `GetTaskTool` -- \"Tool for checking status of async tasks.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Tool for checking status of async tasks.",
-          "usage_description": "A subclass of BaseTool used within a code interpreter toolkit to monitor the progress or completion of asynchronous tasks.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -9626,13 +9494,7 @@
             "context_hint": "class `InvokeCrewAIAutomationTool` -- \"A CrewAI tool for invoking external crew/flows APIs. This tool provides CrewAI Platform API integration with external crew services, support\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "A CrewAI tool for invoking external crew/flows APIs.",
-          "usage_description": "Provides CrewAI Platform API integration with external crew services.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -9701,13 +9563,7 @@
             "context_hint": "class `LinkupSearchTool`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Perform searches on the Linkup platform.",
-          "usage_description": "A custom tool within the crewai_tools package that inherits from BaseTool, specifically designed for Linkup-related search functionality.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -9730,13 +9586,7 @@
             "context_hint": "class `ListFilesTool` -- \"Tool for listing files in directories in the environment.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Tool for listing files in directories in the environment.",
-          "usage_description": "A subclass of BaseTool used within a code interpreter toolkit to provide functionality for listing files in directories.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -9920,13 +9770,7 @@
             "context_hint": "class `MockIntermediateBase` -- \"Simulates an intermediate tool base class (e.g. RagTool, BraveSearchToolBase).\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Simulates an intermediate tool base class for testing purposes.",
-          "usage_description": "Used in unit tests to mock specialized tool implementations like RagTool or BraveSearchToolBase by inheriting from BaseTool.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -9972,13 +9816,7 @@
             "context_hint": "class `MongoDBVectorSearchTool` -- \"Tool to perfrom a vector search the MongoDB database.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To perform a vector search within a MongoDB database.",
-          "usage_description": "A tool that subclasses BaseTool to interface with MongoDB for vector similarity searches.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -10001,13 +9839,7 @@
             "context_hint": "class `MultiOnTool` -- \"Tool to wrap MultiOn Browse Capabilities.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To wrap MultiOn Browse Capabilities.",
-          "usage_description": "Acts as a tool within the crewai-tools framework by subclassing BaseTool to provide MultiOn browsing functionality to an agent.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -10053,13 +9885,7 @@
             "context_hint": "class `NL2SQLTool` -- \"Tool that converts natural language to SQL and executes it against a database. By default the tool operates in **read-only mode**: only SELE\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Converts natural language queries into SQL statements and executes them against a database.",
-          "usage_description": "Operates as a tool within the crewai-tools framework, defaulting to read-only mode to perform SELECT operations.",
-          "expected_output": "The result of the executed SQL query.",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -10174,13 +10000,7 @@
             "context_hint": "class `OxylabsGoogleSearchScraperTool` -- \"Scrape Google Search results with OxylabsGoogleSearchScraperTool. Get Oxylabs account: https://dashboard.oxylabs.io/en Args: username (str):\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Scrape Google Search results using the Oxylabs API.",
-          "usage_description": "A tool that subclasses BaseTool and requires an Oxylabs account (username) to perform Google Search scraping.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -10295,13 +10115,7 @@
             "context_hint": "class `ParallelSearchTool`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Perform parallel search operations.",
-          "usage_description": "A tool that extends BaseTool, likely designed to execute multiple search queries or processes concurrently within a crewai framework.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -10485,13 +10299,7 @@
             "context_hint": "class `ReadFilesTool` -- \"Tool for reading content of files in the environment.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Tool for reading content of files in the environment.",
-          "usage_description": "A subclass of BaseTool used within a code interpreter toolkit to access and read file contents.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -10583,13 +10391,7 @@
             "context_hint": "class `S3ReaderTool`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To read data from Amazon S3 buckets.",
-          "usage_description": "A tool subclassing BaseTool designed to be used within a crewai framework to access and retrieve content from S3.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -10612,13 +10414,7 @@
             "context_hint": "class `S3WriterTool`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To write data to an Amazon S3 bucket.",
-          "usage_description": "A custom tool that inherits from BaseTool, specifically designed for interacting with AWS S3 to perform write operations.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -10664,13 +10460,7 @@
             "context_hint": "class `ScrapeElementFromWebsiteTool`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To extract a specific element from a website.",
-          "usage_description": "A tool subclassing BaseTool designed to scrape a designated element from a web page.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -10739,13 +10529,7 @@
             "context_hint": "class `ScrapflyScrapeWebsiteTool`",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To scrape website content using the Scrapfly service.",
-          "usage_description": "A custom tool that subclasses BaseTool, likely used within a CrewAI framework to perform web scraping tasks via the Scrapfly API.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -10998,13 +10782,7 @@
             "context_hint": "class `SnowflakeSearchTool` -- \"Tool for executing queries and semantic search on Snowflake.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Tool for executing queries and semantic search on Snowflake.",
-          "usage_description": "A subclass of BaseTool designed to interface with Snowflake to perform both standard SQL queries and semantic search operations.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -11027,13 +10805,7 @@
             "context_hint": "class `SpiderTool` -- \"Tool for scraping and crawling websites. This tool provides functionality to either scrape a single webpage or crawl multiple pages, returni\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Scraping and crawling websites.",
-          "usage_description": "Provides functionality to either scrape a single webpage or crawl multiple pages.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -11079,13 +10851,7 @@
             "context_hint": "class `StartCommandTool` -- \"Tool for starting long-running commands asynchronously.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Tool for starting long-running commands asynchronously.",
-          "usage_description": "A subclass of BaseTool designed to initiate and manage asynchronous execution of long-running commands.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -11131,13 +10897,7 @@
             "context_hint": "class `StopTaskTool` -- \"Tool for stopping running tasks.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Tool for stopping running tasks.",
-          "usage_description": "A subclass of BaseTool used within a code interpreter toolkit to terminate active tasks.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -11229,13 +10989,7 @@
             "context_hint": "class `TavilyGetResearchTool` -- \"Tool that uses the Tavily Research status endpoint to retrieve results.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Tool that uses the Tavily Research status endpoint to retrieve results.",
-          "usage_description": "A subclass of BaseTool designed to interface with the Tavily Research API to fetch research data.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -11419,13 +11173,7 @@
             "context_hint": "class `VisionTool` -- \"Tool for analyzing images using vision models. Args: llm: Optional LLM instance to use model: Model identifier to use if no LLM is provided\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Tool for analyzing images using vision models.",
-          "usage_description": "An implementation of BaseTool that utilizes an LLM (Large Language Model) and a specific model identifier to perform image analysis.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -11471,13 +11219,7 @@
             "context_hint": "class `WeaviateVectorSearchTool` -- \"Tool to search the Weaviate database.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To search the Weaviate database.",
-          "usage_description": "A tool that subclasses BaseTool to perform vector searches within a Weaviate database.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -11523,13 +11265,7 @@
             "context_hint": "class `WriteFilesTool` -- \"Tool for creating or updating files in the environment.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Tool for creating or updating files in the environment.",
-          "usage_description": "A subclass of BaseTool used within a code interpreter toolkit to perform file system write operations.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "TOOL",
@@ -11564,7 +11300,7 @@
           "crewai"
         ],
         "confidence": "high",
-        "count": 3379,
+        "count": 3396,
         "deployment_targets": [
           "cloud"
         ],
@@ -25081,7 +24817,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 31,
+            "line": 38,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.events.types.llm_events",
@@ -25091,7 +24827,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 32,
+            "line": 39,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.llms._finish_reason_utils",
@@ -25101,7 +24837,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 33,
+            "line": 40,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.llms.base_llm",
@@ -25111,7 +24847,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 34,
+            "line": 41,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.llms.hooks.base",
@@ -25121,7 +24857,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 35,
+            "line": 42,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.llms.hooks.transport",
@@ -25131,7 +24867,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 36,
+            "line": 43,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.llms.providers.utils.common",
@@ -25141,7 +24877,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 37,
+            "line": 44,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.agent_utils",
@@ -25151,7 +24887,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 38,
+            "line": 45,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.exceptions.context_window_exceeding_exception",
@@ -25161,7 +24897,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 41,
+            "line": 48,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.pydantic_schema_utils",
@@ -25171,7 +24907,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 45,
+            "line": 52,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.types",
@@ -25181,7 +24917,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 49,
+            "line": 56,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.agents.agent_builder.base_agent",
@@ -25191,7 +24927,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 50,
+            "line": 57,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.task",
@@ -25201,7 +24937,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 51,
+            "line": 58,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.tools.base_tool",
@@ -25211,7 +24947,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 2574,
+            "line": 2651,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.llm",
@@ -28180,6 +27916,16 @@
             "prompt_hint": ""
           },
           {
+            "file": "lib/crewai/src/crewai/skills/cache.py",
+            "line": 18,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.skills.validation",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
             "file": "lib/crewai/src/crewai/skills/events.py",
             "line": 13,
             "match_type": "import",
@@ -28291,7 +28037,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 14,
+            "line": 16,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.skills.cache",
@@ -28301,7 +28047,17 @@
           },
           {
             "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 78,
+            "line": 17,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.skills.validation",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/src/crewai/skills/registry.py",
+            "line": 136,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.skills.loader",
@@ -28311,7 +28067,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 79,
+            "line": 164,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.skills.parser",
@@ -28321,47 +28077,17 @@
           },
           {
             "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 120,
+            "line": 229,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.skills.loader",
+            "detail": "crewai.utilities.agent_utils",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
           },
           {
             "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 121,
-            "match_type": "import",
-            "confidence": "high",
-            "detail": "crewai.skills.parser",
-            "deployment_target": "cloud",
-            "context_hint": "",
-            "prompt_hint": ""
-          },
-          {
-            "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 126,
-            "match_type": "import",
-            "confidence": "high",
-            "detail": "crewai.events.event_bus",
-            "deployment_target": "cloud",
-            "context_hint": "",
-            "prompt_hint": ""
-          },
-          {
-            "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 127,
-            "match_type": "import",
-            "confidence": "high",
-            "detail": "crewai.skills.events",
-            "deployment_target": "cloud",
-            "context_hint": "",
-            "prompt_hint": ""
-          },
-          {
-            "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 147,
+            "line": 237,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.auth.token",
@@ -28371,10 +28097,60 @@
           },
           {
             "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 148,
+            "line": 238,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.context",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/src/crewai/skills/registry.py",
+            "line": 286,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.skills.loader",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/src/crewai/skills/registry.py",
+            "line": 287,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.skills.parser",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/src/crewai/skills/registry.py",
+            "line": 288,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.agent_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/src/crewai/skills/registry.py",
+            "line": 302,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.events.event_bus",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/src/crewai/skills/registry.py",
+            "line": 303,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.skills.events",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -30031,7 +29807,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1133,
+            "line": 1196,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.auth.token",
@@ -30041,7 +29817,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1134,
+            "line": 1197,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.plus_api",
@@ -30051,7 +29827,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1487,
+            "line": 1583,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.events.event_bus",
@@ -30061,7 +29837,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1488,
+            "line": 1584,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.events.types.tool_usage_events",
@@ -30071,7 +29847,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1493,
+            "line": 1589,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.hooks.tool_hooks",
@@ -30081,7 +29857,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1721,
+            "line": 1817,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.hooks.dispatch",
@@ -30091,7 +29867,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1727,
+            "line": 1823,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.hooks.llm_hooks",
@@ -30101,7 +29877,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1793,
+            "line": 1889,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.hooks.dispatch",
@@ -30111,7 +29887,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1794,
+            "line": 1890,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.hooks.llm_hooks",
@@ -31951,7 +31727,17 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2533,
+            "line": 2385,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.agent_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/agents/test_agent.py",
+            "line": 2569,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.tools",
@@ -31961,7 +31747,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2566,
+            "line": 2602,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.tools",
@@ -31971,7 +31757,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2692,
+            "line": 2728,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.agents.tools_handler",
@@ -31981,7 +31767,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2724,
+            "line": 2760,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.agent_utils",
@@ -31991,7 +31777,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2738,
+            "line": 2774,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.agent_utils",
@@ -32001,7 +31787,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2763,
+            "line": 2799,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.agent_utils",
@@ -32011,7 +31797,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2778,
+            "line": 2814,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.agent_utils",
@@ -32021,7 +31807,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2808,
+            "line": 2844,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.agent_utils",
@@ -32031,7 +31817,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2829,
+            "line": 2865,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.agent_utils",
@@ -37490,6 +37276,36 @@
             "prompt_hint": ""
           },
           {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 23,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 24,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.llms.providers.openai.completion",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 25,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.tools",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
             "file": "lib/crewai/tests/llms/openai_compatible/test_openai_compatible.py",
             "line": 8,
             "match_type": "import",
@@ -40181,7 +39997,7 @@
           },
           {
             "file": "lib/crewai/tests/skills/test_registry.py",
-            "line": 9,
+            "line": 11,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.context",
@@ -40191,7 +40007,7 @@
           },
           {
             "file": "lib/crewai/tests/skills/test_registry.py",
-            "line": 10,
+            "line": 12,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.skills.cache",
@@ -40201,7 +40017,7 @@
           },
           {
             "file": "lib/crewai/tests/skills/test_registry.py",
-            "line": 11,
+            "line": 13,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.skills.registry",
@@ -40211,7 +40027,27 @@
           },
           {
             "file": "lib/crewai/tests/skills/test_registry.py",
-            "line": 106,
+            "line": 75,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/skills/test_registry.py",
+            "line": 98,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/skills/test_registry.py",
+            "line": 201,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.skills.registry",
@@ -40221,7 +40057,7 @@
           },
           {
             "file": "lib/crewai/tests/skills/test_registry.py",
-            "line": 126,
+            "line": 221,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.skills.registry",
@@ -40231,7 +40067,7 @@
           },
           {
             "file": "lib/crewai/tests/skills/test_registry.py",
-            "line": 152,
+            "line": 247,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.skills.registry",
@@ -44440,6 +44276,76 @@
             "prompt_hint": ""
           },
           {
+            "file": "lib/crewai/tests/utilities/test_agent_utils.py",
+            "line": 1263,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.agent_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/utilities/test_agent_utils.py",
+            "line": 1274,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/utilities/test_agent_utils.py",
+            "line": 1286,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.agent_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/utilities/test_agent_utils.py",
+            "line": 1294,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.agent_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/utilities/test_agent_utils.py",
+            "line": 1314,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.context",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/utilities/test_agent_utils.py",
+            "line": 1315,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.agent_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/utilities/test_agent_utils.py",
+            "line": 1327,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.agent_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
             "file": "lib/crewai/tests/utilities/test_console_formatter_pause_resume.py",
             "line": 3,
             "match_type": "import",
@@ -45359,13 +45265,7 @@
             "context_hint": "",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "An agent orchestration framework for managing multi-agent workflows and event-driven communication.",
-          "usage_description": "Utilizes an event bus, base event structures, and event contexts to facilitate communication and coordination between agents, likely managed via a CLI tool.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "AGENT_FRAMEWORK",
@@ -45375,7 +45275,7 @@
           "crewai"
         ],
         "confidence": "medium",
-        "count": 630,
+        "count": 633,
         "deployment_targets": [
           "cloud"
         ],
@@ -46552,7 +46452,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2398,
+            "line": 2434,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46562,7 +46462,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2411,
+            "line": 2447,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46572,7 +46472,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2424,
+            "line": 2460,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46582,7 +46482,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2448,
+            "line": 2484,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46592,7 +46492,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2480,
+            "line": 2516,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46602,7 +46502,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2488,
+            "line": 2524,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46612,7 +46512,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2497,
+            "line": 2533,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46622,7 +46522,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2505,
+            "line": 2541,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46632,7 +46532,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2514,
+            "line": 2550,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46642,7 +46542,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2523,
+            "line": 2559,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46652,7 +46552,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2542,
+            "line": 2578,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46662,7 +46562,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2575,
+            "line": 2611,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46672,7 +46572,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2599,
+            "line": 2635,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46682,7 +46582,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2619,
+            "line": 2655,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46692,7 +46592,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2629,
+            "line": 2665,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46702,7 +46602,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2639,
+            "line": 2675,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46712,7 +46612,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2649,
+            "line": 2685,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46722,7 +46622,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2664,
+            "line": 2700,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46732,7 +46632,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2673,
+            "line": 2709,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46742,7 +46642,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2694,
+            "line": 2730,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -48738,6 +48638,36 @@
             "detail": "",
             "deployment_target": "cloud",
             "context_hint": "function `test_openai_async_streaming_returns_usage_metrics` -- \"Test that OpenAI async streaming calls return proper token usage metrics.\"",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 272,
+            "match_type": "instantiation",
+            "confidence": "medium",
+            "detail": "",
+            "deployment_target": "cloud",
+            "context_hint": "class `TestAgentDefinitions` -- \"The bar: ordinary agent definitions run, with tools and with reasoning.\" > function `test_agent_with_tools`",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 293,
+            "match_type": "instantiation",
+            "confidence": "medium",
+            "detail": "",
+            "deployment_target": "cloud",
+            "context_hint": "class `TestAgentDefinitions` -- \"The bar: ordinary agent definitions run, with tools and with reasoning.\" > function `test_agent_with_tools_and_reasoning` -- \"`reasoning=True` adds a planning call, which must recover as well.\"",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 315,
+            "match_type": "instantiation",
+            "confidence": "medium",
+            "detail": "",
+            "deployment_target": "cloud",
+            "context_hint": "class `TestAgentDefinitions` -- \"The bar: ordinary agent definitions run, with tools and with reasoning.\" > function `test_agent_without_tools_is_untouched` -- \"No tools means no conflict, so nothing should be rewritten.\"",
             "prompt_hint": ""
           },
           {
@@ -51680,13 +51610,7 @@
             "context_hint": "function `run_crew_kickoff` -- \"Run a real Crew kickoff against the supplied model.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To define and orchestrate a collection of specialized agents within a structured workflow to perform content creation tasks.",
-          "usage_description": "Instantiating specific agent roles (planner, writer, editor) within a 'ContentCrew' class to automate a content production pipeline.",
-          "expected_output": "A coordinated execution of multiple agents (planner, writer, editor) to produce finished content.",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "AGENT_FRAMEWORK",
@@ -51696,7 +51620,7 @@
           "crewai"
         ],
         "confidence": "high",
-        "count": 397,
+        "count": 400,
         "deployment_targets": [
           "cloud"
         ],
@@ -51993,7 +51917,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2555,
+            "line": 2591,
             "match_type": "instantiation",
             "confidence": "high",
             "detail": "",
@@ -52003,7 +51927,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2588,
+            "line": 2624,
             "match_type": "instantiation",
             "confidence": "high",
             "detail": "",
@@ -52013,7 +51937,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2611,
+            "line": 2647,
             "match_type": "instantiation",
             "confidence": "high",
             "detail": "",
@@ -52939,6 +52863,36 @@
             "detail": "",
             "deployment_target": "cloud",
             "context_hint": "function `test_openai_async_streaming_returns_usage_metrics` -- \"Test that OpenAI async streaming calls return proper token usage metrics.\"",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 285,
+            "match_type": "instantiation",
+            "confidence": "high",
+            "detail": "",
+            "deployment_target": "cloud",
+            "context_hint": "class `TestAgentDefinitions` -- \"The bar: ordinary agent definitions run, with tools and with reasoning.\" > function `test_agent_with_tools`",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 307,
+            "match_type": "instantiation",
+            "confidence": "high",
+            "detail": "",
+            "deployment_target": "cloud",
+            "context_hint": "class `TestAgentDefinitions` -- \"The bar: ordinary agent definitions run, with tools and with reasoning.\" > function `test_agent_with_tools_and_reasoning` -- \"`reasoning=True` adds a planning call, which must recover as well.\"",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 327,
+            "match_type": "instantiation",
+            "confidence": "high",
+            "detail": "",
+            "deployment_target": "cloud",
+            "context_hint": "class `TestAgentDefinitions` -- \"The bar: ordinary agent definitions run, with tools and with reasoning.\" > function `test_agent_without_tools_is_untouched` -- \"No tools means no conflict, so nothing should be rewritten.\"",
             "prompt_hint": ""
           },
           {
@@ -55671,13 +55625,7 @@
             "context_hint": "function `run_crew_kickoff` -- \"Run a real Crew kickoff against the supplied model.\"",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "To orchestrate and manage a group of autonomous agents working together to achieve specific goals.",
-          "usage_description": "Used to instantiate specific agent groups (crews), such as a 'Content Crew', and to integrate various tools (e.g., Multion, Patronus, Stagehand) into the agent workflows.",
-          "expected_output": "A coordinated execution of tasks performed by multiple agents to produce a final result or content.",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "AGENT_FRAMEWORK",
@@ -55734,13 +55682,7 @@
             "context_hint": "",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Core abstractions and base classes for LangChain components, including tool definitions and text splitting utilities.",
-          "usage_description": "Provides foundational interfaces for tools (langchain_core.tools) and text splitting functionality (langchain_text_splitters) used by agent frameworks and tool adapters.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "AGENT_FRAMEWORK",
@@ -56477,13 +56419,7 @@
             "context_hint": "",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Vector database client for Qdrant",
-          "usage_description": "Used as a dependency within crewai and crewai-tools, specifically within the crewai.rag.qdrant module, to facilitate Retrieval-Augmented Generation (RAG) operations.",
-          "expected_output": "",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "VECTOR_STORE",
@@ -56568,13 +56504,7 @@
             "context_hint": "",
             "prompt_hint": ""
           }
-        ],
-        "ai_enrichment": {
-          "purpose": "Vector database client and integration tool",
-          "usage_description": "Used as a dependency via weaviate-client and imported within a specific tool module to perform vector searches and manage configurations.",
-          "expected_output": "Vector search results and database configuration objects.",
-          "model": "google/gemma-4-26b-a4b-it:free"
-        }
+        ]
       },
       {
         "category": "VECTOR_STORE",

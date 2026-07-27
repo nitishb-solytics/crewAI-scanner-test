@@ -41,9 +41,13 @@ jobs:
         with:
           path: "."
           mode: "scan"
+          scanner-mode: "hybrid"
           markdown-output: "AI_STACK.md"
           json-output: "ai-stack-report.json"
-          enrich: "false"
+          enrich: "true"
+          llm-api-key: ${{ secrets.AI_STACK_LLM_API_KEY }}
+          llm-base-url: "https://openrouter.ai/api/v1"
+          llm-model: "google/gemma-4-26b-a4b-it:free"
 
       - name: Validate stack reports
         shell: bash

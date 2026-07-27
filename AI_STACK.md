@@ -1,22 +1,23 @@
 # AI Stack Report
 
-_Generated: 2026-07-24T06:06:27.111991Z_  
-_Scanned 1264 Python file(s), found 180 distinct component(s)._
+_Generated: 2026-07-27T04:21:39.482017Z_  
+_Scanner mode: hybrid_  
+_Scanned 1268 Python file(s), found 180 distinct component(s)._
 
 ## LLM Providers
 
 | Component | Confidence | Deployment | Occurrences | Example location |
 |---|---|---|---|---|
-| OpenAI GPT-4 family (string literal) | low | Cloud | 438 | `lib/cli/src/crewai_cli/constants.py:354` |
-| Anthropic Claude family (string literal) | low | Cloud | 32 | `lib/cli/tests/test_model_catalog.py:43` |
-| OpenAI | high | Cloud | 21 | `lib/crewai-files/src/crewai_files/uploaders/openai.py:168` |
+| OpenAI GPT-4 family (string literal) | low | Cloud | 440 | `lib/cli/src/crewai_cli/constants.py:354` |
+| Anthropic Claude family (string literal) | low | Cloud | 40 | `lib/cli/tests/test_model_catalog.py:43` |
+| OpenAI | high | Cloud | 23 | `lib/crewai-files/src/crewai_files/uploaders/openai.py:168` |
 | Google Gemini family (string literal) | low | Cloud | 20 | `lib/crewai-files/tests/processing/test_constraints.py:232` |
 | LiteLLM (multi-provider proxy) | high | Cloud | 17 | `lib/crewai/pyproject.toml:90` |
 | OpenAI GPT-3.5 family (string literal) | low | Cloud | 16 | `lib/crewai/tests/agents/test_agent.py:1354` |
 | Google Gemini / Vertex AI | high | Cloud | 12 | `lib/crewai-files/src/crewai_files/uploaders/gemini.py:120` |
 | Generic LLM client (verify provider) | medium | Cloud | 11 | `lib/cli/src/crewai_cli/plus_api.py:47` |
 | Meta Llama family (string literal) | low | Cloud | 10 | `lib/cli/tests/test_model_catalog.py:90` |
-| OpenAI o-series (string literal) | low | Cloud | 9 | `lib/cli/tests/test_model_catalog.py:88` |
+| OpenAI o-series (string literal) | low | Cloud | 10 | `lib/cli/tests/test_model_catalog.py:88` |
 | Anthropic | high | Cloud | 8 | `lib/crewai-files/src/crewai_files/uploaders/anthropic.py:52` |
 | OpenAI client | high | Cloud + Unknown (verify manually) | 8 | `lib/crewai-files/src/crewai_files/uploaders/openai.py:170` |
 | Google GenAI client | high | Cloud | 5 | `lib/crewai-files/src/crewai_files/uploaders/gemini.py:122` |
@@ -26,7 +27,7 @@ _Scanned 1264 Python file(s), found 180 distinct component(s)._
 | OpenAI client (async) | high | Cloud | 2 | `lib/crewai-files/src/crewai_files/uploaders/openai.py:184` |
 | Anthropic (env var configured) | low | Cloud | 1 | `lib/crewai-tools/src/crewai_tools/tools/stagehand_tool/.env.example:1` |
 | Azure OpenAI client | high | Cloud | 1 | `lib/crewai-tools/src/crewai_tools/tools/mongodb_vector_search_tool/vector_search.py:125` |
-| Hugging Face Transformers | medium | Cloud | 1 | `pyproject.toml:214` |
+| Hugging Face Transformers | medium | Cloud | 1 | `pyproject.toml:216` |
 | OpenAI (env var configured) | low | Cloud | 1 | `lib/crewai-tools/src/crewai_tools/tools/stagehand_tool/.env.example:2` |
 
 ## MCP (Model Context Protocol)
@@ -40,7 +41,7 @@ _Scanned 1264 Python file(s), found 180 distinct component(s)._
 
 | Component | Confidence | Occurrences | Example location |
 |---|---|---|---|
-| Tool definition (@tool) | high | 70 | `lib/crewai-tools/tests/base_tool_test.py:9` |
+| Tool definition (@tool) | high | 71 | `lib/crewai-tools/tests/base_tool_test.py:9` |
 | Custom Tool (subclasses BaseTool): MyCustomTool | high | 9 | `lib/cli/src/crewai_cli/templates/crew/tools/custom_tool.py:10` |
 | Custom Tool (subclasses BaseTool): TestTool | high | 9 | `lib/crewai/tests/test_crew.py:576` |
 | Custom Tool (subclasses BaseTool): TypedSearchTool | high | 5 | `lib/crewai/tests/agents/test_native_tool_calling.py:1206` |
@@ -190,13 +191,13 @@ _Scanned 1264 Python file(s), found 180 distinct component(s)._
 
 | Component | Confidence | Occurrences | Example location |
 |---|---|---|---|
-| CrewAI | high | 3360 | `conftest.py:196` |
-| Agent (verify framework) | medium | 628 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:18` |
-| CrewAI Crew | high | 397 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:55` |
+| CrewAI | high | 3396 | `conftest.py:196` |
+| Agent (verify framework) | medium | 633 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:18` |
+| CrewAI Crew | high | 400 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:55` |
 | LangChain | high | 4 | `lib/crewai-tools/pyproject.toml:93` |
 | Instructor (structured outputs) | high | 3 | `lib/crewai/pyproject.toml:16` |
 | LlamaIndex | high | 3 | `lib/crewai-tools/src/crewai_tools/tools/llamaindex_tool/llamaindex_tool.py:29` |
-| LangChain AgentExecutor | high | 1 | `lib/crewai/src/crewai/agent/core.py:1457` |
+| LangChain AgentExecutor | high | 1 | `lib/crewai/src/crewai/agent/core.py:1486` |
 
 ## Vector Stores / Memory
 
@@ -210,9 +211,9 @@ _Scanned 1264 Python file(s), found 180 distinct component(s)._
 
 <details><summary>Skipped files (parse errors)</summary>
 
-- `lib/cli/src/crewai_cli/templates/flow/main.py`
-- `lib/cli/src/crewai_cli/templates/crew/main.py`
 - `lib/cli/src/crewai_cli/templates/crew/crew.py`
+- `lib/cli/src/crewai_cli/templates/crew/main.py`
+- `lib/cli/src/crewai_cli/templates/flow/main.py`
 - `lib/cli/src/crewai_cli/templates/tool/src/{{folder_name}}/__init__.py`
 - `lib/cli/src/crewai_cli/templates/tool/src/{{folder_name}}/tool.py`
 

@@ -1,11 +1,12 @@
 {
   "root": "/home/runner/work/crewAI-scanner-test/crewAI-scanner-test",
-  "generated_at": "2026-07-24T06:06:30.800842Z",
-  "scanned_files": 1264,
+  "generated_at": "2026-07-27T04:21:39.482017Z",
+  "scanner_mode": "hybrid",
+  "scanned_files": 1268,
   "skipped_files": [
-    "lib/cli/src/crewai_cli/templates/flow/main.py",
-    "lib/cli/src/crewai_cli/templates/crew/main.py",
     "lib/cli/src/crewai_cli/templates/crew/crew.py",
+    "lib/cli/src/crewai_cli/templates/crew/main.py",
+    "lib/cli/src/crewai_cli/templates/flow/main.py",
     "lib/cli/src/crewai_cli/templates/tool/src/{{folder_name}}/__init__.py",
     "lib/cli/src/crewai_cli/templates/tool/src/{{folder_name}}/tool.py"
   ],
@@ -18,7 +19,7 @@
         "package": "",
         "packages": [],
         "confidence": "low",
-        "count": 438,
+        "count": 440,
         "deployment_targets": [
           "cloud"
         ],
@@ -225,7 +226,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 268,
+            "line": 282,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4o",
@@ -395,7 +396,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2712,
+            "line": 2748,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4",
@@ -405,7 +406,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2726,
+            "line": 2762,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4",
@@ -415,7 +416,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2740,
+            "line": 2776,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4",
@@ -425,7 +426,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2765,
+            "line": 2801,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4",
@@ -435,7 +436,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2780,
+            "line": 2816,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4",
@@ -445,7 +446,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2810,
+            "line": 2846,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4",
@@ -455,7 +456,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2811,
+            "line": 2847,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4",
@@ -465,7 +466,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2831,
+            "line": 2867,
             "match_type": "literal",
             "confidence": "low",
             "detail": "gpt-4",
@@ -931,6 +932,26 @@
             "detail": "gpt-4o-mini",
             "deployment_target": "cloud",
             "context_hint": "class `TestStreamingDictChunkResponseIdPropagation` > function `test_async_dict_chunk_id_propagates_to_stream_event`",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/events/test_skill_usage_events.py",
+            "line": 33,
+            "match_type": "literal",
+            "confidence": "low",
+            "detail": "gpt-4o-mini",
+            "deployment_target": "cloud",
+            "context_hint": "function `_agent_with_skills`",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/events/test_skill_usage_events.py",
+            "line": 130,
+            "match_type": "literal",
+            "confidence": "low",
+            "detail": "gpt-4o-mini",
+            "deployment_target": "cloud",
+            "context_hint": "class `TestSkillUsedEvent` > function `test_agent_without_skills_emits_nothing`",
             "prompt_hint": ""
           },
           {
@@ -4411,7 +4432,7 @@
         "package": "",
         "packages": [],
         "confidence": "low",
-        "count": 32,
+        "count": 40,
         "deployment_targets": [
           "cloud"
         ],
@@ -4474,6 +4495,86 @@
             "detail": "claude-3.5-sonnet-20240620",
             "deployment_target": "cloud",
             "context_hint": "function `test_litellm_anthropic_error_handling` -- \"Test that AnthropicError from LiteLLM is handled correctly and not retried.\"",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/anthropic/test_anthropic.py",
+            "line": 1447,
+            "match_type": "literal",
+            "confidence": "low",
+            "detail": "claude-fable-5",
+            "deployment_target": "cloud",
+            "context_hint": "function `test_anthropic_tool_use_dict_blocks_are_returned_as_tool_calls` -- \"Preview Anthropic models may return dict-shaped tool_use blocks.\"",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/anthropic/test_anthropic.py",
+            "line": 1463,
+            "match_type": "literal",
+            "confidence": "low",
+            "detail": "claude-fable-5",
+            "deployment_target": "cloud",
+            "context_hint": "function `test_anthropic_dict_tool_use_blocks_require_id` -- \"Incomplete dict-shaped tool_use blocks are not valid tool calls.\"",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/anthropic/test_anthropic.py",
+            "line": 1480,
+            "match_type": "literal",
+            "confidence": "low",
+            "detail": "claude-fable-5",
+            "deployment_target": "cloud",
+            "context_hint": "function `test_anthropic_object_tool_use_blocks_require_id` -- \"Incomplete object-shaped tool_use blocks are not valid tool calls.\"",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/anthropic/test_anthropic.py",
+            "line": 1506,
+            "match_type": "literal",
+            "confidence": "low",
+            "detail": "claude-fable-5",
+            "deployment_target": "cloud",
+            "context_hint": "function `test_anthropic_acall_returns_dict_tool_use_blocks_as_tool_calls`",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/anthropic/test_anthropic.py",
+            "line": 1521,
+            "match_type": "literal",
+            "confidence": "low",
+            "detail": "claude-fable-5",
+            "deployment_target": "cloud",
+            "context_hint": "function `test_anthropic_streaming_returns_dict_tool_use_blocks_as_tool_calls`",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/anthropic/test_anthropic.py",
+            "line": 1543,
+            "match_type": "literal",
+            "confidence": "low",
+            "detail": "claude-fable-5",
+            "deployment_target": "cloud",
+            "context_hint": "function `test_anthropic_async_streaming_returns_dict_tool_use_blocks_as_tool_calls`",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/anthropic/test_anthropic.py",
+            "line": 1564,
+            "match_type": "literal",
+            "confidence": "low",
+            "detail": "claude-fable-5",
+            "deployment_target": "cloud",
+            "context_hint": "function `test_anthropic_dict_tool_use_blocks_execute_available_function`",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/anthropic/test_anthropic.py",
+            "line": 1582,
+            "match_type": "literal",
+            "confidence": "low",
+            "detail": "claude-fable-5",
+            "deployment_target": "cloud",
+            "context_hint": "function `test_anthropic_dict_tool_use_blocks_work_in_follow_up_conversation`",
             "prompt_hint": ""
           },
           {
@@ -4746,7 +4847,7 @@
           "openai"
         ],
         "confidence": "high",
-        "count": 21,
+        "count": 23,
         "deployment_targets": [
           "cloud"
         ],
@@ -4843,7 +4944,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 12,
+            "line": 19,
             "match_type": "import",
             "confidence": "high",
             "detail": "openai.lib.streaming.chat",
@@ -4853,7 +4954,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 13,
+            "line": 20,
             "match_type": "import",
             "confidence": "high",
             "detail": "openai.types.chat",
@@ -4863,7 +4964,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 18,
+            "line": 25,
             "match_type": "import",
             "confidence": "high",
             "detail": "openai.types.chat.chat_completion",
@@ -4873,7 +4974,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 19,
+            "line": 26,
             "match_type": "import",
             "confidence": "high",
             "detail": "openai.types.chat.chat_completion_chunk",
@@ -4883,7 +4984,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 20,
+            "line": 27,
             "match_type": "import",
             "confidence": "high",
             "detail": "openai.types.responses",
@@ -4893,7 +4994,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 2149,
+            "line": 2377,
             "match_type": "import",
             "confidence": "high",
             "detail": "openai.types.chat.chat_completion_message_function_tool_call",
@@ -4904,6 +5005,26 @@
           {
             "file": "lib/crewai/tests/llms/openai/test_openai.py",
             "line": 6,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "openai",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_responses_only_models.py",
+            "line": 19,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "openai",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 21,
             "match_type": "import",
             "confidence": "high",
             "detail": "openai",
@@ -4953,7 +5074,7 @@
           },
           {
             "file": "pyproject.toml",
-            "line": 207,
+            "line": 209,
             "match_type": "dependency",
             "confidence": "medium",
             "detail": "openai",
@@ -5769,7 +5890,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/anthropic/completion.py",
-            "line": 269,
+            "line": 331,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -5779,7 +5900,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 290,
+            "line": 304,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -5918,7 +6039,7 @@
         "package": "",
         "packages": [],
         "confidence": "low",
-        "count": 9,
+        "count": 10,
         "deployment_targets": [
           "cloud"
         ],
@@ -5951,6 +6072,16 @@
             "detail": "o3-mini",
             "deployment_target": "cloud",
             "context_hint": "function `test_agent_powered_by_new_o_model_family_that_uses_tool`",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 174,
+            "match_type": "literal",
+            "confidence": "low",
+            "detail": "o3-mini",
+            "deployment_target": "cloud",
+            "context_hint": "class `TestRetryBehaviour` > function `test_does_not_retry_an_unrelated_400`",
             "prompt_hint": ""
           },
           {
@@ -6166,7 +6297,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 291,
+            "line": 305,
             "match_type": "instantiation",
             "confidence": "high",
             "detail": "",
@@ -6296,7 +6427,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/anthropic/completion.py",
-            "line": 208,
+            "line": 270,
             "match_type": "instantiation",
             "confidence": "high",
             "detail": "",
@@ -6331,7 +6462,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/anthropic/completion.py",
-            "line": 220,
+            "line": 282,
             "match_type": "instantiation",
             "confidence": "high",
             "detail": "",
@@ -6401,7 +6532,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 298,
+            "line": 312,
             "match_type": "instantiation",
             "confidence": "high",
             "detail": "",
@@ -6474,7 +6605,7 @@
         "occurrences": [
           {
             "file": "pyproject.toml",
-            "line": 214,
+            "line": 216,
             "match_type": "dependency",
             "confidence": "medium",
             "detail": "transformers",
@@ -6780,7 +6911,7 @@
           "crewai"
         ],
         "confidence": "high",
-        "count": 70,
+        "count": 71,
         "deployment_targets": [
           "cloud"
         ],
@@ -6927,7 +7058,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2536,
+            "line": 2572,
             "match_type": "decorator",
             "confidence": "high",
             "detail": "",
@@ -6937,7 +7068,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2569,
+            "line": 2605,
             "match_type": "decorator",
             "confidence": "high",
             "detail": "",
@@ -7093,6 +7224,16 @@
             "detail": "",
             "deployment_target": "cloud",
             "context_hint": "function `add_numbers` -- \"Add two numbers together and return the sum.\"",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 262,
+            "match_type": "decorator",
+            "confidence": "high",
+            "detail": "",
+            "deployment_target": "cloud",
+            "context_hint": "function `multiply` -- \"Multiply two integers.\"",
             "prompt_hint": ""
           },
           {
@@ -11159,7 +11300,7 @@
           "crewai"
         ],
         "confidence": "high",
-        "count": 3360,
+        "count": 3396,
         "deployment_targets": [
           "cloud"
         ],
@@ -14709,7 +14850,7 @@
             "line": 76,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.experimental.agent_executor",
+            "detail": "crewai.events.types.skill_events",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -14719,7 +14860,7 @@
             "line": 77,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.knowledge.knowledge",
+            "detail": "crewai.experimental.agent_executor",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -14729,7 +14870,7 @@
             "line": 78,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.knowledge.source.base_knowledge_source",
+            "detail": "crewai.knowledge.knowledge",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -14739,7 +14880,7 @@
             "line": 79,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.lite_agent_output",
+            "detail": "crewai.knowledge.source.base_knowledge_source",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -14749,7 +14890,7 @@
             "line": 80,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.llms.base_llm",
+            "detail": "crewai.lite_agent_output",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -14759,7 +14900,7 @@
             "line": 81,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.mcp.config",
+            "detail": "crewai.llms.base_llm",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -14769,7 +14910,7 @@
             "line": 82,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.rag.embeddings.types",
+            "detail": "crewai.mcp.config",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -14779,7 +14920,7 @@
             "line": 83,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.security.fingerprint",
+            "detail": "crewai.rag.embeddings.types",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -14789,7 +14930,7 @@
             "line": 84,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.skills.loader",
+            "detail": "crewai.security.fingerprint",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -14799,7 +14940,7 @@
             "line": 85,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.skills.models",
+            "detail": "crewai.skills.loader",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -14809,7 +14950,7 @@
             "line": 86,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.state.checkpoint_config",
+            "detail": "crewai.skills.models",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -14819,7 +14960,7 @@
             "line": 87,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.tools.agent_tools.agent_tools",
+            "detail": "crewai.state.checkpoint_config",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -14829,7 +14970,7 @@
             "line": 88,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.types.callback",
+            "detail": "crewai.tools.agent_tools.agent_tools",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -14839,7 +14980,7 @@
             "line": 89,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.types.usage_metrics",
+            "detail": "crewai.types.callback",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -14849,6 +14990,16 @@
             "line": 90,
             "match_type": "import",
             "confidence": "high",
+            "detail": "crewai.types.usage_metrics",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/src/crewai/agent/core.py",
+            "line": 91,
+            "match_type": "import",
+            "confidence": "high",
             "detail": "crewai.utilities.agent_utils",
             "deployment_target": "cloud",
             "context_hint": "",
@@ -14856,7 +15007,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 97,
+            "line": 98,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.constants",
@@ -14866,7 +15017,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 102,
+            "line": 103,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.converter",
@@ -14876,7 +15027,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 103,
+            "line": 104,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.env",
@@ -14886,7 +15037,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 104,
+            "line": 105,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.guardrail",
@@ -14896,7 +15047,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 105,
+            "line": 106,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.guardrail_types",
@@ -14906,7 +15057,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 106,
+            "line": 107,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.i18n",
@@ -14916,7 +15067,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 107,
+            "line": 108,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.llm_utils",
@@ -14926,7 +15077,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 108,
+            "line": 109,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.prompts",
@@ -14936,7 +15087,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 109,
+            "line": 110,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.pydantic_schema_utils",
@@ -14946,7 +15097,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 110,
+            "line": 111,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.string_utils",
@@ -14956,7 +15107,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 111,
+            "line": 112,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.token_counter_callback",
@@ -14966,7 +15117,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 112,
+            "line": 113,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.training_handler",
@@ -14976,7 +15127,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 116,
+            "line": 117,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.a2a.types",
@@ -14986,7 +15137,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 124,
+            "line": 125,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.a2a.config",
@@ -14996,7 +15147,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 125,
+            "line": 126,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.agents.agent_builder.base_agent",
@@ -15006,20 +15157,10 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 126,
-            "match_type": "import",
-            "confidence": "high",
-            "detail": "crewai.mcp.tool_resolver",
-            "deployment_target": "cloud",
-            "context_hint": "",
-            "prompt_hint": ""
-          },
-          {
-            "file": "lib/crewai/src/crewai/agent/core.py",
             "line": 127,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.task",
+            "detail": "crewai.mcp.tool_resolver",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -15029,7 +15170,7 @@
             "line": 128,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.tools.base_tool",
+            "detail": "crewai.task",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -15039,7 +15180,7 @@
             "line": 129,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.tools.structured_tool",
+            "detail": "crewai.tools.base_tool",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -15049,6 +15190,16 @@
             "line": 130,
             "match_type": "import",
             "confidence": "high",
+            "detail": "crewai.tools.structured_tool",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/src/crewai/agent/core.py",
+            "line": 131,
+            "match_type": "import",
+            "confidence": "high",
             "detail": "crewai.utilities.types",
             "deployment_target": "cloud",
             "context_hint": "",
@@ -15056,7 +15207,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 462,
+            "line": 463,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.crew",
@@ -15066,7 +15217,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 740,
+            "line": 769,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.crew",
@@ -15076,7 +15227,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 741,
+            "line": 770,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.task",
@@ -15086,7 +15237,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 742,
+            "line": 771,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.types.streaming",
@@ -15096,7 +15247,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 1168,
+            "line": 1197,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.mcp.tool_resolver",
@@ -15106,7 +15257,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 1182,
+            "line": 1211,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.tools.agent_tools.add_image_tool",
@@ -15116,7 +15267,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 1412,
+            "line": 1441,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.tools.memory_tools",
@@ -15126,7 +15277,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 1857,
+            "line": 1886,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.tasks.llm_guardrail",
@@ -18036,7 +18187,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/events/__init__.py",
-            "line": 141,
+            "line": 142,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.events.types.task_events",
@@ -18046,7 +18197,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/events/__init__.py",
-            "line": 147,
+            "line": 148,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.events.types.tool_usage_events",
@@ -24356,7 +24507,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/anthropic/completion.py",
-            "line": 674,
+            "line": 757,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.llms.cache",
@@ -24366,7 +24517,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/anthropic/completion.py",
-            "line": 1848,
+            "line": 1927,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.llm",
@@ -24666,7 +24817,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 31,
+            "line": 38,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.events.types.llm_events",
@@ -24676,7 +24827,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 32,
+            "line": 39,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.llms._finish_reason_utils",
@@ -24686,7 +24837,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 33,
+            "line": 40,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.llms.base_llm",
@@ -24696,7 +24847,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 34,
+            "line": 41,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.llms.hooks.base",
@@ -24706,7 +24857,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 35,
+            "line": 42,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.llms.hooks.transport",
@@ -24716,7 +24867,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 36,
+            "line": 43,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.llms.providers.utils.common",
@@ -24726,7 +24877,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 37,
+            "line": 44,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.agent_utils",
@@ -24736,7 +24887,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 38,
+            "line": 45,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.exceptions.context_window_exceeding_exception",
@@ -24746,7 +24897,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 41,
+            "line": 48,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.pydantic_schema_utils",
@@ -24756,7 +24907,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 45,
+            "line": 52,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.types",
@@ -24766,7 +24917,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 49,
+            "line": 56,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.agents.agent_builder.base_agent",
@@ -24776,7 +24927,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 50,
+            "line": 57,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.task",
@@ -24786,7 +24937,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 51,
+            "line": 58,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.tools.base_tool",
@@ -24796,7 +24947,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/llms/providers/openai/completion.py",
-            "line": 2418,
+            "line": 2651,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.llm",
@@ -27765,6 +27916,16 @@
             "prompt_hint": ""
           },
           {
+            "file": "lib/crewai/src/crewai/skills/cache.py",
+            "line": 18,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.skills.validation",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
             "file": "lib/crewai/src/crewai/skills/events.py",
             "line": 13,
             "match_type": "import",
@@ -27876,7 +28037,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 14,
+            "line": 16,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.skills.cache",
@@ -27886,7 +28047,17 @@
           },
           {
             "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 78,
+            "line": 17,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.skills.validation",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/src/crewai/skills/registry.py",
+            "line": 136,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.skills.loader",
@@ -27896,7 +28067,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 79,
+            "line": 164,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.skills.parser",
@@ -27906,47 +28077,17 @@
           },
           {
             "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 120,
+            "line": 229,
             "match_type": "import",
             "confidence": "high",
-            "detail": "crewai.skills.loader",
+            "detail": "crewai.utilities.agent_utils",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
           },
           {
             "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 121,
-            "match_type": "import",
-            "confidence": "high",
-            "detail": "crewai.skills.parser",
-            "deployment_target": "cloud",
-            "context_hint": "",
-            "prompt_hint": ""
-          },
-          {
-            "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 126,
-            "match_type": "import",
-            "confidence": "high",
-            "detail": "crewai.events.event_bus",
-            "deployment_target": "cloud",
-            "context_hint": "",
-            "prompt_hint": ""
-          },
-          {
-            "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 127,
-            "match_type": "import",
-            "confidence": "high",
-            "detail": "crewai.skills.events",
-            "deployment_target": "cloud",
-            "context_hint": "",
-            "prompt_hint": ""
-          },
-          {
-            "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 147,
+            "line": 237,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.auth.token",
@@ -27956,10 +28097,60 @@
           },
           {
             "file": "lib/crewai/src/crewai/skills/registry.py",
-            "line": 148,
+            "line": 238,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.context",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/src/crewai/skills/registry.py",
+            "line": 286,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.skills.loader",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/src/crewai/skills/registry.py",
+            "line": 287,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.skills.parser",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/src/crewai/skills/registry.py",
+            "line": 288,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.agent_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/src/crewai/skills/registry.py",
+            "line": 302,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.events.event_bus",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/src/crewai/skills/registry.py",
+            "line": 303,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.skills.events",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -29616,7 +29807,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1133,
+            "line": 1196,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.auth.token",
@@ -29626,7 +29817,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1134,
+            "line": 1197,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.plus_api",
@@ -29636,7 +29827,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1462,
+            "line": 1583,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.events.event_bus",
@@ -29646,7 +29837,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1463,
+            "line": 1584,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.events.types.tool_usage_events",
@@ -29656,7 +29847,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1468,
+            "line": 1589,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.hooks.tool_hooks",
@@ -29666,7 +29857,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1696,
+            "line": 1817,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.hooks.dispatch",
@@ -29676,7 +29867,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1702,
+            "line": 1823,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.hooks.llm_hooks",
@@ -29686,7 +29877,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1768,
+            "line": 1889,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.hooks.dispatch",
@@ -29696,7 +29887,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/utilities/agent_utils.py",
-            "line": 1769,
+            "line": 1890,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.hooks.llm_hooks",
@@ -31536,7 +31727,17 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2533,
+            "line": 2385,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.agent_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/agents/test_agent.py",
+            "line": 2569,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.tools",
@@ -31546,7 +31747,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2566,
+            "line": 2602,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.tools",
@@ -31556,7 +31757,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2692,
+            "line": 2728,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.agents.tools_handler",
@@ -31566,7 +31767,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2724,
+            "line": 2760,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.agent_utils",
@@ -31576,7 +31777,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2738,
+            "line": 2774,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.agent_utils",
@@ -31586,7 +31787,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2763,
+            "line": 2799,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.agent_utils",
@@ -31596,7 +31797,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2778,
+            "line": 2814,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.agent_utils",
@@ -31606,7 +31807,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2808,
+            "line": 2844,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.agent_utils",
@@ -31616,7 +31817,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2829,
+            "line": 2865,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.agent_utils",
@@ -34455,6 +34656,46 @@
             "prompt_hint": ""
           },
           {
+            "file": "lib/crewai/tests/events/test_skill_usage_events.py",
+            "line": 12,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/events/test_skill_usage_events.py",
+            "line": 13,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.events",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/events/test_skill_usage_events.py",
+            "line": 14,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.events.types.skill_events",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/events/test_skill_usage_events.py",
+            "line": 151,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.events",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
             "file": "lib/crewai/tests/events/test_tracing_utils_machine_id.py",
             "line": 6,
             "match_type": "import",
@@ -35715,6 +35956,86 @@
             "prompt_hint": ""
           },
           {
+            "file": "lib/crewai/tests/llms/anthropic/test_anthropic.py",
+            "line": 1445,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.llms.providers.anthropic.completion",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/anthropic/test_anthropic.py",
+            "line": 1461,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.llms.providers.anthropic.completion",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/anthropic/test_anthropic.py",
+            "line": 1478,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.llms.providers.anthropic.completion",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/anthropic/test_anthropic.py",
+            "line": 1504,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.llms.providers.anthropic.completion",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/anthropic/test_anthropic.py",
+            "line": 1519,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.llms.providers.anthropic.completion",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/anthropic/test_anthropic.py",
+            "line": 1541,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.llms.providers.anthropic.completion",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/anthropic/test_anthropic.py",
+            "line": 1562,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.llms.providers.anthropic.completion",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/anthropic/test_anthropic.py",
+            "line": 1580,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.llms.providers.anthropic.completion",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
             "file": "lib/crewai/tests/llms/anthropic/test_anthropic_async.py",
             "line": 8,
             "match_type": "import",
@@ -36910,6 +37231,76 @@
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.llm",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_responses_only_models.py",
+            "line": 21,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.llms.providers.openai",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_responses_only_models.py",
+            "line": 22,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.llms.providers.openai.completion",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_responses_tool_loop.py",
+            "line": 20,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.llms.providers.openai.completion",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_responses_tool_loop.py",
+            "line": 21,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.agent_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 23,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 24,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.llms.providers.openai.completion",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 25,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.tools",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""
@@ -39606,7 +39997,7 @@
           },
           {
             "file": "lib/crewai/tests/skills/test_registry.py",
-            "line": 9,
+            "line": 11,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.context",
@@ -39616,7 +40007,7 @@
           },
           {
             "file": "lib/crewai/tests/skills/test_registry.py",
-            "line": 10,
+            "line": 12,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.skills.cache",
@@ -39626,7 +40017,7 @@
           },
           {
             "file": "lib/crewai/tests/skills/test_registry.py",
-            "line": 11,
+            "line": 13,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.skills.registry",
@@ -39636,7 +40027,27 @@
           },
           {
             "file": "lib/crewai/tests/skills/test_registry.py",
-            "line": 106,
+            "line": 75,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/skills/test_registry.py",
+            "line": 98,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/skills/test_registry.py",
+            "line": 201,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.skills.registry",
@@ -39646,7 +40057,7 @@
           },
           {
             "file": "lib/crewai/tests/skills/test_registry.py",
-            "line": 126,
+            "line": 221,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.skills.registry",
@@ -39656,7 +40067,7 @@
           },
           {
             "file": "lib/crewai/tests/skills/test_registry.py",
-            "line": 152,
+            "line": 247,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.skills.registry",
@@ -43865,6 +44276,76 @@
             "prompt_hint": ""
           },
           {
+            "file": "lib/crewai/tests/utilities/test_agent_utils.py",
+            "line": 1263,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.agent_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/utilities/test_agent_utils.py",
+            "line": 1274,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/utilities/test_agent_utils.py",
+            "line": 1286,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.agent_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/utilities/test_agent_utils.py",
+            "line": 1294,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.agent_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/utilities/test_agent_utils.py",
+            "line": 1314,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.context",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/utilities/test_agent_utils.py",
+            "line": 1315,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.agent_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/utilities/test_agent_utils.py",
+            "line": 1327,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.agent_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
             "file": "lib/crewai/tests/utilities/test_console_formatter_pause_resume.py",
             "line": 3,
             "match_type": "import",
@@ -44506,7 +44987,27 @@
           },
           {
             "file": "lib/crewai/tests/utilities/test_pydantic_schema_utils.py",
-            "line": 946,
+            "line": 956,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.pydantic_schema_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/utilities/test_pydantic_schema_utils.py",
+            "line": 980,
+            "match_type": "import",
+            "confidence": "high",
+            "detail": "crewai.utilities.pydantic_schema_utils",
+            "deployment_target": "cloud",
+            "context_hint": "",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/utilities/test_pydantic_schema_utils.py",
+            "line": 988,
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.utilities.pydantic_schema_utils",
@@ -44676,7 +45177,7 @@
           },
           {
             "file": "pyproject.toml",
-            "line": 247,
+            "line": 249,
             "match_type": "dependency",
             "confidence": "medium",
             "detail": "crewai",
@@ -44686,7 +45187,7 @@
           },
           {
             "file": "pyproject.toml",
-            "line": 248,
+            "line": 250,
             "match_type": "dependency",
             "confidence": "medium",
             "detail": "crewai-tools",
@@ -44696,7 +45197,7 @@
           },
           {
             "file": "pyproject.toml",
-            "line": 249,
+            "line": 251,
             "match_type": "dependency",
             "confidence": "medium",
             "detail": "crewai-devtools",
@@ -44706,7 +45207,7 @@
           },
           {
             "file": "pyproject.toml",
-            "line": 250,
+            "line": 252,
             "match_type": "dependency",
             "confidence": "medium",
             "detail": "crewai-files",
@@ -44716,7 +45217,7 @@
           },
           {
             "file": "pyproject.toml",
-            "line": 251,
+            "line": 253,
             "match_type": "dependency",
             "confidence": "medium",
             "detail": "crewai-cli",
@@ -44726,7 +45227,7 @@
           },
           {
             "file": "pyproject.toml",
-            "line": 252,
+            "line": 254,
             "match_type": "dependency",
             "confidence": "medium",
             "detail": "crewai-core",
@@ -44774,7 +45275,7 @@
           "crewai"
         ],
         "confidence": "medium",
-        "count": 628,
+        "count": 633,
         "deployment_targets": [
           "cloud"
         ],
@@ -45951,7 +46452,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2398,
+            "line": 2434,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -45961,7 +46462,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2411,
+            "line": 2447,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -45971,7 +46472,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2424,
+            "line": 2460,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -45981,7 +46482,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2448,
+            "line": 2484,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -45991,7 +46492,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2480,
+            "line": 2516,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46001,7 +46502,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2488,
+            "line": 2524,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46011,7 +46512,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2497,
+            "line": 2533,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46021,7 +46522,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2505,
+            "line": 2541,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46031,7 +46532,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2514,
+            "line": 2550,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46041,7 +46542,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2523,
+            "line": 2559,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46051,7 +46552,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2542,
+            "line": 2578,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46061,7 +46562,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2575,
+            "line": 2611,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46071,7 +46572,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2599,
+            "line": 2635,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46081,7 +46582,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2619,
+            "line": 2655,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46091,7 +46592,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2629,
+            "line": 2665,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46101,7 +46602,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2639,
+            "line": 2675,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46111,7 +46612,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2649,
+            "line": 2685,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46121,7 +46622,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2664,
+            "line": 2700,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46131,7 +46632,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2673,
+            "line": 2709,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -46141,7 +46642,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2694,
+            "line": 2730,
             "match_type": "instantiation",
             "confidence": "medium",
             "detail": "",
@@ -47360,6 +47861,26 @@
             "prompt_hint": ""
           },
           {
+            "file": "lib/crewai/tests/events/test_skill_usage_events.py",
+            "line": 33,
+            "match_type": "instantiation",
+            "confidence": "medium",
+            "detail": "",
+            "deployment_target": "cloud",
+            "context_hint": "function `_agent_with_skills`",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/events/test_skill_usage_events.py",
+            "line": 130,
+            "match_type": "instantiation",
+            "confidence": "medium",
+            "detail": "",
+            "deployment_target": "cloud",
+            "context_hint": "class `TestSkillUsedEvent` > function `test_agent_without_skills_emits_nothing`",
+            "prompt_hint": ""
+          },
+          {
             "file": "lib/crewai/tests/experimental/evaluation/test_agent_evaluator.py",
             "line": 34,
             "match_type": "instantiation",
@@ -48117,6 +48638,36 @@
             "detail": "",
             "deployment_target": "cloud",
             "context_hint": "function `test_openai_async_streaming_returns_usage_metrics` -- \"Test that OpenAI async streaming calls return proper token usage metrics.\"",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 272,
+            "match_type": "instantiation",
+            "confidence": "medium",
+            "detail": "",
+            "deployment_target": "cloud",
+            "context_hint": "class `TestAgentDefinitions` -- \"The bar: ordinary agent definitions run, with tools and with reasoning.\" > function `test_agent_with_tools`",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 293,
+            "match_type": "instantiation",
+            "confidence": "medium",
+            "detail": "",
+            "deployment_target": "cloud",
+            "context_hint": "class `TestAgentDefinitions` -- \"The bar: ordinary agent definitions run, with tools and with reasoning.\" > function `test_agent_with_tools_and_reasoning` -- \"`reasoning=True` adds a planning call, which must recover as well.\"",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 315,
+            "match_type": "instantiation",
+            "confidence": "medium",
+            "detail": "",
+            "deployment_target": "cloud",
+            "context_hint": "class `TestAgentDefinitions` -- \"The bar: ordinary agent definitions run, with tools and with reasoning.\" > function `test_agent_without_tools_is_untouched` -- \"No tools means no conflict, so nothing should be rewritten.\"",
             "prompt_hint": ""
           },
           {
@@ -51069,7 +51620,7 @@
           "crewai"
         ],
         "confidence": "high",
-        "count": 397,
+        "count": 400,
         "deployment_targets": [
           "cloud"
         ],
@@ -51116,7 +51667,7 @@
           },
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 749,
+            "line": 778,
             "match_type": "instantiation",
             "confidence": "high",
             "detail": "",
@@ -51366,7 +51917,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2555,
+            "line": 2591,
             "match_type": "instantiation",
             "confidence": "high",
             "detail": "",
@@ -51376,7 +51927,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2588,
+            "line": 2624,
             "match_type": "instantiation",
             "confidence": "high",
             "detail": "",
@@ -51386,7 +51937,7 @@
           },
           {
             "file": "lib/crewai/tests/agents/test_agent.py",
-            "line": 2611,
+            "line": 2647,
             "match_type": "instantiation",
             "confidence": "high",
             "detail": "",
@@ -52312,6 +52863,36 @@
             "detail": "",
             "deployment_target": "cloud",
             "context_hint": "function `test_openai_async_streaming_returns_usage_metrics` -- \"Test that OpenAI async streaming calls return proper token usage metrics.\"",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 285,
+            "match_type": "instantiation",
+            "confidence": "high",
+            "detail": "",
+            "deployment_target": "cloud",
+            "context_hint": "class `TestAgentDefinitions` -- \"The bar: ordinary agent definitions run, with tools and with reasoning.\" > function `test_agent_with_tools`",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 307,
+            "match_type": "instantiation",
+            "confidence": "high",
+            "detail": "",
+            "deployment_target": "cloud",
+            "context_hint": "class `TestAgentDefinitions` -- \"The bar: ordinary agent definitions run, with tools and with reasoning.\" > function `test_agent_with_tools_and_reasoning` -- \"`reasoning=True` adds a planning call, which must recover as well.\"",
+            "prompt_hint": ""
+          },
+          {
+            "file": "lib/crewai/tests/llms/openai/test_tools_reasoning_effort_retry.py",
+            "line": 327,
+            "match_type": "instantiation",
+            "confidence": "high",
+            "detail": "",
+            "deployment_target": "cloud",
+            "context_hint": "class `TestAgentDefinitions` -- \"The bar: ordinary agent definitions run, with tools and with reasoning.\" > function `test_agent_without_tools_is_untouched` -- \"No tools means no conflict, so nothing should be rewritten.\"",
             "prompt_hint": ""
           },
           {
@@ -55083,7 +55664,7 @@
           },
           {
             "file": "pyproject.toml",
-            "line": 211,
+            "line": 213,
             "match_type": "dependency",
             "confidence": "medium",
             "detail": "langchain-core",
@@ -55093,7 +55674,7 @@
           },
           {
             "file": "pyproject.toml",
-            "line": 212,
+            "line": 214,
             "match_type": "dependency",
             "confidence": "medium",
             "detail": "langchain-text-splitters",
@@ -55208,7 +55789,7 @@
         "occurrences": [
           {
             "file": "lib/crewai/src/crewai/agent/core.py",
-            "line": 1457,
+            "line": 1486,
             "match_type": "instantiation",
             "confidence": "high",
             "detail": "",

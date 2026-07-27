@@ -1,6 +1,6 @@
 # AI Stack Report
 
-_Generated: 2026-07-27T01:25:19.768135Z_  
+_Generated: 2026-07-27T02:06:32.258467Z_  
 _Scanner mode: hybrid_  
 _Scanned 1267 Python file(s), found 180 distinct component(s)._
 
@@ -30,12 +30,48 @@ _Scanned 1267 Python file(s), found 180 distinct component(s)._
 | Hugging Face Transformers | medium | Cloud | 1 | `pyproject.toml:216` |
 | OpenAI (env var configured) | low | Cloud | 1 | `lib/crewai-tools/src/crewai_tools/tools/stagehand_tool/.env.example:2` |
 
+<details><summary>AI-generated context (optional, unverified -- confirm before relying on it)</summary>
+
+**OpenAI GPT-4 family (string literal)** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Specifying model identifiers for LLM configuration and testing.
+- Usage: Used as string literals to define specific model versions (e.g., gpt-4o, gpt-4.1-mini) within constants and test cases to control which model the CLI or crew logic interacts with during execution or unit testing.
+
+**OpenAI** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Integration of OpenAI services within the CrewAI framework.
+- Usage: Used as an uploader for file operations, an adapter for LanceDB, and as a core dependency for AI-driven tools (e.g., ai_mind_tool) to facilitate LLM interactions.
+
+**Generic LLM client (verify provider)** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Client for interacting with the CrewAI+ API.
+- Usage: Used to perform authenticated requests, including multipart requests for uploading project ZIP files, via the PlusAPI class.
+
+**OpenAI client** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To serve as the underlying interface for interacting with OpenAI services, including file management, image generation, and general model execution.
+- Usage: Used for uploading files to OpenAI's Files and Uploads APIs (handling different size thresholds), configuring base URLs for custom endpoints in specialized tools, and powering image generation via DALL-E.
+
+**Azure OpenAI client** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To perform vector searches within a MongoDB database.
+- Usage: Used within the MongoDBVectorSearchTool class to facilitate vector search operations on MongoDB data.
+
+**Hugging Face Transformers** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Provides access to pre-trained models and architectures for natural language processing and other machine learning tasks.
+- Usage: Used as a core dependency to load, train, and run inference on transformer-based models.
+
+</details>
+
 ## MCP (Model Context Protocol)
 
 | Component | Confidence | Occurrences | Example location |
 |---|---|---|---|
 | Model Context Protocol SDK | high | 19 | `lib/crewai-tools/pyproject.toml:102` |
 | MCP client session | high | 4 | `lib/crewai-tools/src/crewai_tools/tools/brightdata_tool/brightdata_dataset.py:498` |
+
+<details><summary>AI-generated context (optional, unverified -- confirm before relying on it)</summary>
+
+**Model Context Protocol SDK** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: An adapter for integrating the Model Context Protocol (MCP) into the crewai-tools framework.
+- Usage: Used as a dependency and imported within an adapter module to facilitate communication or data translation between crewai-tools and the Model Context Protocol.
+
+</details>
 
 ## Tools / Function Calling
 
@@ -187,17 +223,213 @@ _Scanned 1267 Python file(s), found 180 distinct component(s)._
 | Custom Tool (subclasses BaseTool): WriteFilesTool | high | 1 | `lib/crewai-tools/src/crewai_tools/aws/bedrock/code_interpreter/code_interpreter_toolkit.py:316` |
 | Custom Tool (subclasses BaseTool): ZapierActionTool | high | 1 | `lib/crewai-tools/src/crewai_tools/adapters/zapier_adapter.py:17` |
 
+<details><summary>AI-generated context (optional, unverified -- confirm before relying on it)</summary>
+
+**Tool definition (@tool)** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To define a tool that can be used by an agent, providing a description that informs the agent of the tool's utility.
+- Usage: Applied as a decorator (@tool) to functions to transform them into tools that agents can interact with, using docstrings to provide context for the agent's decision-making process.
+
+**Custom Tool (subclasses BaseTool): MyCustomTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: A template or placeholder implementation of a custom tool used for demonstration or testing purposes within the crewai framework.
+- Usage: Used as a template in CLI generation for both 'crew' and 'flow' structures, and as a mock/test implementation in unit tests to verify BaseTool functionality.
+
+**Custom Tool (subclasses BaseTool): MockTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: A testing utility class used to simulate the behavior of a CrewAI tool.
+- Usage: Used within test suites (test_generate_tool_specs.py and test_planning_handler.py) to provide a controlled implementation of the BaseTool interface for verifying tool specification generation and planning handler logic.
+
+**Custom Tool (subclasses BaseTool): AIMindTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: A custom tool implementation within the crewai-tools package.
+- Usage: Subclasses the BaseTool class to provide specialized functionality as part of the crewai-tools library.
+
+**Custom Tool (subclasses BaseTool): ArxivPaperTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To retrieve or search for academic papers from Arxiv.
+- Usage: A custom tool that subclasses BaseTool, likely used within a CrewAI agent framework to access Arxiv paper data.
+
+**Custom Tool (subclasses BaseTool): BedrockInvokeAgentTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To provide an interface for interacting with AWS Bedrock agents.
+- Usage: A tool subclassing BaseTool that likely wraps the AWS Bedrock agent invocation API to allow an agent to call upon other Bedrock agents.
+
+**Custom Tool (subclasses BaseTool): BedrockKBRetrieverTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: A tool designed to retrieve information from an AWS Bedrock Knowledge Base.
+- Usage: Subclasses BaseTool to provide a specialized interface for querying AWS Bedrock Knowledge Bases within a crewai framework.
+
+**Custom Tool (subclasses BaseTool): BraveSearchTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: A tool that performs web searches using the Brave Search API.
+- Usage: Subclasses BaseTool to provide web search capabilities via the Brave Search API.
+
+**Custom Tool (subclasses BaseTool): BraveSearchToolBase** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Base class for Brave Search API interactions.
+- Usage: Serves as a foundation for individual tool subclasses that must implement a search_url and a header_schema (pydantic) to interact with the Brave Search API.
+
+**Custom Tool (subclasses BaseTool): BrowserBaseTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Base class for browser-related tools within the AWS Bedrock integration.
+- Usage: Serves as a parent class for specific browser tool implementations, inheriting from BaseTool.
+
+**Custom Tool (subclasses BaseTool): ContextualAICreateAgentTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Tool to create Contextual AI RAG agents with documents.
+- Usage: Subclasses BaseTool to provide functionality for creating agents that utilize Retrieval-Augmented Generation (RAG) with specific documents.
+
+**Custom Tool (subclasses BaseTool): ContextualAIQueryTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Tool to query Contextual AI RAG agents.
+- Usage: A subclass of BaseTool designed to interface with Contextual AI Retrieval-Augmented Generation (RAG) agents.
+
+**Custom Tool (subclasses BaseTool): DeleteFilesTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Tool for removing files from the environment.
+- Usage: A subclass of BaseTool used within a code interpreter toolkit to delete files from the local environment.
+
+**Custom Tool (subclasses BaseTool): DirectoryReadTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To read the contents of a specified directory.
+- Usage: A tool that extends BaseTool, likely used within a crewai framework to allow an agent to list or inspect files within a directory.
+
+**Custom Tool (subclasses BaseTool): ExaSearchTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Perform web searches using the Exa search engine.
+- Usage: A custom tool that subclasses BaseTool, likely used within a CrewAI agent framework to retrieve information from the internet via the Exa API.
+- Expected output: Search results from the Exa search engine.
+
+**Custom Tool (subclasses BaseTool): ExecuteCodeTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Tool for executing code in various languages.
+- Usage: A subclass of BaseTool designed to execute code, likely within an AWS Bedrock context given the file path.
+
+**Custom Tool (subclasses BaseTool): ExecuteCommandTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Tool for running shell commands in the code interpreter environment.
+- Usage: Executes shell commands within a code interpreter environment, likely as part of an AWS Bedrock integration.
+
+**Custom Tool (subclasses BaseTool): FileWriterTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To write data to a file.
+- Usage: A tool subclassing BaseTool designed to perform file writing operations within a crewai framework.
+
+**Custom Tool (subclasses BaseTool): GenerateCrewaiAutomationTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To provide a specialized tool within the crewai-tools library that automates the generation of new CrewAI tools.
+- Usage: A subclass of BaseTool that likely encapsulates logic to programmatically create or configure new automation tools for use within a CrewAI agent framework.
+
+**Custom Tool (subclasses BaseTool): GetTaskTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Tool for checking status of async tasks.
+- Usage: A subclass of BaseTool used within a code interpreter toolkit to monitor the progress or completion of asynchronous tasks.
+
+**Custom Tool (subclasses BaseTool): InvokeCrewAIAutomationTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: A CrewAI tool for invoking external crew/flows APIs.
+- Usage: Provides CrewAI Platform API integration with external crew services.
+
+**Custom Tool (subclasses BaseTool): LinkupSearchTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Perform searches on the Linkup platform.
+- Usage: A custom tool within the crewai_tools package that inherits from BaseTool, specifically designed for Linkup-related search functionality.
+
+**Custom Tool (subclasses BaseTool): ListFilesTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Tool for listing files in directories in the environment.
+- Usage: A subclass of BaseTool used within a code interpreter toolkit to provide functionality for listing files in directories.
+
+**Custom Tool (subclasses BaseTool): MockIntermediateBase** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Simulates an intermediate tool base class for testing purposes.
+- Usage: Used in unit tests to mock specialized tool implementations like RagTool or BraveSearchToolBase by inheriting from BaseTool.
+
+**Custom Tool (subclasses BaseTool): MongoDBVectorSearchTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To perform a vector search within a MongoDB database.
+- Usage: A tool that subclasses BaseTool to interface with MongoDB for vector similarity searches.
+
+**Custom Tool (subclasses BaseTool): MultiOnTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To wrap MultiOn Browse Capabilities.
+- Usage: Acts as a tool within the crewai-tools framework by subclassing BaseTool to provide MultiOn browsing functionality to an agent.
+
+**Custom Tool (subclasses BaseTool): NL2SQLTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Converts natural language queries into SQL statements and executes them against a database.
+- Usage: Operates as a tool within the crewai-tools framework, defaulting to read-only mode to perform SELECT operations.
+- Expected output: The result of the executed SQL query.
+
+**Custom Tool (subclasses BaseTool): OxylabsGoogleSearchScraperTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Scrape Google Search results using the Oxylabs API.
+- Usage: A tool that subclasses BaseTool and requires an Oxylabs account (username) to perform Google Search scraping.
+
+**Custom Tool (subclasses BaseTool): ParallelSearchTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Perform parallel search operations.
+- Usage: A tool that extends BaseTool, likely designed to execute multiple search queries or processes concurrently within a crewai framework.
+
+**Custom Tool (subclasses BaseTool): ReadFilesTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Tool for reading content of files in the environment.
+- Usage: A subclass of BaseTool used within a code interpreter toolkit to access and read file contents.
+
+**Custom Tool (subclasses BaseTool): S3ReaderTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To read data from Amazon S3 buckets.
+- Usage: A tool subclassing BaseTool designed to be used within a crewai framework to access and retrieve content from S3.
+
+**Custom Tool (subclasses BaseTool): S3WriterTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To write data to an Amazon S3 bucket.
+- Usage: A custom tool that inherits from BaseTool, specifically designed for interacting with AWS S3 to perform write operations.
+
+**Custom Tool (subclasses BaseTool): ScrapeElementFromWebsiteTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To extract a specific element from a website.
+- Usage: A tool subclassing BaseTool designed to scrape a designated element from a web page.
+
+**Custom Tool (subclasses BaseTool): ScrapflyScrapeWebsiteTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To scrape website content using the Scrapfly service.
+- Usage: A custom tool that subclasses BaseTool, likely used within a CrewAI framework to perform web scraping tasks via the Scrapfly API.
+
+**Custom Tool (subclasses BaseTool): SnowflakeSearchTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Tool for executing queries and semantic search on Snowflake.
+- Usage: A subclass of BaseTool designed to interface with Snowflake to perform both standard SQL queries and semantic search operations.
+
+**Custom Tool (subclasses BaseTool): SpiderTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Scraping and crawling websites.
+- Usage: Provides functionality to either scrape a single webpage or crawl multiple pages.
+
+**Custom Tool (subclasses BaseTool): StartCommandTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Tool for starting long-running commands asynchronously.
+- Usage: A subclass of BaseTool designed to initiate and manage asynchronous execution of long-running commands.
+
+**Custom Tool (subclasses BaseTool): StopTaskTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Tool for stopping running tasks.
+- Usage: A subclass of BaseTool used within a code interpreter toolkit to terminate active tasks.
+
+**Custom Tool (subclasses BaseTool): TavilyGetResearchTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Tool that uses the Tavily Research status endpoint to retrieve results.
+- Usage: A subclass of BaseTool designed to interface with the Tavily Research API to fetch research data.
+
+**Custom Tool (subclasses BaseTool): VisionTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Tool for analyzing images using vision models.
+- Usage: An implementation of BaseTool that utilizes an LLM (Large Language Model) and a specific model identifier to perform image analysis.
+
+**Custom Tool (subclasses BaseTool): WeaviateVectorSearchTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To search the Weaviate database.
+- Usage: A tool that subclasses BaseTool to perform vector searches within a Weaviate database.
+
+**Custom Tool (subclasses BaseTool): WriteFilesTool** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Tool for creating or updating files in the environment.
+- Usage: A subclass of BaseTool used within a code interpreter toolkit to perform file system write operations.
+
+</details>
+
 ## Agent & Orchestration Frameworks
 
 | Component | Confidence | Occurrences | Example location |
 |---|---|---|---|
-| CrewAI | high | 3380 | `conftest.py:196` |
+| CrewAI | high | 3379 | `conftest.py:196` |
 | Agent (verify framework) | medium | 630 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:18` |
 | CrewAI Crew | high | 397 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:55` |
 | LangChain | high | 4 | `lib/crewai-tools/pyproject.toml:93` |
 | Instructor (structured outputs) | high | 3 | `lib/crewai/pyproject.toml:16` |
 | LlamaIndex | high | 3 | `lib/crewai-tools/src/crewai_tools/tools/llamaindex_tool/llamaindex_tool.py:29` |
 | LangChain AgentExecutor | high | 1 | `lib/crewai/src/crewai/agent/core.py:1486` |
+
+<details><summary>AI-generated context (optional, unverified -- confirm before relying on it)</summary>
+
+**CrewAI** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: An agent orchestration framework for managing multi-agent workflows and event-driven communication.
+- Usage: Utilizes an event bus, base event structures, and event contexts to facilitate communication and coordination between agents, likely managed via a CLI tool.
+
+**Agent (verify framework)** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To define and orchestrate a collection of specialized agents within a structured workflow to perform content creation tasks.
+- Usage: Instantiating specific agent roles (planner, writer, editor) within a 'ContentCrew' class to automate a content production pipeline.
+- Expected output: A coordinated execution of multiple agents (planner, writer, editor) to produce finished content.
+
+**CrewAI Crew** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: To orchestrate and manage a group of autonomous agents working together to achieve specific goals.
+- Usage: Used to instantiate specific agent groups (crews), such as a 'Content Crew', and to integrate various tools (e.g., Multion, Patronus, Stagehand) into the agent workflows.
+- Expected output: A coordinated execution of tasks performed by multiple agents to produce a final result or content.
+
+**LangChain** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Core abstractions and base classes for LangChain components, including tool definitions and text splitting utilities.
+- Usage: Provides foundational interfaces for tools (langchain_core.tools) and text splitting functionality (langchain_text_splitters) used by agent frameworks and tool adapters.
+
+</details>
 
 ## Vector Stores / Memory
 
@@ -208,6 +440,19 @@ _Scanned 1267 Python file(s), found 180 distinct component(s)._
 | Weaviate | high | 7 | `lib/crewai-tools/pyproject.toml:47` |
 | LanceDB | high | 3 | `lib/crewai-tools/src/crewai_tools/adapters/lancedb_adapter.py:7` |
 | Chroma client | medium | 1 | `lib/crewai-tools/src/crewai_tools/rag/core.py:59` |
+
+<details><summary>AI-generated context (optional, unverified -- confirm before relying on it)</summary>
+
+**Qdrant** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Vector database client for Qdrant
+- Usage: Used as a dependency within crewai and crewai-tools, specifically within the crewai.rag.qdrant module, to facilitate Retrieval-Augmented Generation (RAG) operations.
+
+**Weaviate** _(model: google/gemma-4-26b-a4b-it:free)_
+- Purpose: Vector database client and integration tool
+- Usage: Used as a dependency via weaviate-client and imported within a specific tool module to perform vector searches and manage configurations.
+- Expected output: Vector search results and database configuration objects.
+
+</details>
 
 <details><summary>Skipped files (parse errors)</summary>
 

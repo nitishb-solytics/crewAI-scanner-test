@@ -40,7 +40,7 @@ jobs:
           scanner-mode: "hybrid"
           markdown-output: "AI_STACK.md"
           json-output: "ai-stack-report.json"
-          enrich: "true"
+          enrich: "false"
 
           risk-output: "AI_RISK_REPORT.md"
           risk-json-output: "ai-risk-report.json"

@@ -1,4 +1,4 @@
-name: AI Stack Scan and Quality Gate
+name: AI Stack and Risk Scan
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
     paths-ignore:
       - "AI_STACK.md"
       - "ai-stack-report.json"
-      - "ai-quality-report.md"
-      - "ai-quality-report.json"
+      - "AI_RISK_REPORT.md"
+      - "ai-risk-report.json"
 
   pull_request:
     branches:
@@ -31,16 +31,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
       - name: Run AI Stack Mapper scan
         uses: nitishb-solytics/AI-STACK-MAPPER@main
         with:
           path: "."
-          mode: "scan"
+          mode: "stack"
           scanner-mode: "hybrid"
           markdown-output: "AI_STACK.md"
           json-output: "ai-stack-report.json"
@@ -72,7 +67,53 @@ jobs:
           git commit -m "chore: update AI stack report"
           git push
 
-  ai-quality-gate:
+  update-risk-report:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout CrewAI
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run AI risk scan
+        uses: nitishb-solytics/AI-STACK-MAPPER@main
+        with:
+          path: "."
+          mode: "risk"
+          risk-output: "AI_RISK_REPORT.md"
+          risk-json-output: "ai-risk-report.json"
+          risk-no-fail: "true"
+          llm-risk-control: "true"
+          llm-api-key: ${{ secrets.AI_STACK_LLM_API_KEY }}
+          llm-base-url: "https://openrouter.ai/api/v1"
+          llm-model: "google/gemma-4-26b-a4b-it:free"
+
+      - name: Validate risk reports
+        shell: bash
+        run: |
+          test -s AI_RISK_REPORT.md
+          test -s ai-risk-report.json
+          python -m json.tool ai-risk-report.json > /dev/null
+
+      - name: Commit updated risk reports
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add AI_RISK_REPORT.md ai-risk-report.json
+
+          if git diff --cached --quiet; then
+            echo "No AI risk changes detected."
+            exit 0
+          fi
+
+          git commit -m "chore: update AI risk report"
+          git push
+
+  pr-risk-quality-gate:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
 
@@ -86,40 +127,35 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Run AI quality gate
+      - name: Run PR risk quality gate
         uses: nitishb-solytics/AI-STACK-MAPPER@main
         with:
           path: "."
-          mode: "review"
+          mode: "risk"
           changed-only: "true"
           base-ref: ${{ github.base_ref }}
           fail-on: "high"
-          llm-review: "true"
+          llm-risk-control: "true"
           llm-api-key: ${{ secrets.AI_STACK_LLM_API_KEY }}
           llm-base-url: "https://openrouter.ai/api/v1"
           llm-model: "google/gemma-4-26b-a4b-it:free"
-          quality-output: "ai-quality-report.md"
-          quality-json-output: "ai-quality-report.json"
+          risk-output: "AI_RISK_REPORT.md"
+          risk-json-output: "ai-risk-report.json"
 
-      - name: Validate quality report
+      - name: Validate PR risk report
         if: always()
         shell: bash
         run: |
-          test -s ai-quality-report.md
-          test -s ai-quality-report.json
-          python -m json.tool ai-quality-report.json > /dev/null
+          test -s AI_RISK_REPORT.md
+          test -s ai-risk-report.json
+          python -m json.tool ai-risk-report.json > /dev/null
 
-      - name: Upload quality report
+      - name: Upload PR risk report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ai-quality-report
+          name: ai-risk-report
           path: |
-            ai-quality-report.md
-            ai-quality-report.json
+            AI_RISK_REPORT.md
+            ai-risk-report.json
           if-no-files-found: error

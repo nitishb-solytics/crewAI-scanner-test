@@ -1,6 +1,6 @@
 # AI Risk Report
 
-_Generated: 2026-07-31T04:10:44.648476Z_  
+_Generated: 2026-07-31T06:03:06.387727Z_  
 _Status: FAILED_  
 _Scanned 1273 Python file(s). Fail threshold: high._  
 _Risk scan mode: static+llm_
@@ -30,8 +30,8 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | High | static | static | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_task.py:795` | Agent delegation is enabled without visible iteration bounds. |  |
 | High | static | static | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_task.py:802` | Agent delegation is enabled without visible iteration bounds. |  |
 | High | static | static | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_tool_cache_default.py:253` | Agent delegation is enabled without visible iteration bounds. |  |
-| Medium | static | llm | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `conftest.py:125` | LLM client/model is created without visible timeout or retry configuration. | Configure timeout and retry/fallback behavior on the client/model or wrapper. |
-| Medium | static | llm | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `conftest.py:331` | LLM client/model is created without visible timeout or retry configuration. | Configure timeout and retry/fallback behavior on the client/model or wrapper. |
+| Medium | static | static_fallback | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `conftest.py:125` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static_fallback | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `conftest.py:331` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/src/crewai_cli/create_json_crew.py:839` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/src/crewai_cli/crew_run_tui.py:2222` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/src/crewai_cli/crew_run_tui.py:2227` | LLM client/model is created without visible timeout or retry configuration. |  |
@@ -49,8 +49,8 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/tests/test_model_catalog.py:449` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/tests/test_model_catalog.py:472` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/tests/test_model_catalog.py:505` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | llm | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-core/src/crewai_core/plus_api.py:198` | LLM client/model is created without visible timeout or retry configuration. | Set a default timeout in the `httpx.Client` constructor. |
-| Medium | static | llm | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-core/src/crewai_core/plus_api.py:224` | LLM client/model is created without visible timeout or retry configuration. | Set a default timeout in the `httpx.Client` constructor. |
+| Medium | static | static_fallback | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-core/src/crewai_core/plus_api.py:198` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static_fallback | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-core/src/crewai_core/plus_api.py:224` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-files/src/crewai_files/formatting/api.py:74` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-files/src/crewai_files/uploaders/anthropic.py:54` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-files/src/crewai_files/uploaders/anthropic.py:68` | LLM client/model is created without visible timeout or retry configuration. |  |
@@ -2055,18 +2055,18 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_summarize_integration.py:220` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_training_converter.py:65` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_training_converter.py:68` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | llm | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/cli.py:513` | LLM call does not show a timeout at the call site. | Pass a timeout parameter to the `create` method. |
-| Medium | static | llm | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/cli.py:1016` | LLM client/model is created without visible timeout or retry configuration. | Configure timeout and retries in the OpenAI client constructor. |
-| Medium | static | llm | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/cli.py:1029` | LLM call does not show a timeout at the call site. | Pass a timeout parameter to the `create` method. |
-| Medium | static | llm | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/cli.py:1029` | LLM client/model is created without visible timeout or retry configuration. | Pass a timeout parameter to the `create` method. |
-| Medium | static | llm | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/docs_check.py:167` | LLM client/model is created without visible timeout or retry configuration. | Configure timeout and retries in the OpenAI client constructor. |
-| Medium | static | llm | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/docs_check.py:225` | LLM call does not show a timeout at the call site. | Pass a timeout parameter to the `create` method. |
-| Medium | static | llm | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/docs_check.py:265` | LLM call does not show a timeout at the call site. | Pass a timeout parameter to the `create` method. |
-| Medium | static | llm | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/docs_check.py:301` | LLM call does not show a timeout at the call site. | Pass a timeout parameter to the `create` method. |
+| Medium | static | static_fallback | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/cli.py:513` | LLM call does not show a timeout at the call site. |  |
+| Medium | static | static_fallback | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/cli.py:1016` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static_fallback | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/cli.py:1029` | LLM call does not show a timeout at the call site. |  |
+| Medium | static | static_fallback | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/cli.py:1029` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static_fallback | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/docs_check.py:167` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static_fallback | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/docs_check.py:225` | LLM call does not show a timeout at the call site. |  |
+| Medium | static | static_fallback | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/docs_check.py:265` | LLM call does not show a timeout at the call site. |  |
+| Medium | static | static_fallback | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/docs_check.py:301` | LLM call does not show a timeout at the call site. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `scripts/age90_file_input_runner.py:119` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `scripts/age90_file_input_runner.py:131` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Low | static | llm | LLM | `llm-max-tokens-missing` | LLM cost/control | `conftest.py:125` | LLM client/model is created without visible output token limit. | Set max_tokens/max_output_tokens where supported to reduce runaway cost and oversized responses. |
-| Low | static | llm | LLM | `llm-max-tokens-missing` | LLM cost/control | `conftest.py:331` | LLM client/model is created without visible output token limit. | Set max_tokens/max_output_tokens where supported to reduce runaway cost and oversized responses. |
+| Low | static | static_fallback | LLM | `llm-max-tokens-missing` | LLM cost/control | `conftest.py:125` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static_fallback | LLM | `llm-max-tokens-missing` | LLM cost/control | `conftest.py:331` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/src/crewai_cli/create_json_crew.py:839` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/src/crewai_cli/crew_run_tui.py:2222` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/src/crewai_cli/crew_run_tui.py:2227` | LLM client/model is created without visible output token limit. |  |
@@ -2081,8 +2081,8 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/tests/test_model_catalog.py:449` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/tests/test_model_catalog.py:472` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/tests/test_model_catalog.py:505` | LLM client/model is created without visible output token limit. |  |
-| Low | static | llm | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-core/src/crewai_core/plus_api.py:198` | LLM client/model is created without visible output token limit. | Set max_tokens/max_output_tokens where supported to reduce runaway cost and oversized responses. |
-| Low | static | llm | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-core/src/crewai_core/plus_api.py:224` | LLM client/model is created without visible output token limit. | Set max_tokens/max_output_tokens where supported to reduce runaway cost and oversized responses. |
+| Low | static | static_fallback | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-core/src/crewai_core/plus_api.py:198` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static_fallback | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-core/src/crewai_core/plus_api.py:224` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-files/src/crewai_files/formatting/api.py:74` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-files/src/crewai_files/uploaders/anthropic.py:54` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-files/src/crewai_files/uploaders/anthropic.py:68` | LLM client/model is created without visible output token limit. |  |
@@ -2124,13 +2124,13 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/src/crewai_tools/tools/weaviate_tool/vector_search.py:115` | Vector store initialization does not show metadata governance. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-tools/tests/rag/test_embedding_service.py:209` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-tools/tests/rag/test_embedding_service.py:245` | LLM client/model is created without visible output token limit. |  |
-| Low | static | llm | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/tests/tools/couchbase_tool_test.py:53` | Vector store initialization does not show metadata governance. | Store source, tenant, document type, and permission metadata so retrieval can be filtered safely. |
-| Low | static | llm | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/tests/tools/couchbase_tool_test.py:56` | Vector store initialization does not show metadata governance. | Store source, tenant, document type, and permission metadata so retrieval can be filtered safely. |
+| Low | static | static_fallback | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/tests/tools/couchbase_tool_test.py:53` | Vector store initialization does not show metadata governance. |  |
+| Low | static | static_fallback | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/tests/tools/couchbase_tool_test.py:56` | Vector store initialization does not show metadata governance. |  |
 | Low | static | static | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/tests/tools/couchbase_tool_test.py:274` | Vector store initialization does not show metadata governance. |  |
-| Low | static | llm | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/tests/tools/test_mongodb_vector_search_tool.py:21` | Vector store initialization does not show metadata governance. | Store source, tenant, document type, and permission metadata so retrieval can be filtered safely. |
-| Low | static | llm | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/tests/tools/test_mongodb_vector_search_tool.py:50` | Vector store initialization does not show metadata governance. | Store source, tenant, document type, and permission metadata so retrieval can be filtered safely. |
-| Low | static | llm | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/tests/tools/test_mongodb_vector_search_tool.py:59` | Vector store initialization does not show metadata governance. | Store source, tenant, document type, and permission metadata so retrieval can be filtered safely. |
-| Low | static | llm | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/tests/tools/test_mongodb_vector_search_tool.py:67` | Vector store initialization does not show metadata governance. | Store source, tenant, document type, and permission metadata so retrieval can be filtered safely. |
+| Low | static | static_fallback | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/tests/tools/test_mongodb_vector_search_tool.py:21` | Vector store initialization does not show metadata governance. |  |
+| Low | static | static_fallback | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/tests/tools/test_mongodb_vector_search_tool.py:50` | Vector store initialization does not show metadata governance. |  |
+| Low | static | static_fallback | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/tests/tools/test_mongodb_vector_search_tool.py:59` | Vector store initialization does not show metadata governance. |  |
+| Low | static | static_fallback | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/tests/tools/test_mongodb_vector_search_tool.py:67` | Vector store initialization does not show metadata governance. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/agent/core.py:506` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/agent/core.py:1383` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/agent/core.py:1743` | LLM client/model is created without visible output token limit. |  |
@@ -3145,426 +3145,12 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_planning_handler.py:174` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_training_converter.py:65` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_training_converter.py:68` | LLM client/model is created without visible output token limit. |  |
-| Low | static | llm | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/devtools/src/crewai_devtools/cli.py:1016` | LLM client/model is created without visible output token limit. | Set max_tokens/max_output_tokens where supported to reduce runaway cost and oversized responses. |
-| Low | static | llm | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/devtools/src/crewai_devtools/cli.py:1029` | LLM client/model is created without visible output token limit. | Set `max_tokens` in the `create` method call. |
-| Low | static | llm | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/devtools/src/crewai_devtools/docs_check.py:167` | LLM client/model is created without visible output token limit. | Set max_tokens/max_output_tokens where supported to reduce runaway cost and oversized responses. |
+| Low | static | static_fallback | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/devtools/src/crewai_devtools/cli.py:1016` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static_fallback | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/devtools/src/crewai_devtools/cli.py:1029` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static_fallback | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/devtools/src/crewai_devtools/docs_check.py:167` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `scripts/age90_file_input_runner.py:119` | Agent verbose logging is enabled. |  |
 | Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `scripts/age90_file_input_runner.py:131` | Agent verbose logging is enabled. |  |
 
-## LLM Risk Controls
+## LLM Control Warnings
 
-### 1. Medium - `llm-constructor-timeout-retry-missing`
-
-Location: `conftest.py:125`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-The code snippet provided is a utility function for normalizing hostnames in a test environment (using VCR/mocking), not the actual instantiation of an LLM client. The risk is not present in this specific logic.
-
-Recommended control:
-
-Configure timeout and retry/fallback behavior on the client/model or wrapper.
-
-### 2. Medium - `llm-constructor-timeout-retry-missing`
-
-Location: `conftest.py:331`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This code is a request header/URI normalization function used for testing/mocking (VCR/cassettes), not the creation of an LLM client.
-
-Recommended control:
-
-Configure timeout and retry/fallback behavior on the client/model or wrapper.
-
-### 3. Medium - `llm-constructor-timeout-retry-missing`
-
-Location: `lib/crewai-core/src/crewai_core/plus_api.py:198`  
-LLM confidence: high  
-Valid risk according to LLM: True
-
-Risk explanation:
-
-The `httpx.Client` is instantiated without a default timeout, which can lead to hanging requests if the server does not respond.
-
-Recommended control:
-
-Set a default timeout in the `httpx.Client` constructor.
-
-Safer code example:
-
-```python
-with httpx.Client(trust_env=False, verify=verify, timeout=30.0) as client:
-```
-
-### 4. Medium - `llm-constructor-timeout-retry-missing`
-
-Location: `lib/crewai-core/src/crewai_core/plus_api.py:224`  
-LLM confidence: high  
-Valid risk according to LLM: True
-
-Risk explanation:
-
-The `httpx.Client` is instantiated without a timeout, which can cause the application to hang indefinitely on network issues.
-
-Recommended control:
-
-Set a default timeout in the `httpx.Client` constructor.
-
-Safer code example:
-
-```python
-httpx.Client(trust_env=False, verify=verify, timeout=30.0)
-```
-
-### 5. Medium - `llm-call-timeout-missing`
-
-Location: `lib/devtools/src/crewai_devtools/cli.py:513`  
-LLM confidence: high  
-Valid risk according to LLM: True
-
-Risk explanation:
-
-The `client.chat.completions.create` call is made without an explicit timeout, making the application vulnerable to hanging on slow API responses.
-
-Recommended control:
-
-Pass a timeout parameter to the `create` method.
-
-Safer code example:
-
-```python
-response = client.chat.completions.create(model="gpt-4o-mini", messages=[...], timeout=60.0)
-```
-
-### 6. Medium - `llm-constructor-timeout-retry-missing`
-
-Location: `lib/devtools/src/crewai_devtools/cli.py:1016`  
-LLM confidence: medium  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-The `OpenAI` client is instantiated without explicit timeout/retry settings. While this is a risk, the finding refers to the constructor, and the code is actually just initializing the client.
-
-Recommended control:
-
-Configure timeout and retries in the OpenAI client constructor.
-
-Safer code example:
-
-```python
-OpenAI(api_key=os.getenv("OPENAI_API_KEY"), timeout=60.0, max_retries=3)
-```
-
-### 7. Medium - `llm-call-timeout-missing`
-
-Location: `lib/devtools/src/crewai_devtools/cli.py:1029`  
-LLM confidence: high  
-Valid risk according to LLM: True
-
-Risk explanation:
-
-The LLM completion call lacks a timeout, risking application hangs during network or API latency.
-
-Recommended control:
-
-Pass a timeout parameter to the `create` method.
-
-Safer code example:
-
-```python
-response = openai_client.chat.completions.create(model="gpt-4o-mini", messages=[...], timeout=60.0)
-```
-
-### 8. Medium - `llm-constructor-timeout-retry-missing`
-
-Location: `lib/devtools/src/crewai_devtools/cli.py:1029`  
-LLM confidence: high  
-Valid risk according to LLM: True
-
-Risk explanation:
-
-The LLM completion call is made without a timeout, which can lead to long-running processes if the API hangs.
-
-Recommended control:
-
-Pass a timeout parameter to the `create` method.
-
-Safer code example:
-
-```python
-response = openai_client.chat.completions.create(model="gpt-4o-mini", messages=[...], timeout=60.0)
-```
-
-### 9. Medium - `llm-constructor-timeout-retry-missing`
-
-Location: `lib/devtools/src/crewai_devtools/docs_check.py:167`  
-LLM confidence: medium  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-The `OpenAI()` client is instantiated with default settings. While it lacks explicit timeout/retry, the finding is about the constructor, and the code is just a simple instantiation.
-
-Recommended control:
-
-Configure timeout and retries in the OpenAI client constructor.
-
-Safer code example:
-
-```python
-OpenAI(timeout=60.0, max_retries=3)
-```
-
-### 10. Medium - `llm-call-timeout-missing`
-
-Location: `lib/devtools/src/crewai_devtools/docs_check.py:225`  
-LLM confidence: high  
-Valid risk according to LLM: True
-
-Risk explanation:
-
-The LLM completion call is made without a timeout, which can cause the process to hang if the API response is delayed.
-
-Recommended control:
-
-Pass a timeout parameter to the `create` method.
-
-Safer code example:
-
-```python
-response = client.chat.completions.create(model="gpt-4o", messages=[...], timeout=60.0)
-```
-
-### 11. Medium - `llm-call-timeout-missing`
-
-Location: `lib/devtools/src/crewai_devtools/docs_check.py:265`  
-LLM confidence: high  
-Valid risk according to LLM: True
-
-Risk explanation:
-
-The LLM completion call is made without a timeout, risking application hangs.
-
-Recommended control:
-
-Pass a timeout parameter to the `create` method.
-
-Safer code example:
-
-```python
-response = client.chat.completions.create(model="gpt-4o", messages=[...], timeout=60.0)
-```
-
-### 12. Medium - `llm-call-timeout-missing`
-
-Location: `lib/devtools/src/crewai_devtools/docs_check.py:301`  
-LLM confidence: high  
-Valid risk according to LLM: True
-
-Risk explanation:
-
-The LLM completion call is made without a timeout, which can lead to hanging processes.
-
-Recommended control:
-
-Pass a timeout parameter to the `create` method.
-
-Safer code example:
-
-```python
-response = client.chat.completions.create(model="gpt-4o-mini", messages=[...], timeout=60.0)
-```
-
-### 13. Low - `llm-max-tokens-missing`
-
-Location: `conftest.py:125`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-The code snippet is a hostname normalization utility for testing purposes and does not involve LLM model instantiation or parameter setting.
-
-Recommended control:
-
-Set max_tokens/max_output_tokens where supported to reduce runaway cost and oversized responses.
-
-### 14. Low - `llm-max-tokens-missing`
-
-Location: `conftest.py:331`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This is a request normalization function for testing purposes, not an LLM model instantiation.
-
-Recommended control:
-
-Set max_tokens/max_output_tokens where supported to reduce runaway cost and oversized responses.
-
-### 15. Low - `llm-max-tokens-missing`
-
-Location: `lib/crewai-core/src/crewai_core/plus_api.py:198`  
-LLM confidence: medium  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This code is a low-level HTTP request wrapper. While it doesn't set max_tokens, max_tokens is a payload parameter for LLM APIs, not a property of the HTTP client itself.
-
-Recommended control:
-
-Set max_tokens/max_output_tokens where supported to reduce runaway cost and oversized responses.
-
-### 16. Low - `llm-max-tokens-missing`
-
-Location: `lib/crewai-core/src/crewai_core/plus_api.py:224`  
-LLM confidence: medium  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-The code is an HTTP client wrapper; max_tokens is an LLM API parameter, not an HTTP client configuration.
-
-Recommended control:
-
-Set max_tokens/max_output_tokens where supported to reduce runaway cost and oversized responses.
-
-### 17. Low - `vector-metadata-governance-missing`
-
-Location: `lib/crewai-tools/tests/tools/couchbase_tool_test.py:53`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This is a unit test for a mock object. The finding refers to 'Vector store initialization', but the code is actually performing a mock assertion in a test suite.
-
-Recommended control:
-
-Store source, tenant, document type, and permission metadata so retrieval can be filtered safely.
-
-### 18. Low - `vector-metadata-governance-missing`
-
-Location: `lib/crewai-tools/tests/tools/couchbase_tool_test.py:56`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This is a unit test for a mock object. The finding refers to 'Vector store initialization', but the code is actually performing a mock assertion in a test suite.
-
-Recommended control:
-
-Store source, tenant, document type, and permission metadata so retrieval can be filtered safely.
-
-### 19. Low - `vector-metadata-governance-missing`
-
-Location: `lib/crewai-tools/tests/tools/test_mongodb_vector_search_tool.py:21`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This is a unit test for a mock object. The finding refers to 'Vector store initialization', but the code is actually performing a mock assertion in a test suite.
-
-Recommended control:
-
-Store source, tenant, document type, and permission metadata so retrieval can be filtered safely.
-
-### 20. Low - `vector-metadata-governance-missing`
-
-Location: `lib/crewai-tools/tests/tools/test_mongodb_vector_search_tool.py:50`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This is a unit test for a mock object. The finding refers to 'Vector store initialization', but the code is actually performing a mock assertion in a test suite.
-
-Recommended control:
-
-Store source, tenant, document type, and permission metadata so retrieval can be filtered safely.
-
-### 21. Low - `vector-metadata-governance-missing`
-
-Location: `lib/crewai-tools/tests/tools/test_mongodb_vector_search_tool.py:59`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This is a unit test for a mock object. The finding refers to 'Vector store initialization', but the code is actually performing a mock assertion in a test suite.
-
-Recommended control:
-
-Store source, tenant, document type, and permission metadata so retrieval can be filtered safely.
-
-### 22. Low - `vector-metadata-governance-missing`
-
-Location: `lib/crewai-tools/tests/tools/test_mongodb_vector_search_tool.py:67`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This is a unit test for a mock object. The finding refers to 'Vector store initialization', but the code is actually performing a mock assertion in a test suite.
-
-Recommended control:
-
-Store source, tenant, document type, and permission metadata so retrieval can be filtered safely.
-
-### 23. Low - `llm-max-tokens-missing`
-
-Location: `lib/devtools/src/crewai_devtools/cli.py:1016`  
-LLM confidence: medium  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-The code is initializing an OpenAI client; max_tokens is a parameter passed during the API call, not the client constructor.
-
-Recommended control:
-
-Set max_tokens/max_output_tokens where supported to reduce runaway cost and oversized responses.
-
-### 24. Low - `llm-max-tokens-missing`
-
-Location: `lib/devtools/src/crewai_devtools/cli.py:1029`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-The code is an LLM API call; max_tokens should be passed as an argument to the `create` method to control response length.
-
-Recommended control:
-
-Set `max_tokens` in the `create` method call.
-
-Safer code example:
-
-```python
-response = openai_client.chat.completions.create(model="gpt-4o-mini", messages=[...], max_tokens=500)
-```
-
-### 25. Low - `llm-max-tokens-missing`
-
-Location: `lib/devtools/src/crewai_devtools/docs_check.py:167`  
-LLM confidence: medium  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-The code is initializing an OpenAI client; max_tokens is an argument for the API call, not the client constructor.
-
-Recommended control:
-
-Set max_tokens/max_output_tokens where supported to reduce runaway cost and oversized responses.
+- LLM control request failed: HTTP Error 429: Too Many Requests

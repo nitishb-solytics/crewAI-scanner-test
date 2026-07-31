@@ -21,7 +21,7 @@ permissions:
   pull-requests: read
 
 jobs:
-  update-stack-report:
+  update-ai-reports:
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
 
@@ -31,86 +31,50 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Run AI Stack Mapper scan
+      - name: Run AI stack and risk scan
         uses: nitishb-solytics/AI-STACK-MAPPER@main
         with:
           path: "."
-          mode: "stack"
+          mode: "both"
+
           scanner-mode: "hybrid"
           markdown-output: "AI_STACK.md"
           json-output: "ai-stack-report.json"
           enrich: "true"
-          llm-api-key: ${{ secrets.AI_STACK_LLM_API_KEY }}
-          llm-base-url: "https://openrouter.ai/api/v1"
-          llm-model: "google/gemma-4-26b-a4b-it:free"
 
-      - name: Validate stack reports
-        shell: bash
-        run: |
-          test -s AI_STACK.md
-          test -s ai-stack-report.json
-          python -m json.tool ai-stack-report.json > /dev/null
-
-      - name: Commit updated stack reports
-        shell: bash
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add AI_STACK.md ai-stack-report.json
-
-          if git diff --cached --quiet; then
-            echo "No AI stack changes detected."
-            exit 0
-          fi
-
-          git commit -m "chore: update AI stack report"
-          git push
-
-  update-risk-report:
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout CrewAI
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Run AI risk scan
-        uses: nitishb-solytics/AI-STACK-MAPPER@main
-        with:
-          path: "."
-          mode: "risk"
           risk-output: "AI_RISK_REPORT.md"
           risk-json-output: "ai-risk-report.json"
           risk-no-fail: "true"
+
           llm-risk-control: "true"
           llm-api-key: ${{ secrets.AI_STACK_LLM_API_KEY }}
           llm-base-url: "https://openrouter.ai/api/v1"
           llm-model: "google/gemma-4-26b-a4b-it:free"
 
-      - name: Validate risk reports
+      - name: Validate reports
         shell: bash
         run: |
+          test -s AI_STACK.md
+          test -s ai-stack-report.json
           test -s AI_RISK_REPORT.md
           test -s ai-risk-report.json
+          python -m json.tool ai-stack-report.json > /dev/null
           python -m json.tool ai-risk-report.json > /dev/null
 
-      - name: Commit updated risk reports
+      - name: Commit updated reports
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add AI_RISK_REPORT.md ai-risk-report.json
+          git add AI_STACK.md ai-stack-report.json AI_RISK_REPORT.md ai-risk-report.json
 
           if git diff --cached --quiet; then
-            echo "No AI risk changes detected."
+            echo "No AI stack/risk report changes detected."
             exit 0
           fi
 
-          git commit -m "chore: update AI risk report"
+          git commit -m "chore: update AI stack and risk reports"
           git push
 
   pr-risk-quality-gate:
@@ -135,12 +99,14 @@ jobs:
           changed-only: "true"
           base-ref: ${{ github.base_ref }}
           fail-on: "high"
+
+          risk-output: "AI_RISK_REPORT.md"
+          risk-json-output: "ai-risk-report.json"
+
           llm-risk-control: "true"
           llm-api-key: ${{ secrets.AI_STACK_LLM_API_KEY }}
           llm-base-url: "https://openrouter.ai/api/v1"
           llm-model: "google/gemma-4-26b-a4b-it:free"
-          risk-output: "AI_RISK_REPORT.md"
-          risk-json-output: "ai-risk-report.json"
 
       - name: Validate PR risk report
         if: always()

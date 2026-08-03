@@ -47,6 +47,8 @@ jobs:
           risk-no-fail: "true"
 
           llm-risk-control: "true"
+          risk-llm-max-findings: "25"
+          risk-llm-min-severity: "high"
           llm-api-key: ${{ secrets.AI_STACK_LLM_API_KEY }}
           llm-base-url: "https://openrouter.ai/api/v1"
           llm-model: "google/gemma-4-26b-a4b-it:free"
@@ -104,6 +106,8 @@ jobs:
           risk-json-output: "ai-risk-report.json"
 
           llm-risk-control: "true"
+          risk-llm-max-findings: "25"
+          risk-llm-min-severity: "high"
           llm-api-key: ${{ secrets.AI_STACK_LLM_API_KEY }}
           llm-base-url: "https://openrouter.ai/api/v1"
           llm-model: "google/gemma-4-26b-a4b-it:free"

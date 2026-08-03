@@ -1,6 +1,6 @@
 # AI Stack Report
 
-_Generated: 2026-08-03T13:50:02.874441Z_  
+_Generated: 2026-08-03T13:53:43.092567Z_  
 _Scanner mode: hybrid_  
 _Scanned 1279 Python file(s), found 189 distinct component(s)._
 
@@ -200,7 +200,7 @@ _Scanned 1279 Python file(s), found 189 distinct component(s)._
 
 | Component | Confidence | Occurrences | Example location |
 |---|---|---|---|
-| CrewAI | high | 3501 | `conftest.py:196` |
+| CrewAI | high | 3500 | `conftest.py:196` |
 | Agent (verify framework) | medium | 682 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:18` |
 | CrewAI Crew | high | 424 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:55` |
 | LangChain | high | 4 | `lib/crewai-tools/pyproject.toml:93` |

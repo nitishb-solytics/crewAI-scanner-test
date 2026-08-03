@@ -1,6 +1,6 @@
 {
   "root": "/home/runner/work/crewAI-scanner-test/crewAI-scanner-test",
-  "generated_at": "2026-08-03T13:50:02.874441Z",
+  "generated_at": "2026-08-03T13:53:43.092567Z",
   "scanner_mode": "hybrid",
   "scanned_files": 1279,
   "skipped_files": [
@@ -11547,7 +11547,7 @@
           "crewai"
         ],
         "confidence": "high",
-        "count": 3501,
+        "count": 3500,
         "deployment_targets": [
           "cloud"
         ],
@@ -46458,16 +46458,6 @@
             "match_type": "import",
             "confidence": "high",
             "detail": "crewai.events.event_bus",
-            "deployment_target": "cloud",
-            "context_hint": "",
-            "prompt_hint": ""
-          },
-          {
-            "file": "pyproject.toml",
-            "line": 1,
-            "match_type": "llm_discovery",
-            "confidence": "high",
-            "detail": "The repository description explicitly identifies CrewAI as a framework for orchestrating autonomous AI agents.",
             "deployment_target": "cloud",
             "context_hint": "",
             "prompt_hint": ""

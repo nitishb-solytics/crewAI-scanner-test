@@ -1,6 +1,6 @@
 # AI Risk Report
 
-_Generated: 2026-08-03T13:50:48.529975Z_  
+_Generated: 2026-08-03T13:54:47.235321Z_  
 _Status: FAILED_  
 _Scanned 1284 Python file(s). Fail threshold: high._  
 _Risk scan mode: static+llm_
@@ -20,9 +20,9 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 
 | Severity | Source | Control | Feature | Rule | Area | Location | Finding | Recommended control |
 |---|---|---|---|---|---|---|---|---|
-| High | static | llm | TextToSQL | `texttosql-generated-sql-executed` | TextToSQL validation | `lib/crewai-tools/src/crewai_tools/tools/db2_search_tool/db2_search_tool.py:319` | Generated SQL-like value appears to be executed directly. | Validate all dynamic components (table names, column names) against a strict allowlist of schema objects and ensure the generated SQL is a SELECT statement before execution. |
-| High | static | llm | TextToSQL | `texttosql-generated-sql-executed` | TextToSQL validation | `lib/crewai-tools/src/crewai_tools/tools/nl2sql/nl2sql_tool.py:486` | Generated SQL-like value appears to be executed directly. | Use a proper SQL parser (like `sqlglot` or `sqlparse`) to inspect the AST (Abstract Syntax Tree) of the query to ensure it only contains SELECT statements and no multiple statements. |
-| High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/src/crewai/crew.py:1523` | Agent delegation is enabled without visible iteration bounds. | Implement a `max_delegation_depth` or `max_iterations` parameter in the Agent/Crew configuration to prevent infinite loops. |
+| High | static | llm | TextToSQL | `texttosql-generated-sql-executed` | TextToSQL validation | `lib/crewai-tools/src/crewai_tools/tools/db2_search_tool/db2_search_tool.py:319` | Generated SQL-like value appears to be executed directly. | Use a SQL parser to validate the structure of the generated SQL and enforce a strict allowlist for table and column names. Ensure the database user has read-only permissions. |
+| High | static | llm | TextToSQL | `texttosql-generated-sql-executed` | TextToSQL validation | `lib/crewai-tools/src/crewai_tools/tools/nl2sql/nl2sql_tool.py:486` | Generated SQL-like value appears to be executed directly. | Implement a robust SQL parser (like `sqlglot`) to verify that the statement is a `SELECT` query and does not contain prohibited commands before execution. Enforce read-only database credentials. |
+| High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/src/crewai/crew.py:1523` | Agent delegation is enabled without visible iteration bounds. | Add strict delegation limits and task/tool guardrails before enabling autonomous delegation. |
 | High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_crew.py:60` | Agent delegation is enabled without visible iteration bounds. | Add strict delegation limits and task/tool guardrails before enabling autonomous delegation. |
 | High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_crew.py:1728` | Agent delegation is enabled without visible iteration bounds. | Add strict delegation limits and task/tool guardrails before enabling autonomous delegation. |
 | High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_crew.py:3924` | Agent delegation is enabled without visible iteration bounds. | Add strict delegation limits and task/tool guardrails before enabling autonomous delegation. |
@@ -3239,54 +3239,39 @@ Valid risk according to LLM: True
 
 Risk explanation:
 
-The code executes a dynamically constructed SQL string directly using `self.cursor.execute(sql, tuple(params))`. While parameters are used for values, the `sql` variable itself is built via string concatenation/joining in `_build_sql`, which can lead to SQL injection if the inputs to `_build_sql` (like `table` or `column_query`) are not strictly validated against an allowlist.
+The code executes a dynamically constructed SQL string directly using `self.cursor.execute(sql, tuple(params))`. While parameters are used for values, the `sql` variable itself is built via string concatenation/joining in `_build_sql`, which can lead to SQL injection if the components of `sql` (like column names or table names) are derived from untrusted user input.
 
 Recommended control:
 
-Validate all dynamic components (table names, column names) against a strict allowlist of schema objects and ensure the generated SQL is a SELECT statement before execution.
-
-Safer code example:
-
-```python
-if not is_safe_identifier(table): raise ValueError('Invalid table')
-self.cursor.execute(sql, tuple(params))
-```
+Use a SQL parser to validate the structure of the generated SQL and enforce a strict allowlist for table and column names. Ensure the database user has read-only permissions.
 
 ### 2. High - `texttosql-generated-sql-executed`
 
 Location: `lib/crewai-tools/src/crewai_tools/tools/nl2sql/nl2sql_tool.py:486`  
-LLM confidence: medium  
+LLM confidence: high  
 Valid risk according to LLM: True
 
 Risk explanation:
 
-The code manually splits the SQL query by semicolons and checks for write commands to prevent unauthorized DML. However, manual string splitting is fragile and can be bypassed by clever SQL syntax or comments, potentially allowing multiple statements where only one was intended.
+The method `execute_sql` takes a raw `sql_query` string and executes it. Although there is logic to detect and potentially block write statements (`_is_write_stmt`), the reliance on string splitting and custom parsing for security is fragile and prone to bypasses (e.g., via comments or complex CTEs).
 
 Recommended control:
 
-Use a proper SQL parser (like `sqlglot` or `sqlparse`) to inspect the AST (Abstract Syntax Tree) of the query to ensure it only contains SELECT statements and no multiple statements.
-
-Safer code example:
-
-```python
-parsed = sqlglot.parse_one(sql_query)
-if any(isinstance(expr, sqlglot.exp.Delete) for expr in parsed.find_all()):
-    raise ValueError('DML not allowed')
-```
+Implement a robust SQL parser (like `sqlglot`) to verify that the statement is a `SELECT` query and does not contain prohibited commands before execution. Enforce read-only database credentials.
 
 ### 3. High - `agent-delegation-unbounded`
 
 Location: `lib/crewai/src/crewai/crew.py:1523`  
-LLM confidence: low  
+LLM confidence: medium  
 Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a test/implementation detail for a hierarchical manager agent. In a production framework, 'unbounded' delegation is a design choice for autonomy, but it should be managed by the user via task constraints or max iteration settings in the Agent class.
+This is a core framework implementation where `allow_delegation=True` is a configuration setting for the manager agent. The risk of unbounded delegation is a functional design choice for the agent's autonomy, not a vulnerability in this specific line of code.
 
 Recommended control:
 
-Implement a `max_delegation_depth` or `max_iterations` parameter in the Agent/Crew configuration to prevent infinite loops.
+Add strict delegation limits and task/tool guardrails before enabling autonomous delegation.
 
 ### 4. High - `agent-delegation-unbounded`
 
@@ -3296,7 +3281,7 @@ Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a unit test fixture. The risk of unbounded delegation is irrelevant in a test environment used for verifying agent behavior.
+This is a unit test fixture. The `allow_delegation=True` setting is used to test the agent's behavior in a controlled testing environment.
 
 Recommended control:
 
@@ -3310,7 +3295,7 @@ Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a unit test verifying that delegation is NOT enabled when only one agent is present. The risk is not applicable to the test logic.
+This is a unit test verifying that delegation is NOT enabled under specific conditions. The `allow_delegation=True` is part of the test setup.
 
 Recommended control:
 
@@ -3324,7 +3309,7 @@ Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a unit test for verifying tool preservation. The 'unbounded' risk is not applicable to test code.
+This is a unit test setup for testing agent capabilities. The risk of unbounded delegation is a property of the agent configuration, not a vulnerability in the test code.
 
 Recommended control:
 
@@ -3338,7 +3323,7 @@ Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a unit test for verifying tool preservation. The 'unbounded' risk is not applicable to test code.
+This is a unit test setup for testing agent capabilities. The risk of unbounded delegation is a property of the agent configuration, not a vulnerability in the test code.
 
 Recommended control:
 
@@ -3352,7 +3337,7 @@ Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a unit test for verifying crew kickoff functionality. The 'unbounded' risk is not applicable to test code.
+This is a unit test setup. The `allow_delegation=True` is used to verify the manager agent's functionality in a test scenario.
 
 Recommended control:
 
@@ -3366,7 +3351,7 @@ Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a unit test for verifying delegation increment logic. The 'unbounded' risk is not applicable to test code.
+This is a unit test verifying the `increment_delegations` logic. The `allow_delegation=True` is part of the test case configuration.
 
 Recommended control:
 
@@ -3380,7 +3365,7 @@ Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a unit test for verifying delegation increment logic. The 'unbounded' risk is not applicable to test code.
+This is a unit test verifying the `increment_delegations` logic. The `allow_delegation=True` is part of the test case configuration.
 
 Recommended control:
 
@@ -3394,7 +3379,7 @@ Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a unit test for verifying cache behavior. The 'unbounded' risk is not applicable to test code.
+This is a unit test verifying cache behavior. The `allow_delegation=True` is part of the test setup.
 
 Recommended control:
 

@@ -1,14 +1,14 @@
 # AI Stack Report
 
-_Generated: 2026-07-31T06:02:59.676417Z_  
+_Generated: 2026-08-03T13:50:02.874441Z_  
 _Scanner mode: hybrid_  
-_Scanned 1268 Python file(s), found 180 distinct component(s)._
+_Scanned 1279 Python file(s), found 189 distinct component(s)._
 
 ## LLM Providers
 
 | Component | Confidence | Deployment | Occurrences | Example location |
 |---|---|---|---|---|
-| OpenAI GPT-4 family (string literal) | low | Cloud | 440 | `lib/cli/src/crewai_cli/constants.py:354` |
+| OpenAI GPT-4 family (string literal) | low | Cloud | 443 | `lib/cli/src/crewai_cli/constants.py:354` |
 | Anthropic Claude family (string literal) | low | Cloud | 40 | `lib/cli/tests/test_model_catalog.py:43` |
 | OpenAI | high | Cloud | 23 | `lib/crewai-files/src/crewai_files/uploaders/openai.py:168` |
 | Google Gemini family (string literal) | low | Cloud | 20 | `lib/crewai-files/tests/processing/test_constraints.py:232` |
@@ -18,8 +18,8 @@ _Scanned 1268 Python file(s), found 180 distinct component(s)._
 | Generic LLM client (verify provider) | medium | Cloud | 11 | `lib/cli/src/crewai_cli/plus_api.py:47` |
 | Meta Llama family (string literal) | low | Cloud | 10 | `lib/cli/tests/test_model_catalog.py:90` |
 | OpenAI o-series (string literal) | low | Cloud | 10 | `lib/cli/tests/test_model_catalog.py:88` |
+| OpenAI client | high | Cloud + Unknown (verify manually) | 9 | `lib/crewai-files/src/crewai_files/uploaders/openai.py:170` |
 | Anthropic | high | Cloud | 8 | `lib/crewai-files/src/crewai_files/uploaders/anthropic.py:52` |
-| OpenAI client | high | Cloud + Unknown (verify manually) | 8 | `lib/crewai-files/src/crewai_files/uploaders/openai.py:170` |
 | Google GenAI client | high | Cloud | 5 | `lib/crewai-files/src/crewai_files/uploaders/gemini.py:122` |
 | Anthropic client | high | Cloud | 2 | `lib/crewai-files/src/crewai_files/uploaders/anthropic.py:54` |
 | Anthropic client (async) | high | Cloud | 2 | `lib/crewai-files/src/crewai_files/uploaders/anthropic.py:68` |
@@ -65,7 +65,9 @@ _Scanned 1268 Python file(s), found 180 distinct component(s)._
 | Custom Tool (subclasses BaseTool): BaseAgentTool | high | 1 | `lib/crewai/src/crewai/tools/agent_tools/base_agent_tools.py:15` |
 | Custom Tool (subclasses BaseTool): BedrockInvokeAgentTool | high | 1 | `lib/crewai-tools/src/crewai_tools/aws/bedrock/agents/invoke_agent_tool.py:26` |
 | Custom Tool (subclasses BaseTool): BedrockKBRetrieverTool | high | 1 | `lib/crewai-tools/src/crewai_tools/aws/bedrock/knowledge_base/retriever_tool.py:26` |
-| Custom Tool (subclasses BaseTool): BlockedTool | high | 1 | `lib/crewai/tests/utilities/test_agent_utils.py:1224` |
+| Custom Tool (subclasses BaseTool): BlockedTool | high | 1 | `lib/crewai/tests/utilities/test_agent_utils.py:1231` |
+| Custom Tool (subclasses BaseTool): BlockingFailingTool | high | 1 | `lib/crewai/tests/tools/test_tool_failure.py:1386` |
+| Custom Tool (subclasses BaseTool): BoomTool | high | 1 | `lib/crewai/tests/tools/test_tool_failure.py:625` |
 | Custom Tool (subclasses BaseTool): BraveSearchTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/brave_search_tool/brave_search_tool.py:28` |
 | Custom Tool (subclasses BaseTool): BraveSearchToolBase | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/brave_search_tool/base.py:82` |
 | Custom Tool (subclasses BaseTool): BrightDataDatasetTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/brightdata_tool/brightdata_dataset.py:402` |
@@ -82,8 +84,9 @@ _Scanned 1268 Python file(s), found 180 distinct component(s)._
 | Custom Tool (subclasses BaseTool): CouchbaseFTSVectorSearchTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/couchbase_tool/couchbase_tool.py:37` |
 | Custom Tool (subclasses BaseTool): CountingTool | high | 1 | `lib/crewai/tests/agents/test_native_tool_calling.py:1008` |
 | Custom Tool (subclasses BaseTool): CrewAIMCPTool | high | 1 | `lib/crewai-tools/src/crewai_tools/adapters/mcp_adapter.py:56` |
-| Custom Tool (subclasses BaseTool): CrewAIPlatformActionTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/crewai_platform_tools/crewai_platform_action_tool.py:18` |
+| Custom Tool (subclasses BaseTool): CrewAIPlatformActionTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/crewai_platform_tools/crewai_platform_action_tool.py:19` |
 | Custom Tool (subclasses BaseTool): CustomTool | high | 1 | `lib/crewai/tests/tools/test_structured_tool.py:317` |
+| Custom Tool (subclasses BaseTool): DB2VectorSearchTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/db2_search_tool/db2_search_tool.py:62` |
 | Custom Tool (subclasses BaseTool): DallETool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/dalle_tool/dalle_tool.py:17` |
 | Custom Tool (subclasses BaseTool): DatabricksQueryTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/databricks_query_tool/databricks_query_tool.py:73` |
 | Custom Tool (subclasses BaseTool): DaytonaBaseTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/daytona_sandbox_tool/daytona_base_tool.py:16` |
@@ -92,14 +95,14 @@ _Scanned 1268 Python file(s), found 180 distinct component(s)._
 | Custom Tool (subclasses BaseTool): DirectoryReadTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/directory_read_tool/directory_read_tool.py:20` |
 | Custom Tool (subclasses BaseTool): E2BBaseTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/e2b_sandbox_tool/e2b_base_tool.py:16` |
 | Custom Tool (subclasses BaseTool): EnterpriseActionTool | high | 1 | `lib/crewai-tools/src/crewai_tools/adapters/enterprise_adapter.py:21` |
-| Custom Tool (subclasses BaseTool): ErrorTool | high | 1 | `lib/crewai/tests/utilities/test_events.py:433` |
+| Custom Tool (subclasses BaseTool): ErrorTool | high | 1 | `lib/crewai/tests/utilities/test_events.py:437` |
 | Custom Tool (subclasses BaseTool): ExaSearchTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/exa_tools/exa_search_tool.py:44` |
 | Custom Tool (subclasses BaseTool): ExecuteCodeTool | high | 1 | `lib/crewai-tools/src/crewai_tools/aws/bedrock/code_interpreter/code_interpreter_toolkit.py:138` |
 | Custom Tool (subclasses BaseTool): ExecuteCommandTool | high | 1 | `lib/crewai-tools/src/crewai_tools/aws/bedrock/code_interpreter/code_interpreter_toolkit.py:191` |
 | Custom Tool (subclasses BaseTool): ExplicitSearchTool | high | 1 | `lib/crewai/tests/tools/test_base_tool.py:376` |
 | Custom Tool (subclasses BaseTool): FileCompressorTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/files_compressor_tool/files_compressor_tool.py:30` |
-| Custom Tool (subclasses BaseTool): FileReadTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/file_read_tool/file_read_tool.py:25` |
-| Custom Tool (subclasses BaseTool): FileWriterTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/file_writer_tool/file_writer_tool.py:32` |
+| Custom Tool (subclasses BaseTool): FileReadTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/file_read_tool/file_read_tool.py:54` |
+| Custom Tool (subclasses BaseTool): FileWriterTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/file_writer_tool/file_writer_tool.py:66` |
 | Custom Tool (subclasses BaseTool): FirecrawlCrawlWebsiteTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/firecrawl_crawl_website_tool/firecrawl_crawl_website_tool.py:23` |
 | Custom Tool (subclasses BaseTool): FirecrawlScrapeWebsiteTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/firecrawl_scrape_website_tool/firecrawl_scrape_website_tool.py:23` |
 | Custom Tool (subclasses BaseTool): FirecrawlSearchTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/firecrawl_search_tool/firecrawl_search_tool.py:21` |
@@ -114,7 +117,8 @@ _Scanned 1268 Python file(s), found 180 distinct component(s)._
 | Custom Tool (subclasses BaseTool): ListFilesTool | high | 1 | `lib/crewai-tools/src/crewai_tools/aws/bedrock/code_interpreter/code_interpreter_toolkit.py:253` |
 | Custom Tool (subclasses BaseTool): LiveLookupTool | high | 1 | `lib/crewai/tests/test_tool_cache_default.py:33` |
 | Custom Tool (subclasses BaseTool): LlamaIndexTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/llamaindex_tool/llamaindex_tool.py:9` |
-| Custom Tool (subclasses BaseTool): MCPNativeTool | high | 1 | `lib/crewai/src/crewai/tools/mcp_native_tool.py:16` |
+| Custom Tool (subclasses BaseTool): LoadSkillTool | high | 1 | `lib/crewai/src/crewai/skills/tool.py:34` |
+| Custom Tool (subclasses BaseTool): MCPNativeTool | high | 1 | `lib/crewai/src/crewai/tools/mcp_native_tool.py:17` |
 | Custom Tool (subclasses BaseTool): MCPStyleTool | high | 1 | `lib/crewai/tests/utilities/test_agent_utils.py:245` |
 | Custom Tool (subclasses BaseTool): MCPToolWrapper | high | 1 | `lib/crewai/src/crewai/tools/mcp_tool_wrapper.py:16` |
 | Custom Tool (subclasses BaseTool): MergeAgentHandlerTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/merge_agent_handler_tool/merge_agent_handler_tool.py:21` |
@@ -125,6 +129,7 @@ _Scanned 1268 Python file(s), found 180 distinct component(s)._
 | Custom Tool (subclasses BaseTool): MultiOnTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/multion_tool/multion_tool.py:11` |
 | Custom Tool (subclasses BaseTool): MyCacheTool | high | 1 | `lib/crewai/tests/tools/test_structured_tool.py:65` |
 | Custom Tool (subclasses BaseTool): NL2SQLTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/nl2sql/nl2sql_tool.py:211` |
+| Custom Tool (subclasses BaseTool): NamedSlack | high | 1 | `lib/crewai/tests/tools/test_tool_failure.py:1323` |
 | Custom Tool (subclasses BaseTool): NoSchemaTool | high | 1 | `lib/crewai/tests/utilities/test_agent_utils.py:75` |
 | Custom Tool (subclasses BaseTool): OCRTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/ocr_tool/ocr_tool.py:29` |
 | Custom Tool (subclasses BaseTool): OxylabsAmazonProductScraperTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/oxylabs_amazon_product_scraper_tool/oxylabs_amazon_product_scraper_tool.py:54` |
@@ -148,7 +153,7 @@ _Scanned 1268 Python file(s), found 180 distinct component(s)._
 | Custom Tool (subclasses BaseTool): RootSearchTool | high | 1 | `lib/crewai/tests/tools/test_base_tool.py:393` |
 | Custom Tool (subclasses BaseTool): S3ReaderTool | high | 1 | `lib/crewai-tools/src/crewai_tools/aws/s3/reader_tool.py:15` |
 | Custom Tool (subclasses BaseTool): S3WriterTool | high | 1 | `lib/crewai-tools/src/crewai_tools/aws/s3/writer_tool.py:16` |
-| Custom Tool (subclasses BaseTool): SayHiTool | high | 1 | `lib/crewai/tests/utilities/test_events.py:372` |
+| Custom Tool (subclasses BaseTool): SayHiTool | high | 1 | `lib/crewai/tests/utilities/test_events.py:376` |
 | Custom Tool (subclasses BaseTool): ScrapeElementFromWebsiteTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/scrape_element_from_website/scrape_element_from_website.py:32` |
 | Custom Tool (subclasses BaseTool): ScrapeWebsiteTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/scrape_website_tool/scrape_website_tool.py:30` |
 | Custom Tool (subclasses BaseTool): ScrapegraphScrapeTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/scrapegraph_scrape_tool/scrapegraph_scrape_tool.py:47` |
@@ -163,6 +168,7 @@ _Scanned 1268 Python file(s), found 180 distinct component(s)._
 | Custom Tool (subclasses BaseTool): SerplyWebSearchTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/serply_api_tool/serply_web_search_tool.py:18` |
 | Custom Tool (subclasses BaseTool): SimpleTool | high | 1 | `lib/crewai/tests/tools/test_base_tool.py:299` |
 | Custom Tool (subclasses BaseTool): SingleStoreSearchTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/singlestore_search_tool/singlestore_search_tool.py:34` |
+| Custom Tool (subclasses BaseTool): SlackTool | high | 1 | `lib/crewai/tests/tools/test_tool_failure.py:29` |
 | Custom Tool (subclasses BaseTool): SnowflakeSearchTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/snowflake_search_tool/snowflake_search_tool.py:77` |
 | Custom Tool (subclasses BaseTool): SpiderTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/spider_tool/spider_tool.py:41` |
 | Custom Tool (subclasses BaseTool): StagehandTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/stagehand_tool/stagehand_tool.py:92` |
@@ -176,28 +182,31 @@ _Scanned 1268 Python file(s), found 180 distinct component(s)._
 | Custom Tool (subclasses BaseTool): TavilyResearchTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/tavily_research_tool/tavily_research_tool.py:50` |
 | Custom Tool (subclasses BaseTool): TavilySearchTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/tavily_search_tool/tavily_search_tool.py:26` |
 | Custom Tool (subclasses BaseTool): TempTool | high | 1 | `lib/crewai/tests/tools/test_base_tool.py:726` |
-| Custom Tool (subclasses BaseTool): Tool | high | 1 | `lib/crewai/src/crewai/tools/base_tool.py:507` |
+| Custom Tool (subclasses BaseTool): Tool | high | 1 | `lib/crewai/src/crewai/tools/base_tool.py:521` |
 | Custom Tool (subclasses BaseTool): TypedInputsTool | high | 1 | `lib/crewai/tests/test_flow_from_definition.py:95` |
 | Custom Tool (subclasses BaseTool): UnlimitedTool | high | 1 | `lib/crewai/tests/tools/test_tool_usage_limit.py:31` |
 | Custom Tool (subclasses BaseTool): ValidTool | high | 1 | `lib/crewai/tests/tools/test_tool_usage_limit.py:74` |
 | Custom Tool (subclasses BaseTool): VisionTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/vision_tool/vision_tool.py:37` |
+| Custom Tool (subclasses BaseTool): WaitTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/wait_tool/wait_tool.py:105` |
 | Custom Tool (subclasses BaseTool): WeatherTool | high | 1 | `lib/crewai/tests/agents/test_native_tool_calling.py:58` |
 | Custom Tool (subclasses BaseTool): WeaviateVectorSearchTool | high | 1 | `lib/crewai-tools/src/crewai_tools/tools/weaviate_tool/vector_search.py:52` |
 | Custom Tool (subclasses BaseTool): WebSearchTool | high | 1 | `lib/crewai/tests/agents/test_lite_agent.py:30` |
+| Custom Tool (subclasses BaseTool): WorkingTool | high | 1 | `lib/crewai/tests/tools/test_tool_failure.py:42` |
 | Custom Tool (subclasses BaseTool): WriteFilesTool | high | 1 | `lib/crewai-tools/src/crewai_tools/aws/bedrock/code_interpreter/code_interpreter_toolkit.py:316` |
 | Custom Tool (subclasses BaseTool): ZapierActionTool | high | 1 | `lib/crewai-tools/src/crewai_tools/adapters/zapier_adapter.py:17` |
+| Custom Tool (subclasses BaseTool): _ConflictingTool | high | 1 | `lib/crewai/tests/skills/test_progressive_disclosure.py:28` |
 
 ## Agent & Orchestration Frameworks
 
 | Component | Confidence | Occurrences | Example location |
 |---|---|---|---|
-| CrewAI | high | 3396 | `conftest.py:196` |
-| Agent (verify framework) | medium | 633 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:18` |
-| CrewAI Crew | high | 400 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:55` |
+| CrewAI | high | 3501 | `conftest.py:196` |
+| Agent (verify framework) | medium | 682 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:18` |
+| CrewAI Crew | high | 424 | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:55` |
 | LangChain | high | 4 | `lib/crewai-tools/pyproject.toml:93` |
 | Instructor (structured outputs) | high | 3 | `lib/crewai/pyproject.toml:16` |
 | LlamaIndex | high | 3 | `lib/crewai-tools/src/crewai_tools/tools/llamaindex_tool/llamaindex_tool.py:29` |
-| LangChain AgentExecutor | high | 1 | `lib/crewai/src/crewai/agent/core.py:1486` |
+| LangChain AgentExecutor | high | 1 | `lib/crewai/src/crewai/agent/core.py:1540` |
 
 ## Vector Stores / Memory
 

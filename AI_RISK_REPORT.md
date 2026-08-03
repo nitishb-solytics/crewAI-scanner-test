@@ -1,6 +1,6 @@
 # AI Risk Report
 
-_Generated: 2026-08-03T13:54:47.235321Z_  
+_Generated: 2026-08-03T14:32:01.466162Z_  
 _Status: FAILED_  
 _Scanned 1284 Python file(s). Fail threshold: high._  
 _Risk scan mode: static+llm_
@@ -20,8 +20,8 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 
 | Severity | Source | Control | Feature | Rule | Area | Location | Finding | Recommended control |
 |---|---|---|---|---|---|---|---|---|
-| High | static | llm | TextToSQL | `texttosql-generated-sql-executed` | TextToSQL validation | `lib/crewai-tools/src/crewai_tools/tools/db2_search_tool/db2_search_tool.py:319` | Generated SQL-like value appears to be executed directly. | Use a SQL parser to validate the structure of the generated SQL and enforce a strict allowlist for table and column names. Ensure the database user has read-only permissions. |
-| High | static | llm | TextToSQL | `texttosql-generated-sql-executed` | TextToSQL validation | `lib/crewai-tools/src/crewai_tools/tools/nl2sql/nl2sql_tool.py:486` | Generated SQL-like value appears to be executed directly. | Implement a robust SQL parser (like `sqlglot`) to verify that the statement is a `SELECT` query and does not contain prohibited commands before execution. Enforce read-only database credentials. |
+| High | static | llm | TextToSQL | `texttosql-generated-sql-executed` | TextToSQL validation | `lib/crewai-tools/src/crewai_tools/tools/db2_search_tool/db2_search_tool.py:319` | Generated SQL-like value appears to be executed directly. | Use a SQL parser to validate the structure of the generated SQL and enforce a strict allowlist of permitted columns and tables. Ensure the database user has read-only permissions. |
+| High | static | llm | TextToSQL | `texttosql-generated-sql-executed` | TextToSQL validation | `lib/crewai-tools/src/crewai_tools/tools/nl2sql/nl2sql_tool.py:486` | Generated SQL-like value appears to be executed directly. | Use a robust SQL parsing library (like `sqlparse`) to decompose the query and strictly enforce that only SELECT statements are permitted. Use a read-only database connection. |
 | High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/src/crewai/crew.py:1523` | Agent delegation is enabled without visible iteration bounds. | Add strict delegation limits and task/tool guardrails before enabling autonomous delegation. |
 | High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_crew.py:60` | Agent delegation is enabled without visible iteration bounds. | Add strict delegation limits and task/tool guardrails before enabling autonomous delegation. |
 | High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_crew.py:1728` | Agent delegation is enabled without visible iteration bounds. | Add strict delegation limits and task/tool guardrails before enabling autonomous delegation. |
@@ -3239,11 +3239,11 @@ Valid risk according to LLM: True
 
 Risk explanation:
 
-The code executes a dynamically constructed SQL string directly using `self.cursor.execute(sql, tuple(params))`. While parameters are used for values, the `sql` variable itself is built via string concatenation/joining in `_build_sql`, which can lead to SQL injection if the components of `sql` (like column names or table names) are derived from untrusted user input.
+The code executes a dynamically constructed SQL string directly using `self.cursor.execute(sql, tuple(params))`. While parameters are used for values, the `sql` variable itself is built via string concatenation/joining in `_build_sql`, which can lead to SQL injection if `column_query` or other components are derived from untrusted input.
 
 Recommended control:
 
-Use a SQL parser to validate the structure of the generated SQL and enforce a strict allowlist for table and column names. Ensure the database user has read-only permissions.
+Use a SQL parser to validate the structure of the generated SQL and enforce a strict allowlist of permitted columns and tables. Ensure the database user has read-only permissions.
 
 ### 2. High - `texttosql-generated-sql-executed`
 
@@ -3253,21 +3253,21 @@ Valid risk according to LLM: True
 
 Risk explanation:
 
-The method `execute_sql` takes a raw `sql_query` string and executes it. Although there is logic to detect and potentially block write statements (`_is_write_stmt`), the reliance on string splitting and custom parsing for security is fragile and prone to bypasses (e.g., via comments or complex CTEs).
+The code performs manual string splitting on ';' to identify multiple statements and then checks for write commands. This is a fragile way to prevent SQL injection and can be bypassed by clever encoding or comments, potentially allowing unauthorized DML/DDL execution.
 
 Recommended control:
 
-Implement a robust SQL parser (like `sqlglot`) to verify that the statement is a `SELECT` query and does not contain prohibited commands before execution. Enforce read-only database credentials.
+Use a robust SQL parsing library (like `sqlparse`) to decompose the query and strictly enforce that only SELECT statements are permitted. Use a read-only database connection.
 
 ### 3. High - `agent-delegation-unbounded`
 
 Location: `lib/crewai/src/crewai/crew.py:1523`  
-LLM confidence: medium  
+LLM confidence: high  
 Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a core framework implementation where `allow_delegation=True` is a configuration setting for the manager agent. The risk of unbounded delegation is a functional design choice for the agent's autonomy, not a vulnerability in this specific line of code.
+This is a core implementation of the CrewAI framework where the manager agent is initialized with `allow_delegation=True` to enable hierarchical processes. This is intended behavior for the framework's orchestration logic.
 
 Recommended control:
 
@@ -3281,7 +3281,7 @@ Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a unit test fixture. The `allow_delegation=True` setting is used to test the agent's behavior in a controlled testing environment.
+This is a unit test fixture defining an agent with delegation enabled for testing purposes. It is not production code.
 
 Recommended control:
 
@@ -3295,7 +3295,7 @@ Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a unit test verifying that delegation is NOT enabled under specific conditions. The `allow_delegation=True` is part of the test setup.
+This is a unit test verifying that delegation is NOT enabled when only one agent is present. The `allow_delegation=True` is part of the test setup.
 
 Recommended control:
 
@@ -3309,7 +3309,7 @@ Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a unit test setup for testing agent capabilities. The risk of unbounded delegation is a property of the agent configuration, not a vulnerability in the test code.
+This is a unit test setting up agents with delegation and code execution enabled to test tool preservation. It is not production code.
 
 Recommended control:
 
@@ -3323,7 +3323,7 @@ Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a unit test setup for testing agent capabilities. The risk of unbounded delegation is a property of the agent configuration, not a vulnerability in the test code.
+This is a unit test setting up agents with delegation enabled to test specific functionality. It is not production code.
 
 Recommended control:
 
@@ -3337,7 +3337,7 @@ Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a unit test setup. The `allow_delegation=True` is used to verify the manager agent's functionality in a test scenario.
+This is a unit test setting up a manager agent with delegation enabled to test crew kickoff functionality. It is not production code.
 
 Recommended control:
 
@@ -3351,7 +3351,7 @@ Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a unit test verifying the `increment_delegations` logic. The `allow_delegation=True` is part of the test case configuration.
+This is a unit test setting up agents with delegation enabled to test sequential process and delegation counting. It is not production code.
 
 Recommended control:
 
@@ -3365,7 +3365,7 @@ Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a unit test verifying the `increment_delegations` logic. The `allow_delegation=True` is part of the test case configuration.
+This is a unit test setting up agents with delegation enabled to test sequential process and delegation counting. It is not production code.
 
 Recommended control:
 
@@ -3379,7 +3379,7 @@ Valid risk according to LLM: False
 
 Risk explanation:
 
-This is a unit test verifying cache behavior. The `allow_delegation=True` is part of the test setup.
+This is a unit test setting up an agent with delegation enabled to test cache behavior. It is not production code.
 
 Recommended control:
 

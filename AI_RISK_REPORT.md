@@ -1,8 +1,8 @@
 # AI Risk Report
 
-_Generated: 2026-08-04T10:10:29.471979Z_  
+_Generated: 2026-08-24T09:56:41.444025Z_  
 _Status: FAILED_  
-_Scanned 1284 Python file(s). Fail threshold: high._  
+_Scanned 1307 Python file(s). Fail threshold: high._  
 _Risk scan mode: static+llm_
 _LLM model: google/gemma-4-26b-a4b-it:free_
 
@@ -12,33 +12,34 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 |---|---:|
 | Critical | 0 |
 | High | 11 |
-| Medium | 2109 |
-| Low | 1088 |
+| Medium | 2148 |
+| Low | 1107 |
 | Info | 0 |
 
 ## Findings
 
 | Severity | Source | Control | Feature | Rule | Area | Location | Finding | Recommended control |
 |---|---|---|---|---|---|---|---|---|
-| High | static | llm | TextToSQL | `texttosql-generated-sql-executed` | TextToSQL validation | `lib/crewai-tools/src/crewai_tools/tools/db2_search_tool/db2_search_tool.py:319` | Generated SQL-like value appears to be executed directly. | Use a SQL parser to validate the structure of the generated SQL and enforce a strict allowlist for table and column names. Ensure the database user has read-only permissions. |
-| High | static | llm | TextToSQL | `texttosql-generated-sql-executed` | TextToSQL validation | `lib/crewai-tools/src/crewai_tools/tools/nl2sql/nl2sql_tool.py:486` | Generated SQL-like value appears to be executed directly. | Implement a robust SQL parser (like `sqlglot`) to verify that the statement is a `SELECT` query and does not contain prohibited commands before execution. Enforce read-only database credentials. |
-| High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/src/crewai/crew.py:1523` | Agent delegation is enabled without visible iteration bounds. | Add strict delegation limits and task/tool guardrails before enabling autonomous delegation. |
-| High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_crew.py:60` | Agent delegation is enabled without visible iteration bounds. | Add strict delegation limits and task/tool guardrails before enabling autonomous delegation. |
-| High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_crew.py:1728` | Agent delegation is enabled without visible iteration bounds. | Add strict delegation limits and task/tool guardrails before enabling autonomous delegation. |
-| High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_crew.py:3924` | Agent delegation is enabled without visible iteration bounds. | Add strict delegation limits and task/tool guardrails before enabling autonomous delegation. |
-| High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_crew.py:3932` | Agent delegation is enabled without visible iteration bounds. | Add strict delegation limits and task/tool guardrails before enabling autonomous delegation. |
-| High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_crew.py:4414` | Agent delegation is enabled without visible iteration bounds. | Add strict delegation limits and task/tool guardrails before enabling autonomous delegation. |
-| High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_task.py:796` | Agent delegation is enabled without visible iteration bounds. | Add strict delegation limits and task/tool guardrails before enabling autonomous delegation. |
-| High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_task.py:803` | Agent delegation is enabled without visible iteration bounds. | Add strict delegation limits and task/tool guardrails before enabling autonomous delegation. |
-| High | static | llm | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_tool_cache_default.py:253` | Agent delegation is enabled without visible iteration bounds. | Add strict delegation limits and task/tool guardrails before enabling autonomous delegation. |
+| High | static | static_fallback | TextToSQL | `texttosql-generated-sql-executed` | TextToSQL validation | `lib/crewai-tools/src/crewai_tools/tools/db2_search_tool/db2_search_tool.py:319` | Generated SQL-like value appears to be executed directly. |  |
+| High | static | static_fallback | TextToSQL | `texttosql-generated-sql-executed` | TextToSQL validation | `lib/crewai-tools/src/crewai_tools/tools/nl2sql/nl2sql_tool.py:486` | Generated SQL-like value appears to be executed directly. |  |
+| High | static | static_fallback | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/src/crewai/crew.py:1533` | Agent delegation is enabled without visible iteration bounds. |  |
+| High | static | static_fallback | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_crew.py:60` | Agent delegation is enabled without visible iteration bounds. |  |
+| High | static | static_fallback | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_crew.py:1728` | Agent delegation is enabled without visible iteration bounds. |  |
+| High | static | static_fallback | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_crew.py:3924` | Agent delegation is enabled without visible iteration bounds. |  |
+| High | static | static_fallback | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_crew.py:3932` | Agent delegation is enabled without visible iteration bounds. |  |
+| High | static | static_fallback | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_crew.py:4414` | Agent delegation is enabled without visible iteration bounds. |  |
+| High | static | static_fallback | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_task.py:796` | Agent delegation is enabled without visible iteration bounds. |  |
+| High | static | static_fallback | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_task.py:803` | Agent delegation is enabled without visible iteration bounds. |  |
+| High | static | static_fallback | Agent | `agent-delegation-unbounded` | Agent delegation | `lib/crewai/tests/test_tool_cache_default.py:253` | Agent delegation is enabled without visible iteration bounds. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `conftest.py:125` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `conftest.py:331` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/src/crewai_cli/create_json_crew.py:839` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/src/crewai_cli/crew_run_tui.py:2222` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/src/crewai_cli/crew_run_tui.py:2227` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/src/crewai_cli/crew_run_tui.py:2743` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/src/crewai_cli/crew_run_tui.py:2748` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/src/crewai_cli/create_json_crew.py:841` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/src/crewai_cli/crew_run_tui.py:2226` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/src/crewai_cli/crew_run_tui.py:2231` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/src/crewai_cli/crew_run_tui.py:2747` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/src/crewai_cli/crew_run_tui.py:2752` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/src/crewai_cli/plus_api.py:47` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/cli/src/crewai_cli/run_declarative_flow.py:156` | LLM call does not show a timeout at the call site. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:18` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:24` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:30` | Agent/Crew is created without visible iteration or execution-time limit. |  |
@@ -50,8 +51,8 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/tests/test_model_catalog.py:449` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/tests/test_model_catalog.py:472` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/cli/tests/test_model_catalog.py:505` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-core/src/crewai_core/plus_api.py:198` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-core/src/crewai_core/plus_api.py:224` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-core/src/crewai_core/plus_api.py:199` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-core/src/crewai_core/plus_api.py:225` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-files/src/crewai_files/formatting/api.py:74` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-files/src/crewai_files/uploaders/anthropic.py:54` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-files/src/crewai_files/uploaders/anthropic.py:68` | LLM client/model is created without visible timeout or retry configuration. |  |
@@ -78,6 +79,7 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-tools/src/crewai_tools/tools/mongodb_vector_search_tool/vector_search.py:327` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai-tools/src/crewai_tools/tools/multion_tool/example.py:11` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai-tools/src/crewai_tools/tools/multion_tool/example.py:26` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-tools/src/crewai_tools/tools/mysql_search_tool/mysql_search_tool.py:19` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-tools/src/crewai_tools/tools/ocr_tool/ocr_tool.py:91` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-tools/src/crewai_tools/tools/patronus_eval_tool/example.py:14` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai-tools/src/crewai_tools/tools/patronus_eval_tool/example.py:43` | Agent/Crew is created without visible iteration or execution-time limit. |  |
@@ -97,10 +99,10 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai-tools/tests/tools/test_db2_search_tool.py:319` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-context-growth-unbounded` | Context window growth | `lib/crewai/src/crewai/a2a/utils/delegation.py:529` | Message/history list is appended before LLM usage without visible trimming or summarization. |  |
 | Medium | static | static | LLM | `llm-context-growth-unbounded` | Context window growth | `lib/crewai/src/crewai/a2a/utils/delegation.py:530` | Message/history list is appended before LLM usage without visible trimming or summarization. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/agent/core.py:537` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/src/crewai/agent/core.py:814` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/agent/core.py:1431` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/agent/core.py:1797` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/agent/core.py:536` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/src/crewai/agent/core.py:805` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/agent/core.py:1398` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/agent/core.py:1764` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/agents/agent_adapters/openai_agents/openai_agent_tool_adapter.py:65` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/agents/agent_adapters/openai_agents/openai_agent_tool_adapter.py:147` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/agents/agent_builder/base_agent.py:108` | LLM client/model is created without visible timeout or retry configuration. |  |
@@ -115,36 +117,39 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/agents/step_executor.py:344` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/agents/step_executor.py:352` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/agents/step_executor.py:566` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/crew.py:673` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/src/crewai/crew.py:905` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/src/crewai/crew.py:1523` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/crew.py:1662` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/crew.py:1681` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/src/crewai/crew.py:2159` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/crew.py:2197` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/crew.py:2211` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/events/event_listener.py:415` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/events/event_listener.py:431` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/events/event_listener.py:444` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/events/event_listener.py:474` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/events/event_listener.py:478` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/events/event_listener.py:479` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/events/event_listener.py:489` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-context-growth-unbounded` | Context window growth | `lib/crewai/src/crewai/events/listeners/tracing/trace_batch_manager.py:429` | Message/history list is appended before LLM usage without visible trimming or summarization. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/agent_executor.py:235` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/crew.py:677` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/src/crewai/crew.py:909` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/src/crewai/crew.py:1533` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/crew.py:1672` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/crew.py:1691` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/src/crewai/crew.py:2169` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/crew.py:2207` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/crew.py:2221` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/events/event_listener.py:534` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/events/event_listener.py:550` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/events/event_listener.py:563` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/events/event_listener.py:593` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/events/event_listener.py:597` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/events/event_listener.py:598` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/events/event_listener.py:608` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-context-growth-unbounded` | Context window growth | `lib/crewai/src/crewai/events/listeners/tracing/trace_batch_manager.py:444` | Message/history list is appended before LLM usage without visible trimming or summarization. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/agent_executor.py:236` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/agent_executor.py:287` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/agent_executor.py:2490` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:226` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:238` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:240` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:265` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:274` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:934` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:939` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:940` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:993` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:997` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/agent_executor.py:237` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/agent_executor.py:288` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/agent_executor.py:2491` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:318` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:330` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:332` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:357` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:366` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:709` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:882` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:1132` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:1137` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:1138` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:1191` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:1195` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/conversational_mixin.py:1446` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/evaluation/evaluation_display.py:373` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/evaluation/evaluation_listener.py:141` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/evaluation/evaluation_listener.py:145` | LLM client/model is created without visible timeout or retry configuration. |  |
@@ -155,13 +160,13 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/evaluation/metrics/tools_metrics.py:114` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/evaluation/metrics/tools_metrics.py:268` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/experimental/evaluation/metrics/tools_metrics.py:423` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/flow/flow_definition.py:866` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/flow/flow_definition.py:870` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/flow/human_feedback.py:279` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/flow/human_feedback.py:283` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/flow/human_feedback.py:331` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/flow/human_feedback.py:337` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/flow/runtime/__init__.py:3734` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/flow/runtime/__init__.py:3764` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/flow/runtime/__init__.py:3796` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/flow/runtime/__init__.py:3826` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/hooks/llm_hooks.py:224` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/hooks/llm_hooks.py:252` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/hooks/llm_hooks.py:263` | LLM client/model is created without visible timeout or retry configuration. |  |
@@ -192,31 +197,32 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:1711` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:1876` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:1904` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:2392` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:2414` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:2415` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:2457` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:2466` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:2489` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:2493` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:210` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:270` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:282` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:331` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:374` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:377` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:449` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:558` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:562` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:595` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1006` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1104` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1240` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1307` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1445` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1554` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1764` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1870` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:2254` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:2399` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:2421` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:2422` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:2464` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:2473` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:2496` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llm.py:2500` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:211` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:271` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:283` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:332` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:375` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:378` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:450` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:559` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:563` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:596` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1007` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1105` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1241` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1308` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1446` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1555` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1765` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1871` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/azure/completion.py:71` | LLM call does not show an inline timeout. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/azure/completion.py:144` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/azure/completion.py:242` | LLM call does not show an inline timeout. |  |
@@ -249,20 +255,20 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:305` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:312` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:465` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1068` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1376` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1874` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1900` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1924` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2008` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2187` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2226` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2298` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2328` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2352` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2499` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2566` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2656` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1073` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1381` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1879` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1905` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1929` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2013` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2192` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2231` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2303` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2333` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2357` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2504` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2571` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2661` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai_compatible/completion.py:113` | LLM call does not show an inline timeout. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai_compatible/completion.py:152` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/llms/providers/openai_compatible/completion.py:154` | LLM client/model is created without visible timeout or retry configuration. |  |
@@ -275,7 +281,7 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/memory/analyze.py:302` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/memory/analyze.py:358` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/memory/analyze.py:362` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/memory/recall_flow.py:312` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/memory/recall_flow.py:314` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/memory/unified_memory.py:67` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/project/crew_base.py:664` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/project/crew_base.py:674` | LLM client/model is created without visible timeout or retry configuration. |  |
@@ -285,15 +291,16 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/rag/embeddings/providers/google/genai_vertex_embedding.py:168` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/task.py:992` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/src/crewai/tasks/llm_guardrail.py:70` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/tools/tool_usage.py:853` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/tools/tool_usage.py:865` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/types/usage_metrics.py:131` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/agent_utils.py:300` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/agent_utils.py:412` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/agent_utils.py:582` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/agent_utils.py:635` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/agent_utils.py:995` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/agent_utils.py:1035` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/agent_utils.py:1059` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/agent_utils.py:1435` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/agent_utils.py:1040` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/agent_utils.py:1080` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/agent_utils.py:1104` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/agent_utils.py:1480` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/converter.py:97` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/converter.py:98` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/converter.py:103` | LLM client/model is created without visible timeout or retry configuration. |  |
@@ -313,9 +320,9 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/evaluators/task_evaluator.py:99` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/evaluators/task_evaluator.py:173` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/internal_instructor.py:72` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/internal_instructor.py:120` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/internal_instructor.py:122` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/internal_instructor.py:155` | LLM call does not show a timeout at the call site. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/internal_instructor.py:125` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/internal_instructor.py:127` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/internal_instructor.py:160` | LLM call does not show a timeout at the call site. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/llm_utils.py:39` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/llm_utils.py:40` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/src/crewai/utilities/llm_utils.py:41` | LLM client/model is created without visible timeout or retry configuration. |  |
@@ -513,10 +520,12 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/agents/test_agent_executor.py:1756` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/agents/test_agent_executor.py:1868` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/agents/test_agent_executor.py:1931` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/agents/test_agent_inject_date.py:18` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/agents/test_agent_inject_date.py:44` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/agents/test_agent_inject_date.py:71` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/agents/test_agent_inject_date.py:98` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/agents/test_agent_inject_date.py:88` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/agents/test_agent_inject_date.py:102` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/agents/test_agent_inject_date.py:116` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/agents/test_agent_inject_date.py:117` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/agents/test_agent_inject_date.py:128` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/agents/test_agent_inject_date.py:164` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/agents/test_agent_reasoning.py:53` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/agents/test_agent_reasoning.py:76` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/agents/test_agent_reasoning.py:93` | Agent/Crew is created without visible iteration or execution-time limit. |  |
@@ -646,19 +655,19 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_finish_reason_response_id.py:467` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_finish_reason_response_id.py:468` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_finish_reason_response_id.py:469` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:62` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:66` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:120` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:131` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:138` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:149` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:163` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:176` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:61` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:65` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:119` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:130` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:137` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:148` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:162` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:175` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:180` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:181` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:182` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:216` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:229` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:242` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:217` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:230` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/events/test_llm_usage_event.py:243` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/events/test_skill_usage_events.py:36` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/events/test_skill_usage_events.py:54` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/events/test_skill_usage_events.py:170` | Agent/Crew is created without visible iteration or execution-time limit. |  |
@@ -714,11 +723,11 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/hooks/test_decorators.py:43` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/hooks/test_decorators.py:44` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-context-growth-unbounded` | Context window growth | `lib/crewai/tests/hooks/test_human_approval.py:382` | Message/history list is appended before LLM usage without visible trimming or summarization. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/hooks/test_interception_conformance.py:159` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/hooks/test_interception_conformance.py:179` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/hooks/test_interception_conformance.py:185` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/hooks/test_interception_conformance.py:339` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/hooks/test_interception_conformance.py:345` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/hooks/test_interception_conformance.py:176` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/hooks/test_interception_conformance.py:196` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/hooks/test_interception_conformance.py:202` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/hooks/test_interception_conformance.py:356` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/hooks/test_interception_conformance.py:362` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/hooks/test_llm_hooks.py:40` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/hooks/test_llm_hooks.py:41` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/hooks/test_llm_hooks.py:43` | LLM client/model is created without visible timeout or retry configuration. |  |
@@ -771,60 +780,60 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:462` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:481` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:523` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:555` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:559` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:589` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:617` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:655` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:672` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:735` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:798` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:853` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:880` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:922` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:959` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:560` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:564` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:594` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:622` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:660` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:677` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:740` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:803` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:858` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:885` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:927` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:964` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:969` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:990` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:974` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:995` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1000` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1040` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1049` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1058` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1098` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1101` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1150` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1153` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1181` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1184` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1219` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1222` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1252` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1284` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1287` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1447` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1454` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1463` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1471` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1480` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1497` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1506` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1513` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1521` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1530` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1543` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1552` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1564` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1570` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1582` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1593` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1608` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1625` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1626` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1005` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1045` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1054` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1063` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1103` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1106` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1155` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1158` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1186` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1189` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1224` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1227` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1257` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1289` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1292` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1452` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1459` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1468` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1476` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1485` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1502` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1511` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1518` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1526` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1535` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1548` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1557` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1569` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1575` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1587` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1598` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1613` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1630` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1631` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1655` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1677` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1635` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1636` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1660` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1682` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic_async.py:18` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic_async.py:31` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/anthropic/test_anthropic_async.py:43` | LLM client/model is created without visible timeout or retry configuration. |  |
@@ -923,10 +932,11 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/azure/test_azure_async.py:111` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/llms/azure/test_azure_async.py:123` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/llms/azure/test_azure_async.py:137` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/azure/test_azure_responses.py:29` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/azure/test_azure_responses.py:210` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/azure/test_azure_responses.py:224` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/azure/test_azure_responses.py:235` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/azure/test_azure_responses.py:39` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/azure/test_azure_responses.py:45` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/azure/test_azure_responses.py:214` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/azure/test_azure_responses.py:228` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/azure/test_azure_responses.py:239` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/azure/test_azure_responses_async.py:12` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/bedrock/test_bedrock.py:226` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/llms/bedrock/test_bedrock.py:240` | Agent/Crew is created without visible iteration or execution-time limit. |  |
@@ -1114,102 +1124,112 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:948` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:957` | LLM call does not show an inline timeout. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:967` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:976` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:983` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:994` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:999` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1001` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1009` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1018` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1028` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1043` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1054` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1060` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1114` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1125` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1136` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1143` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1156` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1162` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1176` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1188` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1198` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1214` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1223` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1229` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1236` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1240` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1246` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1256` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1262` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1270` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1277` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1284` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1291` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1304` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1310` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1314` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1317` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1328` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:978` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:998` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1011` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1030` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1043` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1064` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1074` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1085` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1102` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1128` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1140` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1147` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1158` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1163` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1165` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1173` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1182` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1192` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1207` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1218` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1224` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1278` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1289` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1300` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1307` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1320` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1326` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1340` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1350` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1367` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1378` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1384` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1390` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1397` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1352` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1362` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1378` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1387` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1393` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1400` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1404` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1412` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1419` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1410` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1420` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1426` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1438` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1447` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1453` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1459` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1470` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1478` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1496` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/llms/openai/test_openai.py:1521` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/llms/openai/test_openai.py:1563` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1601` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1610` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1635` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1636` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1654` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1655` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1665` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1670` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1673` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1686` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1694` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1716` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1729` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1748` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1750` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1755` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1760` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1777` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1779` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1784` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1789` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1806` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1808` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1813` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1818` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1854` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1856` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1865` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1874` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1910` | LLM call does not show an inline timeout. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1912` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1921` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1930` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1986` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1434` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1441` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1448` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1455` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1468` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1474` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1478` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1481` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1492` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1504` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1514` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1531` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1542` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1548` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1554` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1561` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1568` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1576` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1583` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1590` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1602` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1611` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1617` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1623` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1634` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1642` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1660` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/llms/openai/test_openai.py:1685` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/llms/openai/test_openai.py:1727` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1765` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1774` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1799` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1800` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1818` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1819` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1829` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1834` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1837` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1850` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1858` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1880` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1893` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1912` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1914` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1919` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1924` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1941` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1943` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1948` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1953` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1970` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1972` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1977` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:1982` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2018` | LLM call does not show an inline timeout. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2020` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2041` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2118` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2152` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2173` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2029` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2038` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2074` | LLM call does not show an inline timeout. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2076` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2085` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2094` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2150` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2184` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2205` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2282` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2316` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai.py:2337` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai_async.py:15` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai_async.py:28` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/openai/test_openai_async.py:40` | LLM client/model is created without visible timeout or retry configuration. |  |
@@ -1324,6 +1344,7 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_multimodal.py:294` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_multimodal.py:334` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_multimodal.py:345` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_multimodal_integration.py:80` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_multimodal_integration.py:86` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_multimodal_integration.py:108` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_multimodal_integration.py:130` | LLM client/model is created without visible timeout or retry configuration. |  |
@@ -1370,16 +1391,16 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_prompt_cache.py:171` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | general | `llm-timeout-missing` | LLM reliability | `lib/crewai/tests/llms/test_prompt_cache.py:184` | LLM call does not show an inline timeout. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_prompt_cache.py:189` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_tool_call_streaming.py:78` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_tool_call_streaming.py:112` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_tool_call_streaming.py:137` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_tool_call_streaming.py:180` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_tool_call_streaming.py:210` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_tool_call_streaming.py:239` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_tool_call_streaming.py:271` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_tool_call_streaming.py:304` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_tool_call_streaming.py:85` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_tool_call_streaming.py:119` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_tool_call_streaming.py:144` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_tool_call_streaming.py:187` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_tool_call_streaming.py:217` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_tool_call_streaming.py:246` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_tool_call_streaming.py:278` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/llms/test_tool_call_streaming.py:311` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/mcp/test_amp_mcp.py:14` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/mcp/test_amp_mcp.py:429` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/mcp/test_amp_mcp.py:474` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/mcp/test_mcp_config.py:57` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/mcp/test_mcp_config.py:87` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/mcp/test_mcp_config.py:116` | Agent/Crew is created without visible iteration or execution-time limit. |  |
@@ -1488,10 +1509,16 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/telemetry/test_flow_crew_span_integration.py:277` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/telemetry/test_flow_crew_span_integration.py:288` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/telemetry/test_flow_crew_span_integration.py:307` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/telemetry/test_telemetry.py:142` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/telemetry/test_telemetry.py:153` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/telemetry/test_flow_telemetry.py:503` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/telemetry/test_flow_telemetry.py:505` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/telemetry/test_flow_telemetry.py:742` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/telemetry/test_flow_telemetry.py:744` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/telemetry/test_telemetry.py:155` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/telemetry/test_telemetry.py:166` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/telemetry/test_telemetry.py:552` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/telemetry/test_telemetry.py:554` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_agent_multimodal.py:106` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_async_human_feedback.py:1346` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_async_human_feedback.py:1421` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_checkpoint.py:57` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_checkpoint.py:62` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_checkpoint.py:195` | Agent/Crew is created without visible iteration or execution-time limit. |  |
@@ -1755,14 +1782,21 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_event_record.py:401` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_event_record.py:421` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_event_record.py:422` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_flow_conversation.py:358` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_flow_conversation.py:393` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_flow_conversation.py:501` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/crewai/tests/test_flow_conversation.py:1103` | LLM call does not show a timeout at the call site. |  |
-| Medium | static | static | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/crewai/tests/test_flow_conversation.py:1137` | LLM call does not show a timeout at the call site. |  |
-| Medium | static | static | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/crewai/tests/test_flow_conversation.py:1153` | LLM call does not show a timeout at the call site. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_flow_conversation.py:2126` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_flow_conversation.py:2138` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_execution_uuid.py:126` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_execution_uuid.py:128` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_execution_uuid.py:150` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_execution_uuid.py:152` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_flow_conversation.py:346` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_flow_conversation.py:380` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_flow_conversation.py:485` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/crewai/tests/test_flow_conversation.py:1073` | LLM call does not show a timeout at the call site. |  |
+| Medium | static | static | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/crewai/tests/test_flow_conversation.py:1106` | LLM call does not show a timeout at the call site. |  |
+| Medium | static | static | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/crewai/tests/test_flow_conversation.py:1122` | LLM call does not show a timeout at the call site. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_flow_conversation.py:2095` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_flow_conversation.py:2107` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_flow_conversation.py:2431` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_flow_conversation.py:2469` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/crewai/tests/test_flow_conversation.py:3089` | LLM call does not show a timeout at the call site. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_flow_multimodal.py:82` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_flow_multimodal.py:94` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_flow_multimodal.py:279` | Agent/Crew is created without visible iteration or execution-time limit. |  |
@@ -1818,29 +1852,30 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:778` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:792` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:804` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:942` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:943` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:944` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:945` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:948` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:949` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:951` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:953` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:956` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:957` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:958` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:959` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:962` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:963` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:967` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:930` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:972` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:973` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:994` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:1020` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:1052` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:1087` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:1121` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:1159` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:1175` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:974` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:975` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:978` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:979` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:981` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:983` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:986` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:987` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:988` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:989` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:992` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:993` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:997` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:1003` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:1024` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:1050` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:1082` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:1117` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:1151` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:1189` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm.py:1205` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm_streaming_finish_reason.py:69` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/test_llm_streaming_finish_reason.py:90` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/test_markdown_task.py:19` | Agent/Crew is created without visible iteration or execution-time limit. |  |
@@ -2020,8 +2055,8 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tools/test_tool_failure.py:1544` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tools/test_tool_failure.py:1610` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tools/test_tool_failure.py:1643` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tools/test_tool_failure.py:1752` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tools/test_tool_failure.py:1765` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tools/test_tool_failure.py:1753` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tools/test_tool_failure.py:1766` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tools/test_tool_usage.py:66` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_trace_enable_disable.py:21` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_trace_enable_disable.py:32` | Agent/Crew is created without visible iteration or execution-time limit. |  |
@@ -2031,33 +2066,33 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_trace_enable_disable.py:82` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_trace_enable_disable.py:96` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_trace_enable_disable.py:107` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:160` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:171` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:197` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:210` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:263` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:274` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:313` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:325` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:362` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:376` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:421` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:432` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:458` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:473` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:547` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:558` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:620` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:631` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:758` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:767` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:161` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:172` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:198` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:211` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:264` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:275` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:314` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:326` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:363` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:377` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:422` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:433` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:459` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:474` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:548` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:559` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:621` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:632` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:759` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/tracing/test_tracing.py:768` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/evaluators/test_crew_evaluator_handler.py:17` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/evaluators/test_crew_evaluator_handler.py:23` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/evaluators/test_crew_evaluator_handler.py:50` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/evaluators/test_crew_evaluator_handler.py:58` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_agent_utils.py:528` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_agent_utils.py:734` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_agent_utils.py:755` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_agent_utils.py:556` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_agent_utils.py:928` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_agent_utils.py:949` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_console_formatter_pause_resume.py:81` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_console_formatter_pause_resume.py:96` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_console_formatter_pause_resume.py:111` | LLM client/model is created without visible timeout or retry configuration. |  |
@@ -2076,27 +2111,31 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:246` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:273` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:315` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:396` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:400` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:408` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:449` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:463` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:880` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:905` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1200` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1230` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1266` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1293` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1313` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1352` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1397` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:1442` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:1455` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:1521` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:1585` | Agent/Crew is created without visible iteration or execution-time limit. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1647` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1685` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1709` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1710` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:453` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:461` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:501` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:513` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:554` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:568` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:997` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:1022` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1317` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1347` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1380` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1407` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1427` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1466` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1511` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:1556` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:1569` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:1635` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_events.py:1699` | Agent/Crew is created without visible iteration or execution-time limit. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1761` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1799` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1823` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_events.py:1824` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_knowledge_planning.py:39` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_llm_utils.py:78` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_llm_utils.py:159` | LLM client/model is created without visible timeout or retry configuration. |  |
@@ -2130,10 +2169,10 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `lib/crewai/tests/utilities/test_summarize_integration.py:220` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_training_converter.py:65` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/crewai/tests/utilities/test_training_converter.py:68` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/cli.py:513` | LLM call does not show a timeout at the call site. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/cli.py:1016` | LLM client/model is created without visible timeout or retry configuration. |  |
-| Medium | static | static | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/cli.py:1029` | LLM call does not show a timeout at the call site. |  |
-| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/cli.py:1029` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/cli.py:515` | LLM call does not show a timeout at the call site. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/cli.py:1018` | LLM client/model is created without visible timeout or retry configuration. |  |
+| Medium | static | static | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/cli.py:1031` | LLM call does not show a timeout at the call site. |  |
+| Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/cli.py:1031` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-constructor-timeout-retry-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/docs_check.py:167` | LLM client/model is created without visible timeout or retry configuration. |  |
 | Medium | static | static | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/docs_check.py:225` | LLM call does not show a timeout at the call site. |  |
 | Medium | static | static | LLM | `llm-call-timeout-missing` | LLM reliability | `lib/devtools/src/crewai_devtools/docs_check.py:265` | LLM call does not show a timeout at the call site. |  |
@@ -2142,11 +2181,11 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Medium | static | static | Agent | `agent-loop-bound-missing` | Agent control | `scripts/age90_file_input_runner.py:131` | Agent/Crew is created without visible iteration or execution-time limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `conftest.py:125` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `conftest.py:331` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/src/crewai_cli/create_json_crew.py:839` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/src/crewai_cli/crew_run_tui.py:2222` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/src/crewai_cli/crew_run_tui.py:2227` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/src/crewai_cli/crew_run_tui.py:2743` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/src/crewai_cli/crew_run_tui.py:2748` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/src/crewai_cli/create_json_crew.py:841` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/src/crewai_cli/crew_run_tui.py:2226` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/src/crewai_cli/crew_run_tui.py:2231` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/src/crewai_cli/crew_run_tui.py:2747` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/src/crewai_cli/crew_run_tui.py:2752` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/src/crewai_cli/plus_api.py:47` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/cli/src/crewai_cli/templates/flow/crews/content_crew/content_crew.py:55` | Agent verbose logging is enabled. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/tests/test_model_catalog.py:34` | LLM client/model is created without visible output token limit. |  |
@@ -2156,8 +2195,8 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/tests/test_model_catalog.py:449` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/tests/test_model_catalog.py:472` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/cli/tests/test_model_catalog.py:505` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-core/src/crewai_core/plus_api.py:198` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-core/src/crewai_core/plus_api.py:224` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-core/src/crewai_core/plus_api.py:199` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-core/src/crewai_core/plus_api.py:225` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-files/src/crewai_files/formatting/api.py:74` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-files/src/crewai_files/uploaders/anthropic.py:54` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-files/src/crewai_files/uploaders/anthropic.py:68` | LLM client/model is created without visible output token limit. |  |
@@ -2180,6 +2219,7 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-tools/src/crewai_tools/tools/mongodb_vector_search_tool/vector_search.py:230` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-tools/src/crewai_tools/tools/mongodb_vector_search_tool/vector_search.py:327` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai-tools/src/crewai_tools/tools/multion_tool/example.py:11` | Agent verbose logging is enabled. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-tools/src/crewai_tools/tools/mysql_search_tool/mysql_search_tool.py:19` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-tools/src/crewai_tools/tools/ocr_tool/ocr_tool.py:91` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai-tools/src/crewai_tools/tools/patronus_eval_tool/example.py:14` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai-tools/src/crewai_tools/tools/patronus_eval_tool/example.py:43` | Agent verbose logging is enabled. |  |
@@ -2209,9 +2249,9 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/tests/tools/test_mongodb_vector_search_tool.py:50` | Vector store initialization does not show metadata governance. |  |
 | Low | static | static | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/tests/tools/test_mongodb_vector_search_tool.py:59` | Vector store initialization does not show metadata governance. |  |
 | Low | static | static | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai-tools/tests/tools/test_mongodb_vector_search_tool.py:67` | Vector store initialization does not show metadata governance. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/agent/core.py:537` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/agent/core.py:1431` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/agent/core.py:1797` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/agent/core.py:536` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/agent/core.py:1398` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/agent/core.py:1764` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | general | `prompt-output-contract` | Prompt quality | `lib/crewai/src/crewai/agent/planning_config.py:14` | Prompt-like content does not show a clear output contract. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/agents/agent_adapters/openai_agents/openai_agent_tool_adapter.py:65` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/agents/agent_adapters/openai_agents/openai_agent_tool_adapter.py:147` | LLM client/model is created without visible output token limit. |  |
@@ -2228,32 +2268,35 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/agents/step_executor.py:344` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/agents/step_executor.py:352` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/agents/step_executor.py:566` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/crew.py:673` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/crew.py:1662` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/crew.py:1681` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/crew.py:2197` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/crew.py:2211` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/events/event_listener.py:415` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/events/event_listener.py:431` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/events/event_listener.py:444` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/events/event_listener.py:474` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/events/event_listener.py:478` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/events/event_listener.py:479` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/events/event_listener.py:489` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/agent_executor.py:235` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/crew.py:677` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/crew.py:1672` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/crew.py:1691` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/crew.py:2207` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/crew.py:2221` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/events/event_listener.py:534` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/events/event_listener.py:550` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/events/event_listener.py:563` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/events/event_listener.py:593` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/events/event_listener.py:597` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/events/event_listener.py:598` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/events/event_listener.py:608` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/agent_executor.py:236` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/agent_executor.py:287` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/agent_executor.py:2490` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:226` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:238` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:240` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:265` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:274` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:934` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:939` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:940` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:993` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:997` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/agent_executor.py:237` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/agent_executor.py:288` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/agent_executor.py:2491` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:318` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:330` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:332` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:357` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:366` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:709` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:882` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:1132` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:1137` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:1138` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:1191` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:1195` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/conversational_mixin.py:1446` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/evaluation/evaluation_display.py:373` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/evaluation/evaluation_listener.py:141` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/evaluation/evaluation_listener.py:145` | LLM client/model is created without visible output token limit. |  |
@@ -2264,13 +2307,13 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/evaluation/metrics/tools_metrics.py:114` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/evaluation/metrics/tools_metrics.py:268` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/experimental/evaluation/metrics/tools_metrics.py:423` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/flow/flow_definition.py:866` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/flow/flow_definition.py:870` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/flow/human_feedback.py:279` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/flow/human_feedback.py:283` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/flow/human_feedback.py:331` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/flow/human_feedback.py:337` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/flow/runtime/__init__.py:3734` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/flow/runtime/__init__.py:3764` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/flow/runtime/__init__.py:3796` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/flow/runtime/__init__.py:3826` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/hooks/llm_hooks.py:224` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/hooks/llm_hooks.py:252` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/hooks/llm_hooks.py:263` | LLM client/model is created without visible output token limit. |  |
@@ -2295,31 +2338,31 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:1711` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:1876` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:1904` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:2392` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:2414` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:2415` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:2457` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:2466` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:2489` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:2493` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:2399` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:2421` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:2422` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:2464` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:2473` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:2496` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llm.py:2500` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | general | `prompt-output-contract` | Prompt quality | `lib/crewai/src/crewai/llms/cache.py:1` | Prompt-like content does not show a clear output contract. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:270` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:282` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:331` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:374` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:377` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:449` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:558` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:562` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:595` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1006` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1104` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1240` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1307` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1445` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1554` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1764` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1870` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:271` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:283` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:332` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:375` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:378` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:450` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:559` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:563` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:596` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1007` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1105` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1241` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1308` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1446` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1555` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1765` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/anthropic/completion.py:1871` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/azure/completion.py:144` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/azure/completion.py:287` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/azure/completion.py:524` | LLM client/model is created without visible output token limit. |  |
@@ -2345,20 +2388,20 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:305` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:312` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:465` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1068` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1376` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1874` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1900` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1924` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2008` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2187` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2226` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2298` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2328` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2352` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2499` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2566` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2656` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1073` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1381` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1879` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1905` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:1929` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2013` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2192` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2231` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2303` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2333` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2357` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2504` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2571` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai/completion.py:2661` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai_compatible/completion.py:152` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/llms/providers/openai_compatible/completion.py:154` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/memory/analyze.py:180` | LLM client/model is created without visible output token limit. |  |
@@ -2369,7 +2412,7 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/memory/analyze.py:302` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/memory/analyze.py:358` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/memory/analyze.py:362` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/memory/recall_flow.py:312` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/memory/recall_flow.py:314` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai/src/crewai/memory/storage/qdrant_edge_storage.py:238` | Vector store initialization does not show metadata governance. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/memory/unified_memory.py:67` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/project/crew_base.py:664` | LLM client/model is created without visible output token limit. |  |
@@ -2383,15 +2426,16 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai/src/crewai/rag/factory.py:66` | Vector store initialization does not show metadata governance. |  |
 | Low | static | static | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai/src/crewai/rag/factory.py:76` | Vector store initialization does not show metadata governance. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/task.py:992` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/tools/tool_usage.py:853` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/tools/tool_usage.py:865` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/types/usage_metrics.py:131` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/agent_utils.py:300` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/agent_utils.py:412` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/agent_utils.py:582` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/agent_utils.py:635` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/agent_utils.py:995` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/agent_utils.py:1035` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/agent_utils.py:1059` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/agent_utils.py:1435` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/agent_utils.py:1040` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/agent_utils.py:1080` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/agent_utils.py:1104` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/agent_utils.py:1480` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/converter.py:97` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/converter.py:98` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/converter.py:103` | LLM client/model is created without visible output token limit. |  |
@@ -2410,8 +2454,8 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/evaluators/task_evaluator.py:99` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/evaluators/task_evaluator.py:173` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/internal_instructor.py:72` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/internal_instructor.py:120` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/internal_instructor.py:122` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/internal_instructor.py:125` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/internal_instructor.py:127` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/llm_utils.py:39` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/llm_utils.py:40` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/src/crewai/utilities/llm_utils.py:41` | LLM client/model is created without visible output token limit. |  |
@@ -2454,6 +2498,12 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/agents/test_agent_executor.py:541` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/agents/test_agent_executor.py:1067` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/agents/test_agent_executor.py:1088` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/agents/test_agent_inject_date.py:88` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/agents/test_agent_inject_date.py:102` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/agents/test_agent_inject_date.py:116` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/agents/test_agent_inject_date.py:117` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/agents/test_agent_inject_date.py:128` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/agents/test_agent_inject_date.py:164` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/agents/test_async_agent_executor.py:119` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/agents/test_async_agent_executor.py:419` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/agents/test_lite_agent.py:120` | Agent verbose logging is enabled. |  |
@@ -2489,20 +2539,19 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_finish_reason_response_id.py:467` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_finish_reason_response_id.py:468` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_finish_reason_response_id.py:469` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | general | `prompt-output-contract` | Prompt quality | `lib/crewai/tests/events/test_llm_usage_event.py:19` | Prompt-like content does not show a clear output contract. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:62` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:66` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:120` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:131` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:138` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:149` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:163` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:176` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:61` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:65` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:119` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:130` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:137` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:148` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:162` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:175` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:180` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:181` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:182` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:216` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:229` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:242` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:217` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:230` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/events/test_llm_usage_event.py:243` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/experimental/evaluation/metrics/test_goal_metrics.py:39` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/experimental/evaluation/metrics/test_reasoning_metrics.py:100` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/experimental/evaluation/metrics/test_semantic_quality_metrics.py:40` | LLM client/model is created without visible output token limit. |  |
@@ -2591,52 +2640,52 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:462` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:481` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:523` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:555` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:559` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:589` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:617` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:655` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:672` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:735` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:798` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:853` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:880` | Agent verbose logging is enabled. |  |
-| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:922` | Agent verbose logging is enabled. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:959` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:560` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:564` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:594` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:622` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:660` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:677` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:740` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:803` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:858` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:885` | Agent verbose logging is enabled. |  |
+| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/llms/anthropic/test_anthropic.py:927` | Agent verbose logging is enabled. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:964` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:969` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:990` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:974` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:995` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1000` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1040` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1049` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1058` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1098` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1101` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1150` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1153` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1181` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1184` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1219` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1222` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1252` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1284` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1287` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1454` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1471` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1497` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1513` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1530` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1552` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1570` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1593` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1608` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1625` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1626` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1005` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1045` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1054` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1063` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1103` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1106` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1155` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1158` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1186` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1189` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1224` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1227` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1257` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1289` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1292` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1459` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1476` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1502` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1518` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1535` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1557` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1575` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1598` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1613` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1630` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1631` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1655` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1677` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1635` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1636` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1660` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic.py:1682` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic_async.py:18` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic_async.py:31` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/anthropic/test_anthropic_async.py:43` | LLM client/model is created without visible output token limit. |  |
@@ -2710,9 +2759,9 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/azure/test_azure_async.py:93` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/azure/test_azure_async.py:111` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/llms/azure/test_azure_async.py:123` | Agent verbose logging is enabled. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/azure/test_azure_responses.py:210` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/azure/test_azure_responses.py:224` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/azure/test_azure_responses.py:235` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/azure/test_azure_responses.py:214` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/azure/test_azure_responses.py:228` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/azure/test_azure_responses.py:239` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/azure/test_azure_responses_async.py:12` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/bedrock/test_bedrock.py:226` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/bedrock/test_bedrock.py:404` | LLM client/model is created without visible output token limit. |  |
@@ -2841,62 +2890,67 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:926` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:948` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:967` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:983` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:999` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1001` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1018` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1043` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1060` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1143` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1162` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1223` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1236` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1240` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1256` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1270` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1284` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1291` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1310` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1314` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1317` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1378` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1390` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:998` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1030` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1064` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1085` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1128` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1147` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1163` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1165` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1182` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1207` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1224` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1307` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1326` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1387` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1400` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1404` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1419` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1438` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1453` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1470` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1496` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/llms/openai/test_openai.py:1521` | Agent verbose logging is enabled. |  |
-| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/llms/openai/test_openai.py:1563` | Agent verbose logging is enabled. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1610` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1636` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1655` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1670` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1673` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1694` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1729` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1750` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1755` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1760` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1779` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1784` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1789` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1808` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1813` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1818` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1856` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1865` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1874` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1912` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1921` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1930` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1986` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1420` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1434` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1448` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1455` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1474` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1478` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1481` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1542` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1554` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1568` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1583` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1602` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1617` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1634` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1660` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/llms/openai/test_openai.py:1685` | Agent verbose logging is enabled. |  |
+| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/llms/openai/test_openai.py:1727` | Agent verbose logging is enabled. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1774` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1800` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1819` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1834` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1837` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1858` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1893` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1914` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1919` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1924` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1943` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1948` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1953` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1972` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1977` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:1982` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:2020` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:2041` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:2118` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:2152` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:2173` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:2029` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:2038` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:2076` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:2085` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:2094` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:2150` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:2184` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:2205` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:2282` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:2316` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai.py:2337` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai_async.py:15` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai_async.py:28` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/openai/test_openai_async.py:40` | LLM client/model is created without visible output token limit. |  |
@@ -2968,6 +3022,7 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_multimodal.py:294` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_multimodal.py:334` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_multimodal.py:345` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_multimodal_integration.py:80` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_multimodal_integration.py:86` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_multimodal_integration.py:108` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_multimodal_integration.py:130` | LLM client/model is created without visible output token limit. |  |
@@ -3006,14 +3061,14 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_prompt_cache.py:158` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_prompt_cache.py:171` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_prompt_cache.py:189` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_tool_call_streaming.py:78` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_tool_call_streaming.py:112` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_tool_call_streaming.py:137` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_tool_call_streaming.py:180` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_tool_call_streaming.py:210` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_tool_call_streaming.py:239` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_tool_call_streaming.py:271` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_tool_call_streaming.py:304` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_tool_call_streaming.py:85` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_tool_call_streaming.py:119` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_tool_call_streaming.py:144` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_tool_call_streaming.py:187` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_tool_call_streaming.py:217` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_tool_call_streaming.py:246` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_tool_call_streaming.py:278` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/llms/test_tool_call_streaming.py:311` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/memory/test_unified_memory.py:360` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/memory/test_unified_memory.py:373` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | RAG | `vector-metadata-governance-missing` | Vector store governance | `lib/crewai/tests/rag/chromadb/test_client.py:77` | Vector store initialization does not show metadata governance. |  |
@@ -3084,7 +3139,7 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/telemetry/test_flow_crew_span_integration.py:255` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/telemetry/test_flow_crew_span_integration.py:256` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/telemetry/test_flow_crew_span_integration.py:307` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_async_human_feedback.py:1346` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_async_human_feedback.py:1421` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/test_crew.py:812` | Agent verbose logging is enabled. |  |
 | Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/test_crew.py:901` | Agent verbose logging is enabled. |  |
 | Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/test_crew.py:918` | Agent verbose logging is enabled. |  |
@@ -3102,9 +3157,11 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_custom_llm.py:336` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_custom_llm.py:342` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_custom_llm.py:349` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_flow_conversation.py:358` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_flow_conversation.py:393` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_flow_conversation.py:501` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_flow_conversation.py:346` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_flow_conversation.py:380` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_flow_conversation.py:485` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_flow_conversation.py:2431` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_flow_conversation.py:2469` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:30` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:36` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:52` | LLM client/model is created without visible output token limit. |  |
@@ -3150,29 +3207,30 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:778` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:792` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:804` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:942` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:943` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:944` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:945` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:948` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:949` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:951` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:953` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:956` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:957` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:958` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:959` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:962` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:963` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:967` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:930` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:972` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:973` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:994` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:1020` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:1052` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:1087` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:1121` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:1159` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:1175` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:974` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:975` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:978` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:979` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:981` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:983` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:986` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:987` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:988` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:989` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:992` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:993` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:997` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:1003` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:1024` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:1050` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:1082` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:1117` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:1151` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:1189` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm.py:1205` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | general | `prompt-output-contract` | Prompt quality | `lib/crewai/tests/test_llm_streaming_finish_reason.py:57` | Prompt-like content does not show a clear output contract. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm_streaming_finish_reason.py:69` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/test_llm_streaming_finish_reason.py:90` | LLM client/model is created without visible output token limit. |  |
@@ -3187,16 +3245,16 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/test_task.py:1612` | Agent verbose logging is enabled. |  |
 | Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/tools/test_base_tool.py:234` | Agent verbose logging is enabled. |  |
 | Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/tools/test_tool_usage.py:66` | Agent verbose logging is enabled. |  |
-| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/tracing/test_tracing.py:171` | Agent verbose logging is enabled. |  |
-| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/tracing/test_tracing.py:210` | Agent verbose logging is enabled. |  |
-| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/tracing/test_tracing.py:274` | Agent verbose logging is enabled. |  |
-| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/tracing/test_tracing.py:325` | Agent verbose logging is enabled. |  |
-| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/tracing/test_tracing.py:376` | Agent verbose logging is enabled. |  |
-| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/tracing/test_tracing.py:558` | Agent verbose logging is enabled. |  |
-| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/tracing/test_tracing.py:631` | Agent verbose logging is enabled. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_agent_utils.py:528` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_agent_utils.py:734` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_agent_utils.py:755` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/tracing/test_tracing.py:172` | Agent verbose logging is enabled. |  |
+| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/tracing/test_tracing.py:211` | Agent verbose logging is enabled. |  |
+| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/tracing/test_tracing.py:275` | Agent verbose logging is enabled. |  |
+| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/tracing/test_tracing.py:326` | Agent verbose logging is enabled. |  |
+| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/tracing/test_tracing.py:377` | Agent verbose logging is enabled. |  |
+| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/tracing/test_tracing.py:559` | Agent verbose logging is enabled. |  |
+| Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `lib/crewai/tests/tracing/test_tracing.py:632` | Agent verbose logging is enabled. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_agent_utils.py:556` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_agent_utils.py:928` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_agent_utils.py:949` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_console_formatter_pause_resume.py:81` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_console_formatter_pause_resume.py:96` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_console_formatter_pause_resume.py:111` | LLM client/model is created without visible output token limit. |  |
@@ -3206,181 +3264,29 @@ _LLM model: google/gemma-4-26b-a4b-it:free_
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_converter.py:732` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_converter.py:756` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_converter.py:780` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1200` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1230` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1266` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1293` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1313` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1352` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1397` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1647` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1685` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1709` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1710` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1317` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1347` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1380` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1407` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1427` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1466` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1511` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1761` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1799` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1823` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_events.py:1824` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_llm_utils.py:78` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_llm_utils.py:159` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_llm_utils.py:168` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_planning_handler.py:174` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_training_converter.py:65` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/crewai/tests/utilities/test_training_converter.py:68` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/devtools/src/crewai_devtools/cli.py:1016` | LLM client/model is created without visible output token limit. |  |
-| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/devtools/src/crewai_devtools/cli.py:1029` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/devtools/src/crewai_devtools/cli.py:1018` | LLM client/model is created without visible output token limit. |  |
+| Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/devtools/src/crewai_devtools/cli.py:1031` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | LLM | `llm-max-tokens-missing` | LLM cost/control | `lib/devtools/src/crewai_devtools/docs_check.py:167` | LLM client/model is created without visible output token limit. |  |
 | Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `scripts/age90_file_input_runner.py:119` | Agent verbose logging is enabled. |  |
 | Low | static | static | Agent | `agent-verbose-logging` | Agent observability | `scripts/age90_file_input_runner.py:131` | Agent verbose logging is enabled. |  |
 
-## LLM Risk Controls
+## LLM Control Warnings
 
-### 1. High - `texttosql-generated-sql-executed`
-
-Location: `lib/crewai-tools/src/crewai_tools/tools/db2_search_tool/db2_search_tool.py:319`  
-LLM confidence: high  
-Valid risk according to LLM: True
-
-Risk explanation:
-
-The code executes a dynamically constructed SQL string directly using `self.cursor.execute(sql, tuple(params))`. While parameters are used for values, the `sql` variable itself is built via string concatenation/joining in `_build_sql`, which can lead to SQL injection if the components of `sql` (like column names or table names) are derived from untrusted user input.
-
-Recommended control:
-
-Use a SQL parser to validate the structure of the generated SQL and enforce a strict allowlist for table and column names. Ensure the database user has read-only permissions.
-
-### 2. High - `texttosql-generated-sql-executed`
-
-Location: `lib/crewai-tools/src/crewai_tools/tools/nl2sql/nl2sql_tool.py:486`  
-LLM confidence: high  
-Valid risk according to LLM: True
-
-Risk explanation:
-
-The method `execute_sql` takes a raw `sql_query` string and executes it. Although there is logic to detect and potentially block write statements (`_is_write_stmt`), the reliance on string splitting and custom parsing for security is fragile and prone to bypasses (e.g., via comments or complex CTEs).
-
-Recommended control:
-
-Implement a robust SQL parser (like `sqlglot`) to verify that the statement is a `SELECT` query and does not contain prohibited commands before execution. Enforce read-only database credentials.
-
-### 3. High - `agent-delegation-unbounded`
-
-Location: `lib/crewai/src/crewai/crew.py:1523`  
-LLM confidence: medium  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This is a core framework implementation where `allow_delegation=True` is a configuration setting for the manager agent. The risk of unbounded delegation is a functional design choice for the agent's autonomy, not a vulnerability in this specific line of code.
-
-Recommended control:
-
-Add strict delegation limits and task/tool guardrails before enabling autonomous delegation.
-
-### 4. High - `agent-delegation-unbounded`
-
-Location: `lib/crewai/tests/test_crew.py:60`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This is a unit test fixture. The `allow_delegation=True` setting is used to test the agent's behavior in a controlled testing environment.
-
-Recommended control:
-
-Add strict delegation limits and task/tool guardrails before enabling autonomous delegation.
-
-### 5. High - `agent-delegation-unbounded`
-
-Location: `lib/crewai/tests/test_crew.py:1728`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This is a unit test verifying that delegation is NOT enabled under specific conditions. The `allow_delegation=True` is part of the test setup.
-
-Recommended control:
-
-Add strict delegation limits and task/tool guardrails before enabling autonomous delegation.
-
-### 6. High - `agent-delegation-unbounded`
-
-Location: `lib/crewai/tests/test_crew.py:3924`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This is a unit test setup for testing agent capabilities. The risk of unbounded delegation is a property of the agent configuration, not a vulnerability in the test code.
-
-Recommended control:
-
-Add strict delegation limits and task/tool guardrails before enabling autonomous delegation.
-
-### 7. High - `agent-delegation-unbounded`
-
-Location: `lib/crewai/tests/test_crew.py:3932`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This is a unit test setup for testing agent capabilities. The risk of unbounded delegation is a property of the agent configuration, not a vulnerability in the test code.
-
-Recommended control:
-
-Add strict delegation limits and task/tool guardrails before enabling autonomous delegation.
-
-### 8. High - `agent-delegation-unbounded`
-
-Location: `lib/crewai/tests/test_crew.py:4414`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This is a unit test setup. The `allow_delegation=True` is used to verify the manager agent's functionality in a test scenario.
-
-Recommended control:
-
-Add strict delegation limits and task/tool guardrails before enabling autonomous delegation.
-
-### 9. High - `agent-delegation-unbounded`
-
-Location: `lib/crewai/tests/test_task.py:796`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This is a unit test verifying the `increment_delegations` logic. The `allow_delegation=True` is part of the test case configuration.
-
-Recommended control:
-
-Add strict delegation limits and task/tool guardrails before enabling autonomous delegation.
-
-### 10. High - `agent-delegation-unbounded`
-
-Location: `lib/crewai/tests/test_task.py:803`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This is a unit test verifying the `increment_delegations` logic. The `allow_delegation=True` is part of the test case configuration.
-
-Recommended control:
-
-Add strict delegation limits and task/tool guardrails before enabling autonomous delegation.
-
-### 11. High - `agent-delegation-unbounded`
-
-Location: `lib/crewai/tests/test_tool_cache_default.py:253`  
-LLM confidence: high  
-Valid risk according to LLM: False
-
-Risk explanation:
-
-This is a unit test verifying cache behavior. The `allow_delegation=True` is part of the test setup.
-
-Recommended control:
-
-Add strict delegation limits and task/tool guardrails before enabling autonomous delegation.
+- LLM control request failed: HTTP Error 429: Too Many Requests

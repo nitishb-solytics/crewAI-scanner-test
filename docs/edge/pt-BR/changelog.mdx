@@ -4,6 +4,192 @@ description: "Atualizações de produto, melhorias e correções do CrewAI"
 icon: "clock"
 mode: "wide"
 ---
+<Update label="19 ago 2026">
+  ## v1.15.17
+
+  [Ver release no GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.15.17)
+
+  ## O que Mudou
+
+  ### Recursos
+  - Adicionar documentação de fluxos de conversa declarativos
+  - Sintetizar métodos de conversa embutidos para declarações
+  - Permitir que declarações conduzam o modo de conversa
+  - Tornar a opção de conversa inconfundível
+  - Carregar o slug AMP em ferramentas resolvidas a partir de uma referência de slug
+  - Lidar com mensagens únicas excessivamente grandes durante a fragmentação
+
+  ### Correções de Bugs
+  - Corrigir o uso do nome do host da URL como server_name do MCP HTTP e SSE
+  - Fechar o escopo do agente em cada tentativa falhada
+  - Atribuir erros de ferramenta à ferramenta que falhou
+  - Fixar verificações de SSRF em cada redirecionamento e IP de par
+  - Resolver problemas com chamadas de ferramentas nativas quebradas na API de Respostas do OpenAI
+
+  ### Documentação
+  - Atualizar a documentação com um instantâneo e registro de alterações para v1.15.16
+
+  ## Contribuidores
+
+  @Copilot, @Vidit-Ostwal, @github-code-quality[bot], @joaomdmoura, @lorenzejay, @lucasgomide, @theCyberTech
+
+</Update>
+
+<Update label="13 ago 2026">
+  ## v1.15.16
+
+  [Ver release no GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.15.16)
+
+  ## O que Mudou
+
+  ### Recursos
+  - Introduzir gerenciamento de contexto de execução com suporte a UUID
+  - Registrar que tipo de exceção finalizou um fluxo
+  - Registrar quando um lote de rastreamento é compartilhado com AMP
+  - Contar implantações de qualquer origem e registrar onde elas começaram
+
+  ### Correções de Bugs
+  - Registrar a versão em execução em cada span emitido
+  - Corrigir a validação do nome da tabela de busca do MySQL
+  - Impedir que uma tentativa falhada marque a próxima como falhada
+
+  ### Documentação
+  - Adicionar guias de Frontend para CopilotKit e AG-UI
+
+  ## Contribuidores
+
+  @joaomdmoura, @lorenzejay, @ranst91, @theCyberTech
+
+</Update>
+
+<Update label="11 ago 2026">
+  ## v1.15.15
+
+  [Ver release no GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.15.15)
+
+  ## O que Mudou
+
+  ### Funcionalidades
+  - Relatar resultado do fluxo, duração e sinais de interação humana.
+
+  ### Correções de Bugs
+  - Emitir FlowStartedEvent quando um gancho de limite aborta o fluxo.
+  - Escopar a exportação de span para nosso próprio provedor de rastreamento.
+  - Atualizar o torch para a versão 2.13.0 para resolver vulnerabilidade de segurança.
+  - Atualizar o gitpython para a versão 3.1.58 em crewai-tools[github].
+
+  ### Refatoração
+  - Atualizar a funcionalidade de injeção de data em agentes.
+  - Padronizar as flags da CLI para kebab-case.
+
+  ### Documentação
+  - Snapshot e changelog para v1.15.14.
+
+  ## Contributors
+
+  @Vidit-Ostwal, @joaomdmoura, @lorenzejay, @lucasgomide, @theCyberTech
+
+</Update>
+
+<Update label="08 ago 2026">
+  ## v1.15.14
+
+  [Ver release no GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.15.14)
+
+  ## O que Mudou
+
+  ### Recursos
+  - Separar o contexto de execução do agente de codificação e adicionar ID do projeto
+
+  ### Documentação
+  - Atualizar snapshot e changelog para v1.15.13
+
+  ## Contribuidores
+
+  @joaomdmoura
+
+</Update>
+
+<Update label="07 ago 2026">
+  ## v1.15.13
+
+  [Ver release no GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.15.13)
+
+  ## O que Mudou
+
+  ### Correções de Bugs
+  - Corrigir a preservação do provedor em modelos roteados por LiteLLM.
+  - Fortalecer os mocks do barramento de eventos LLM que são frágeis.
+  - Corrigir a subnotificação do uso de tokens de cache da Anthropic.
+  - Atualizar o h2 para a versão 4.4.1 para resolver a vulnerabilidade de segurança GHSA-6hr6-w5qg-qmwg.
+
+  ### Documentação
+  - Adicionar o fluxo de trabalho DOCS_TRANSLATIONS para sincronização de locais.
+  - Corrigir links quebrados no README, tabela de conteúdos e orientações de contribuição.
+  - Snapshot e changelog para a versão 1.15.12.
+
+  ## Contributors
+
+  @Vidit-Ostwal, @joaomdmoura, @lucasgomide, @theCyberTech
+
+</Update>
+
+<Update label="05 ago 2026">
+  ## v1.15.12
+
+  [Ver release no GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.15.12)
+
+  ## O que Mudou
+
+  ### Funcionalidades
+  - Aumentar o canário do Flow na versão
+  - Adicionar URLReadTool para leitura de URLs arbitrárias
+  - Adicionar metadados do aplicativo às ferramentas de ação da plataforma
+  - Unificar a estrutura sob `crewai create <resource>`
+
+  ### Correções de Bugs
+  - Esclarecer erros de colisão de nomes de rota/manipulador de conversa
+
+  ### Documentação
+  - Atualizar o AGENTS.md da estrutura para CLI de criação unificada
+
+  ### Mudanças Quebradoras
+  - Nenhuma
+
+  ## Contribuidores
+
+  @Vidit-Ostwal, @joaomdmoura, @lorenzejay, @lucasgomide, @theCyberTech
+
+</Update>
+
+<Update label="04 ago 2026">
+  ## v1.15.11
+
+  [Ver release no GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.15.11)
+
+  ## O que Mudou
+
+  ### Recursos
+  - Rastrear dispatches de hooks de interceptação na telemetria
+  - Adicionar project_id para vincular o uso do OSS a uma conta empresarial
+  - Exibir AMP em AGENTS.md e detectar agentes de codificação na telemetria
+  - Adicionar ferramenta de busca IBM Db2
+
+  ### Correções de Bugs
+  - Limpar alertas de sanitização de substring de URL incompleta do CodeQL
+  - Atualizar aiohttp e cryptography para eliminar seis avisos GHSA
+  - Reportar o erro CEL real para falhas dentro de literais de mapa
+  - Pular corretamente a CI de código para PRs apenas de documentação
+
+  ### Documentação
+  - Snapshot e changelog para v1.15.10
+
+  ## Contribuidores
+
+  @PawanThakurIBM, @Vidit-Ostwal, @gabemilani, @joaomdmoura, @lorenzejay, @lucasgomide, @theCyberTech
+
+</Update>
+
 <Update label="31 jul 2026">
   ## v1.15.10
 

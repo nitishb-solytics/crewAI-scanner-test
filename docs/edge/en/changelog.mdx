@@ -4,6 +4,192 @@ description: "Product updates, improvements, and bug fixes for CrewAI"
 icon: "clock"
 mode: "wide"
 ---
+<Update label="Aug 19, 2026">
+  ## v1.15.17
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.15.17)
+
+  ## What's Changed
+
+  ### Features
+  - Add declarative conversational flows documentation
+  - Synthesize built-in conversational methods for declarations
+  - Enable declarations to drive conversational mode
+  - Make conversational opt-in unmistakable
+  - Carry the AMP slug on tools resolved from a slug reference
+  - Handle oversized single messages during chunking
+
+  ### Bug Fixes
+  - Fix usage of the URL hostname as MCP HTTP and SSE server_name
+  - Close the agent scope on every failed attempt
+  - Attribute tool errors to the tool that failed
+  - Pin SSRF checks to each redirect hop and peer IP
+  - Resolve issues with native tool calls broken over OpenAI Responses API
+
+  ### Documentation
+  - Update documentation with a snapshot and changelog for v1.15.16
+
+  ## Contributors
+
+  @Copilot, @Vidit-Ostwal, @github-code-quality[bot], @joaomdmoura, @lorenzejay, @lucasgomide, @theCyberTech
+
+</Update>
+
+<Update label="Aug 13, 2026">
+  ## v1.15.16
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.15.16)
+
+  ## What's Changed
+
+  ### Features
+  - Introduce execution context management with UUID support
+  - Record what kind of exception ended a flow
+  - Record when a trace batch is shared with AMP
+  - Count deployments from any origin and record where they started
+
+  ### Bug Fixes
+  - Record the running release on every emitted span
+  - Fix MySQL search table name validation
+  - Stop a failed turn from marking the next one as failed
+
+  ### Documentation
+  - Add Frontend guides for CopilotKit and AG-UI
+
+  ## Contributors
+
+  @joaomdmoura, @lorenzejay, @ranst91, @theCyberTech
+
+</Update>
+
+<Update label="Aug 11, 2026">
+  ## v1.15.15
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.15.15)
+
+  ## What's Changed
+
+  ### Features
+  - Report flow outcome, duration, and human-in-the-loop signals.
+
+  ### Bug Fixes
+  - Emit FlowStartedEvent when a boundary hook aborts the flow.
+  - Scope span export to our own tracer provider.
+  - Bump torch to version 2.13.0 to address security vulnerability.
+  - Bump gitpython to version 3.1.58 in crewai-tools[github].
+
+  ### Refactoring
+  - Update date injection functionality in agents.
+  - Standardize CLI flags to kebab-case.
+
+  ### Documentation
+  - Snapshot and changelog for v1.15.14.
+
+  ## Contributors
+
+  @Vidit-Ostwal, @joaomdmoura, @lorenzejay, @lucasgomide, @theCyberTech
+
+</Update>
+
+<Update label="Aug 08, 2026">
+  ## v1.15.14
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.15.14)
+
+  ## What's Changed
+
+  ### Features
+  - Split runtime context from coding agent and add project ID
+
+  ### Documentation
+  - Update snapshot and changelog for v1.15.13
+
+  ## Contributors
+
+  @joaomdmoura
+
+</Update>
+
+<Update label="Aug 07, 2026">
+  ## v1.15.13
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.15.13)
+
+  ## What's Changed
+
+  ### Bug Fixes
+  - Fix preservation of provider on LiteLLM-routed models.
+  - Harden brittle LLM event-bus mocks.
+  - Fix underreporting of Anthropic cache token usage.
+  - Bump h2 to version 4.4.1 to address security vulnerability GHSA-6hr6-w5qg-qmwg.
+
+  ### Documentation
+  - Add DOCS_TRANSLATIONS workflow for locale synchronization.
+  - Fix broken README links, table of contents, and contribution guidance.
+  - Snapshot and changelog for version 1.15.12.
+
+  ## Contributors
+
+  @Vidit-Ostwal, @joaomdmoura, @lucasgomide, @theCyberTech
+
+</Update>
+
+<Update label="Aug 05, 2026">
+  ## v1.15.12
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.15.12)
+
+  ## What's Changed
+
+  ### Features
+  - Bump Flow canary on release
+  - Add URLReadTool for reading arbitrary URLs
+  - Add app metadata to platform action tools
+  - Unify scaffolding under `crewai create <resource>`
+
+  ### Bug Fixes
+  - Clarify conversational route/handler name collision errors
+
+  ### Documentation
+  - Update scaffold AGENTS.md for unified create CLI
+
+  ### Breaking Changes
+  - None
+
+  ## Contributors
+
+  @Vidit-Ostwal, @joaomdmoura, @lorenzejay, @lucasgomide, @theCyberTech
+
+</Update>
+
+<Update label="Aug 04, 2026">
+  ## v1.15.11
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.15.11)
+
+  ## What's Changed
+
+  ### Features
+  - Track interception-hook dispatches in telemetry
+  - Add project_id to link OSS usage to an enterprise account
+  - Surface AMP in AGENTS.md and detect coding agents in telemetry
+  - Add IBM Db2 search tool
+
+  ### Bug Fixes
+  - Clear CodeQL incomplete URL substring sanitization alerts
+  - Bump aiohttp and cryptography to clear six GHSA advisories
+  - Report the real CEL error for failures inside map literals
+  - Correctly skip code CI for docs-only PRs
+
+  ### Documentation
+  - Snapshot and changelog for v1.15.10
+
+  ## Contributors
+
+  @PawanThakurIBM, @Vidit-Ostwal, @gabemilani, @joaomdmoura, @lorenzejay, @lucasgomide, @theCyberTech
+
+</Update>
+
 <Update label="Jul 31, 2026">
   ## v1.15.10
 

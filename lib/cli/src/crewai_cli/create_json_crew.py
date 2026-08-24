@@ -9,6 +9,7 @@ import sys
 from typing import Any
 
 import click
+from crewai_core.telemetry import Telemetry
 from rich.console import Console
 from rich.text import Text
 
@@ -18,6 +19,7 @@ from crewai_cli.model_catalog import get_provider_models
 from crewai_cli.tui_picker import pick_many, pick_one
 from crewai_cli.utils import (
     enable_prompt_line_editing,
+    get_or_create_project_id,
     is_dmn_mode_enabled,
     load_env_vars,
     render_template,
@@ -968,6 +970,10 @@ def create_json_crew(
         for model in models:
             _setup_env(folder_path, model)
 
+    # Minted at creation so the project has a stable identity from run one.
+    # This is the default `crewai create crew` path, not just --classic.
+    project_id = get_or_create_project_id(folder_path / "pyproject.toml")
+    Telemetry().project_created_span("json_crew", project_id)
     initialize_if_git_available(folder_path)
 
     click.echo()

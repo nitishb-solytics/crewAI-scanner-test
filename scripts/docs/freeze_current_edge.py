@@ -14,6 +14,7 @@ Usage::
 Idempotent: re-running with the same version is a no-op (existing snapshot
 directory and existing docs.json entry are both detected).
 """
+# new test for ai quality gate
 
 from __future__ import annotations
 
